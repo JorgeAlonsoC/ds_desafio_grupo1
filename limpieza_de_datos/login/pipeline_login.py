@@ -7,7 +7,7 @@ Pipeline de limpieza
 - Añade columna numérica 'severity' (3=Rojo, 2=Naranja, 1=Amarillo, 0=Blanco, -1=Indeterminado).
 - Elimina columnas ruido configurables.
 - Envía a BBDD (PostgreSQL en Render) y exporta JSON del payload final.
-- El DataFrame limpio ya queda con las columnas EXACTAS de la BD que enviamos:
+- El DataFrame limpio queda con las columnas EXACTAS que enviamos a la BD:
   ['type', 'indicators', 'severity', 'date', 'time']
 """
 
@@ -17,8 +17,7 @@ from typing import List, Optional, Dict, Any
 
 import numpy as np
 import pandas as pd
-from sqlalchemy import create_engine
-import psycopg2
+from sqlalchemy import create_engine  # pip install sqlalchemy psycopg2-binary
 
 # ---------------- Utilidades ----------------
 def coerce_bool_series(s: pd.Series) -> pd.Series:
@@ -69,15 +68,17 @@ def set_login_year(df: pd.DataFrame, col: str = "Login Timestamp", year: int = 2
 def split_login_timestamp(df: pd.DataFrame, col: str = "Login Timestamp") -> pd.DataFrame:
     """
     Parte 'Login Timestamp' (ISO UTC) en 'date' (YYYY-MM-DD) y 'time' (HH:MM:SS).
-    Si no existe o es inválido, usa cadenas vacías.
+    Si no existe o es inválido, deja None.
     """
     if col in df.columns:
         ts = pd.to_datetime(df[col], errors="coerce", utc=True)
-        df["date"] = ts.dt.strftime("%Y-%m-%d").where(ts.notna(), "")
-        df["time"] = ts.dt.strftime("%H:%M:%S").where(ts.notna(), "")
+        date_str = ts.dt.strftime("%Y-%m-%d")
+        time_str = ts.dt.strftime("%H:%M:%S")
+        df["date"] = date_str.where(ts.notna(), None)
+        df["time"] = time_str.where(ts.notna(), None)
     else:
-        df["date"] = ""
-        df["time"] = ""
+        df["date"] = None
+        df["time"] = None
     return df
 
 
@@ -92,7 +93,7 @@ def add_severity(df: pd.DataFrame) -> pd.DataFrame:
     """
     needed = ["Login Success", "Is Attack", "Is Account Takeover"]
     if not all(c in df.columns for c in needed):
-        return df  # no podemos calcular; devolvemos tal cual
+        return df
 
     ls  = coerce_bool_series(df["Login Success"]).fillna(False)
     ia  = coerce_bool_series(df["Is Attack"]).fillna(False)
@@ -114,15 +115,8 @@ def add_severity(df: pd.DataFrame) -> pd.DataFrame:
 def add_type_and_indicators(df: pd.DataFrame) -> pd.DataFrame:
     """
     Deriva 'type' e 'indicators' a partir de 'severity':
-      type:
-        3 -> "Incidencia"
-        2/1 -> "Alerta"
-        0 -> "Info"
-      indicators:
-        3 -> "Account Takeover"
-        2 -> "Cuenta comprometida"
-        1 -> "Ataque fallido"
-        0 -> "Log in válido"
+      type: 3->Incidencia | 1/2->Alerta | 0->Info
+      indicators: 3->Robo de credenciales | 2->Cuenta comprometida | 1->Ataque fallido | 0->Log in válido
     """
     if "severity" not in df.columns:
         return df
@@ -137,7 +131,7 @@ def add_type_and_indicators(df: pd.DataFrame) -> pd.DataFrame:
 
     df["indicators"] = np.select(
         [sev.eq(3), sev.eq(2), sev.eq(1), sev.eq(0)],
-        ["Account Takeover", "Cuenta comprometida", "Ataque fallido", "Log in válido"],
+        ["Robo de credenciales", "Cuenta comprometida", "Ataque fallido", "Log in válido"],
         default="",
     ).astype(str)
 
@@ -176,8 +170,12 @@ def clean_any_csv(df: pd.DataFrame, year: int = 2025, drop_cols: Optional[List[s
     payload_cols = ["type", "indicators", "severity", "date", "time"]
     out = df.reindex(columns=payload_cols)
 
-    # dtype entero con nulos permitido para 'severity' si hiciera falta:
+    # 'severity' con Int64 (permite nulos) por si en algún caso llegaran
     out["severity"] = pd.to_numeric(out["severity"], errors="coerce").astype("Int64")
+
+    # Asegurar None en celdas vacías de date/time (evita cast de string vacío a DATE/TIME)
+    out["date"] = out["date"].where(out["date"].notna() & (out["date"] != ""), None)
+    out["time"] = out["time"].where(out["time"].notna() & (out["time"] != ""), None)
     return out
 
 
@@ -208,7 +206,6 @@ def run_pipeline(config: Dict[str, Any]) -> None:
     Keys esperadas en config:
       - inputs: List[str]                # rutas a CSV de entrada (obligatorio)
       - output_dir: str                  # carpeta de salida para CSV limpios (obligatorio)
-      - suffix: str = "_clean"           # sufijo de salida para CSV limpio (opcional)
       - year: int = 2025                 # año para Login Timestamp
       - drop_cols: Optional[List[str]]   # columnas a eliminar (por defecto DEFAULT_DROP)
       - json_out_dir: Optional[str]      # carpeta para exportar registros a JSON del payload BBDD (opcional)
@@ -218,9 +215,8 @@ def run_pipeline(config: Dict[str, Any]) -> None:
       - db_chunksize: int = 1000         # tamaño de lote inserciones
       - db_echo: bool = False            # log detallado de SQLAlchemy
     """
-    inputs      = config.get("inputs", [])
+    inputs      = config.get("inputs", [df1_alimentacion.csv])
     outdir      = config.get("output_dir", "")
-    suffix      = config.get("suffix", "_clean")
     year        = int(config.get("year", 2025))
     drop_cols   = config.get("drop_cols", None)
     json_dir    = config.get("json_out_dir", None)
@@ -252,7 +248,7 @@ def run_pipeline(config: Dict[str, Any]) -> None:
             df_clean.to_csv(out_csv, index=False, encoding="utf-8")
             print(f"[OK] {inp} -> {out_csv} ({len(df)} filas -> {len(df_clean)} filas)")
 
-            # 3) Guardar JSON del payload
+            # 3) Guardar JSON del payload (opcional)
             if json_dir:
                 json_path = os.path.join(json_dir, f"{base}{suffix}_dbpayload.json")
                 with open(json_path, "w", encoding="utf-8") as f:
@@ -279,32 +275,33 @@ def run_pipeline(config: Dict[str, Any]) -> None:
 
 
 # ── Config BBDD (PostgreSQL en Render) ─────────────────────────────────
+DB_USER = "desafiogrupo1_user"
+DB_HOST = "dpg-d36i377fte5s73bgaisg-a.oregon-postgres.render.com"  # ← ojo: 377
+DB_NAME = "desafiogrupo1"
+DB_PASS = "g7jS0htW8QqiGPRymmJw0IJgb04QO3Jy"
+DB_PORT = 5432
+DB_URL  = f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
-conn = psycopg2.connect(
-    dbname="desafiogrupo1",
-    user="desafiogrupo1_user",
-    password="g7jS0htW8QqiGPRymmJw0IJgb04QO3Jy",
-    host="dpg-d36i177fte5s73bgaisg-a.oregon-postgres.render.com",
-    port="5432"
-)
 
-cur = conn.cursor()
-records = [
-    {
-        "type": row["type"],
-        "indicators": row["indicators"],
-        "severity": row["severity"],
-        "date": row["date"],
-        "time": row["time"]
+# Ejecución del pipeline
+if __name__ == "__main__":
+    config = {
+        "inputs": [
+            r"C:\proyecto\data\entrada\df1_alimentacion.csv",
+            r"C:\proyecto\data\entrada\df2_prueba.csv",
+        ],
+        "output_dir": r"C:\proyecto\data\salida",
+        "suffix": "_clean",
+        "year": 2025,
+
+        # Envío a BBDD
+        "db_url": DB_URL,
+        "db_table": "logs", 
+        "db_if_exists": "append",
+        "db_chunksize": 2000,
+        "db_echo": False,
+
+        # Exportación JSON del payload (opcional)
+        "json_out_dir": r"C:\proyecto\data\json",
     }
-    for _, row in df.iterrows()
-]
-
-cur.executemany("""
-    INSERT INTO data_app (type, indicators, severity, date, time)
-    VALUES (%(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s)
-""", records)
-
-conn.commit()
-cur.close()
-conn.close()
+    run_pipeline(config)
