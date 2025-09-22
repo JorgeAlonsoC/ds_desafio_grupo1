@@ -14,7 +14,9 @@ Pipeline de limpieza
 import json
 import os
 from typing import List, Optional, Dict, Any
-
+from dotenv import load_dotenv
+import requests
+import time
 import numpy as np
 import pandas as pd
 from sqlalchemy import create_engine  # pip install sqlalchemy psycopg2-binary
@@ -178,6 +180,47 @@ def clean_any_csv(df: pd.DataFrame, year: int = 2025, drop_cols: Optional[List[s
     out["time"] = out["time"].where(out["time"].notna() & (out["time"] != ""), None)
     return out
 
+# ---------------- Enriquecimiento de datos ----------------
+
+CHECK_URL = "https://api.abuseipdb.com/api/v2/check"
+
+load_dotenv() 
+API_KEY = os.getenv("ABUSEIPDB_API_KEY")
+
+HEADERS = {
+    "Accept": "application/json",
+    "Key": API_KEY
+}
+
+def ips_list(ips, pause=1.0):
+    """
+    Recibe lista de IPs y devuelve un diccionario {IP: abuseConfidenceScore}
+    pause: segundos a esperar entre peticiones para no saturar la API
+    """
+    results = {}
+    for ip in ips:
+        try:
+            params = {"ipAddress": ip, "maxAgeInDays": "90"}
+            r = requests.get(CHECK_URL, headers=HEADERS, params=params)
+            r.raise_for_status()
+            data = r.json().get("data", {})
+            score = data.get("abuseConfidenceScore", 0)
+            results[ip] = score
+            print(f"[ABUSEIPDB] {ip} -> {score}%")
+        except Exception as e:
+            print(f"[ABUSEIPDB][ERROR] {ip}: {e}")
+            results[ip] = None
+        time.sleep(pause)
+    return results
+
+def enriquecimiento(df: pd.DataFrame, ip_col: str = "IP Address", pause: float = 1.0) -> pd.DataFrame:
+    if ip_col not in df.columns:
+        return df
+    
+    ips = df[ip_col].dropna().unique().tolist()
+    scores = ips_list(ips, pause=pause)   # 👈 usar ips_list en vez de check_ips_confidence
+    df[ip_col + "_abuse_confidence"] = df[ip_col].map(scores)
+    return df
 
 # ---------------- BBDD helpers ----------------
 def df_to_records(df: pd.DataFrame) -> List[dict]:
@@ -215,8 +258,9 @@ def run_pipeline(config: Dict[str, Any]) -> None:
       - db_chunksize: int = 1000         # tamaño de lote inserciones
       - db_echo: bool = False            # log detallado de SQLAlchemy
     """
-    inputs      = config.get("inputs", [df1_alimentacion.csv])
-    outdir      = config.get("output_dir", "salida")
+    inputs      = config.get("inputs", [])
+    outdir      = config.get("output_dir", ".")
+    suffix      = config.get("suffix", "_clean")
     year        = int(config.get("year", 2025))
     drop_cols   = config.get("drop_cols", None)
     json_dir    = config.get("json_out_dir", None)
@@ -241,6 +285,7 @@ def run_pipeline(config: Dict[str, Any]) -> None:
             # 1) Leer y limpiar
             df = pd.read_csv(inp)
             df_clean = clean_any_csv(df, year=year, drop_cols=drop_cols)
+            df_clean = enriquecimiento(df_clean, ip_col="IP Address") #esto lo he añadido yo!!! Merche 18:41
 
             # 2) Guardar CSV limpio (payload final con columnas de BD)
             base = os.path.splitext(os.path.basename(inp))[0]
@@ -302,6 +347,6 @@ if __name__ == "__main__":
         "db_echo": False,
 
         # Exportación JSON del payload
-        "json_out_dir": r"C:limpieza_de_datos\login",
+        "json_out_dir": r"C:\limpieza_de_datos\login",
     }
     run_pipeline(config)
