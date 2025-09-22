@@ -252,7 +252,7 @@ def run_pipeline(config: Dict[str, Any]) -> None:
             df_clean.to_csv(out_csv, index=False, encoding="utf-8")
             print(f"[OK] {inp} -> {out_csv} ({len(df)} filas -> {len(df_clean)} filas)")
 
-            # 3) Guardar JSON del payload (opcional)
+            # 3) Guardar JSON del payload
             if json_dir:
                 json_path = os.path.join(json_dir, f"{base}{suffix}_dbpayload.json")
                 with open(json_path, "w", encoding="utf-8") as f:
