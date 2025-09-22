@@ -1,24 +1,24 @@
-#Pipeline
+# Pipeline
 """
-Pipeline de limpieza y registro incremental
+Pipeline de limpieza
 -------------------------------------------
 - Aplica la misma lógica a **cualquier** CSV (uno o varios a la vez).
-- Si "Round-Trip Time [ms]" es NaN -> "Duración no registrada".
 - Normaliza "Login Timestamp" al año indicado (por defecto, 2025).
-- Añade columna numérica 'Criticidad' (3=Rojo, 2=Naranja, 1=Amarillo, 0=Blanco).
+- Añade columna numérica 'severity' (3=Rojo, 2=Naranja, 1=Amarillo, 0=Blanco, -1=Indeterminado).
 - Elimina columnas ruido configurables.
-- Registro en BBDD y exportación JSON .
+- Envía a BBDD (PostgreSQL en Render) y exporta JSON del payload final.
+- El DataFrame limpio ya queda con las columnas EXACTAS de la BD que enviamos:
+  ['type', 'indicators', 'severity', 'date', 'time']
 """
 
-import hashlib
 import json
 import os
-from typing import List, Tuple, Optional, Dict, Any
+from typing import List, Optional, Dict, Any
 
 import numpy as np
 import pandas as pd
 from sqlalchemy import create_engine
-
+import psycopg2
 
 # ---------------- Utilidades ----------------
 def coerce_bool_series(s: pd.Series) -> pd.Series:
@@ -66,21 +66,36 @@ def set_login_year(df: pd.DataFrame, col: str = "Login Timestamp", year: int = 2
     return df
 
 
-def add_criticidad(df: pd.DataFrame) -> pd.DataFrame:
+def split_login_timestamp(df: pd.DataFrame, col: str = "Login Timestamp") -> pd.DataFrame:
     """
-    Agrega columna numérica 'Criticidad' según:
-      - 3 (Rojo):     Login Success=True,  Is Attack=True,  Is Account Takeover=True
-      - 2 (Naranja):  Login Success=True,  Is Attack=True,  Is Account Takeover=False
-      - 1 (Amarillo): Login Success=False, Is Attack=True,  Is Account Takeover=False
-      - 0 (Blanco):   Login Success=True,  Is Attack=False, Is Account Takeover=False
-    Otros casos: -1 (indeterminado).
+    Parte 'Login Timestamp' (ISO UTC) en 'date' (YYYY-MM-DD) y 'time' (HH:MM:SS).
+    Si no existe o es inválido, usa cadenas vacías.
+    """
+    if col in df.columns:
+        ts = pd.to_datetime(df[col], errors="coerce", utc=True)
+        df["date"] = ts.dt.strftime("%Y-%m-%d").where(ts.notna(), "")
+        df["time"] = ts.dt.strftime("%H:%M:%S").where(ts.notna(), "")
+    else:
+        df["date"] = ""
+        df["time"] = ""
+    return df
+
+
+def add_severity(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Crea la columna numérica 'severity' según:
+      3: Login Success=True,  Is Attack=True,  Is Account Takeover=True
+      2: Login Success=True,  Is Attack=True,  Is Account Takeover=False
+      1: Login Success=False, Is Attack=True,  Is Account Takeover=False
+      0: Login Success=True,  Is Attack=False, Is Account Takeover=False
+    Otros casos -> -1.
     """
     needed = ["Login Success", "Is Attack", "Is Account Takeover"]
     if not all(c in df.columns for c in needed):
-        return df
+        return df  # no podemos calcular; devolvemos tal cual
 
-    ls = coerce_bool_series(df["Login Success"]).fillna(False)
-    ia = coerce_bool_series(df["Is Attack"]).fillna(False)
+    ls  = coerce_bool_series(df["Login Success"]).fillna(False)
+    ia  = coerce_bool_series(df["Is Attack"]).fillna(False)
     iat = coerce_bool_series(df["Is Account Takeover"]).fillna(False)
 
     rojo     =  (ls)  & (ia) & (iat)
@@ -88,74 +103,50 @@ def add_criticidad(df: pd.DataFrame) -> pd.DataFrame:
     amarillo = (~ls)  & (ia) & (~iat)
     blanco   =  (ls)  & (~ia) & (~iat)
 
-    criticidad = np.select(
+    df["severity"] = np.select(
         [rojo,  naranja,  amarillo,  blanco],
         [3,     2,        1,         0],
         default=-1
     ).astype(int)
+    return df
 
-    df["Criticidad"] = criticidad
+
+def add_type_and_indicators(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Deriva 'type' e 'indicators' a partir de 'severity':
+      type:
+        3 -> "Incidencia"
+        2/1 -> "Alerta"
+        0 -> "Info"
+      indicators:
+        3 -> "Account Takeover"
+        2 -> "Cuenta comprometida"
+        1 -> "Ataque fallido"
+        0 -> "Log in válido"
+    """
+    if "severity" not in df.columns:
+        return df
+
+    sev = pd.to_numeric(df["severity"], errors="coerce")
+
+    df["type"] = np.select(
+        [sev.eq(3), sev.isin([1, 2]), sev.eq(0)],
+        ["Incidencia", "Alerta", "Info"],
+        default="Info",
+    ).astype(str)
+
+    df["indicators"] = np.select(
+        [sev.eq(3), sev.eq(2), sev.eq(1), sev.eq(0)],
+        ["Account Takeover", "Cuenta comprometida", "Ataque fallido", "Log in válido"],
+        default="",
+    ).astype(str)
+
     return df
 
 
 def drop_columns(df: pd.DataFrame, cols_to_drop: List[str]) -> pd.DataFrame:
     """Elimina columnas si existen (ignora si faltan)."""
     return df.drop(columns=[c for c in cols_to_drop if c in df.columns], errors="ignore")
-
-
-def ensure_rtt(df: pd.DataFrame, col: str = "Round-Trip Time [ms]") -> pd.DataFrame:
-    """Asegura que exista y reemplace NaN por 'Duración no registrada'."""
-    if col not in df.columns:
-        df[col] = np.nan
-    df[col] = df[col].where(~pd.isna(df[col]), "Duración no registrada")
-    return df
-
-
-def row_fingerprint(row: pd.Series) -> str:
-    """Hash estable por fila (omite columnas derivadas de criticidad)."""
-    items = []
-    for k, v in row.items():
-        if str(k).lower().startswith("criticidad"):
-            continue
-        items.append(f"{k}={'' if pd.isna(v) else str(v)}")
-    blob = "\x1f".join(items)
-    return hashlib.sha1(blob.encode("utf-8", errors="ignore")).hexdigest()
-
-
-def incremental_register(df_clean: pd.DataFrame, state_path: str, train_out: str) -> Tuple[int, int]:
-    """Añade solo filas nuevas a train_out basándose en hash por fila. Devuelve (nuevas, agregadas_esta_vez)."""
-    seen = set()
-    if os.path.exists(state_path):
-        with open(state_path, "r", encoding="utf-8") as f:
-            for line in f:
-                try:
-                    seen.add(json.loads(line)["hash"])
-                except Exception:
-                    continue
-
-    hashes = df_clean.apply(row_fingerprint, axis=1)
-    df_clean = df_clean.assign(_row_hash=hashes)
-    new_rows_df = df_clean[~df_clean["_row_hash"].isin(seen)].copy()
-
-    total_before = 0
-    if os.path.exists(train_out):
-        try:
-            existing = pd.read_csv(train_out)
-            total_before = len(existing)
-            combined = pd.concat([existing, new_rows_df.drop(columns=["_row_hash"])], ignore_index=True)
-        except Exception:
-            combined = new_rows_df.drop(columns=["_row_hash"])
-    else:
-        combined = new_rows_df.drop(columns=["_row_hash"])
-    combined.to_csv(train_out, index=False, encoding="utf-8")
-
-    if not new_rows_df.empty:
-        os.makedirs(os.path.dirname(state_path) or ".", exist_ok=True)
-        with open(state_path, "a", encoding="utf-8") as f:
-            for h in new_rows_df["_row_hash"].tolist():
-                f.write(json.dumps({"hash": h}) + "\n")
-
-    return len(new_rows_df), len(combined) - total_before
 
 
 # ---------------- Limpieza genérica ----------------
@@ -166,17 +157,28 @@ DEFAULT_DROP = [
     "Browser Name and Version",
     "OS Name and Version",
     "Device Type",
+    "Round-Trip Time [ms]",
 ]
 
-
 def clean_any_csv(df: pd.DataFrame, year: int = 2025, drop_cols: Optional[List[str]] = None) -> pd.DataFrame:
-    """Limpieza genérica y enriquecimiento."""
+    """
+    Limpieza que deja el DF listo para la BD con columnas EXACTAS:
+    ['type', 'indicators', 'severity', 'date', 'time']
+    """
     drop_cols = drop_cols if drop_cols is not None else DEFAULT_DROP
-    df = drop_columns(df, drop_cols)
-    df = set_login_year(df, "Login Timestamp", year)
-    df = ensure_rtt(df, "Round-Trip Time [ms]")
-    df = add_criticidad(df)
-    return df
+    df = drop_columns(df, drop_cols)                 # 1) quitar ruido
+    df = set_login_year(df, "Login Timestamp", year) # 2) normalizar año (ISO UTC)
+    df = add_severity(df)                            # 3) calcular severity
+    df = add_type_and_indicators(df)                 # 4) derivar type/indicators
+    df = split_login_timestamp(df, "Login Timestamp")# 5) crear date/time
+
+    # 6) devolver SOLO las columnas de la BD que enviamos
+    payload_cols = ["type", "indicators", "severity", "date", "time"]
+    out = df.reindex(columns=payload_cols)
+
+    # dtype entero con nulos permitido para 'severity' si hiciera falta:
+    out["severity"] = pd.to_numeric(out["severity"], errors="coerce").astype("Int64")
+    return out
 
 
 # ---------------- BBDD helpers ----------------
@@ -194,10 +196,6 @@ def send_to_db(df: pd.DataFrame, db_url: str, table: str,
       - if_exists: 'append' | 'replace' | 'fail'
       - chunksize: tamaño de lote para inserciones
     """
-    # Si alguien quitara el import, esta comprobación ayuda:
-    if create_engine is None:
-        raise RuntimeError("SQLAlchemy no está instalado. Ejecuta: pip install sqlalchemy")
-
     engine = create_engine(db_url, echo=echo, future=True)
     df.to_sql(name=table, con=engine, if_exists=if_exists, index=False, chunksize=chunksize, method="multi")
 
@@ -210,27 +208,22 @@ def run_pipeline(config: Dict[str, Any]) -> None:
     Keys esperadas en config:
       - inputs: List[str]                # rutas a CSV de entrada (obligatorio)
       - output_dir: str                  # carpeta de salida para CSV limpios (obligatorio)
-      - suffix: str = "_clean"           # sufijo de salida
+      - suffix: str = "_clean"           # sufijo de salida para CSV limpio (opcional)
       - year: int = 2025                 # año para Login Timestamp
       - drop_cols: Optional[List[str]]   # columnas a eliminar (por defecto DEFAULT_DROP)
-      - json_out_dir: Optional[str]      # carpeta para exportar registros a JSON (opcional)
-      - train_out: Optional[str]         # CSV acumulado de entrenamiento (opcional)
-      - state_file: Optional[str]        # archivo JSONL con hashes (requerido si train_out)
+      - json_out_dir: Optional[str]      # carpeta para exportar registros a JSON del payload BBDD (opcional)
       - db_url: Optional[str]            # URL SQLAlchemy (opcional)
       - db_table: Optional[str]          # tabla destino (opcional)
       - db_if_exists: str = "append"     # 'append' | 'replace' | 'fail'
       - db_chunksize: int = 1000         # tamaño de lote inserciones
       - db_echo: bool = False            # log detallado de SQLAlchemy
     """
-    # --- Lectura de configuración y defaults ---
     inputs      = config.get("inputs", [])
     outdir      = config.get("output_dir", "")
     suffix      = config.get("suffix", "_clean")
     year        = int(config.get("year", 2025))
     drop_cols   = config.get("drop_cols", None)
     json_dir    = config.get("json_out_dir", None)
-    train_out   = config.get("train_out", None)
-    state_file  = config.get("state_file", None)
     db_url      = config.get("db_url", None)
     db_table    = config.get("db_table", None)
     db_if_exist = config.get("db_if_exists", "append")
@@ -247,34 +240,30 @@ def run_pipeline(config: Dict[str, Any]) -> None:
     use_db = bool(db_url and db_table)
 
     # --- Procesado de entradas ---
-    cleaned_paths = []
     for inp in inputs:
         try:
+            # 1) Leer y limpiar
             df = pd.read_csv(inp)
             df_clean = clean_any_csv(df, year=year, drop_cols=drop_cols)
 
+            # 2) Guardar CSV limpio (payload final con columnas de BD)
             base = os.path.splitext(os.path.basename(inp))[0]
             out_csv = os.path.join(outdir, f"{base}{suffix}.csv")
             df_clean.to_csv(out_csv, index=False, encoding="utf-8")
             print(f"[OK] {inp} -> {out_csv} ({len(df)} filas -> {len(df_clean)} filas)")
-            cleaned_paths.append(out_csv)
 
-            # a) Convertir a dict
-            records = df_to_records(df_clean)
-            print(f"[DICT] {base}: {len(records)} registros")
-
-            # b) Guardar JSON
+            # 3) Guardar JSON del payload (opcional)
             if json_dir:
-                json_path = os.path.join(json_dir, f"{base}{suffix}.json")
+                json_path = os.path.join(json_dir, f"{base}{suffix}_dbpayload.json")
                 with open(json_path, "w", encoding="utf-8") as f:
-                    json.dump(records, f, ensure_ascii=False)
-                print(f"[JSON] Guardado: {json_path}")
+                    json.dump(df_to_records(df_clean), f, ensure_ascii=False)
+                print(f"[JSON] Payload BBDD guardado: {json_path}")
 
-            # c) Enviar a BBDD
+            # 4) Enviar a BBDD (opcional)
             if use_db:
                 try:
                     send_to_db(
-                        df_clean,
+                        df_clean,           
                         db_url=db_url,
                         table=db_table,
                         if_exists=db_if_exist,
@@ -288,18 +277,34 @@ def run_pipeline(config: Dict[str, Any]) -> None:
         except Exception as e:
             print(f"[ERROR] {inp}: {e}")
 
-    # --- Registro incremental global ---
-    if train_out:
-        if not state_file:
-            raise SystemExit("Se especificó 'train_out' pero falta 'state_file' para el incremental.")
-        all_new = 0
-        all_appended = 0
-        for out_csv in cleaned_paths:
-            try:
-                dfc = pd.read_csv(out_csv)
-                new_rows, appended = incremental_register(dfc, state_file, train_out)
-                all_new += new_rows
-                all_appended += appended
-            except Exception as e:
-                print(f"[WARN] Incremental falló para {out_csv}: {e}")
-        print(f"[INCREMENTAL] Nuevas totales: {all_new}. Agregadas esta vez: {all_appended}. Train: {train_out}")
+
+# ── Config BBDD (PostgreSQL en Render) ─────────────────────────────────
+
+conn = psycopg2.connect(
+    dbname="desafiogrupo1",
+    user="desafiogrupo1_user",
+    password="g7jS0htW8QqiGPRymmJw0IJgb04QO3Jy",
+    host="dpg-d36i177fte5s73bgaisg-a.oregon-postgres.render.com",
+    port="5432"
+)
+
+cur = conn.cursor()
+records = [
+    {
+        "type": row["type"],
+        "indicators": row["indicators"],
+        "severity": row["severity"],
+        "date": row["date"],
+        "time": row["time"]
+    }
+    for _, row in df.iterrows()
+]
+
+cur.executemany("""
+    INSERT INTO data_app (type, indicators, severity, date, time)
+    VALUES (%(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s)
+""", records)
+
+conn.commit()
+cur.close()
+conn.close()
