@@ -16,7 +16,7 @@ if "__file__" in globals():
 else:
     LOGIN_DIR = Path(os.getcwd())
 
-INPUTS         = str(LOGIN_DIR / "*.csv")
+INPUTS         = str(LOGIN_DIR / "df1_alimentacion.csv")
 OUTPUT_DIR     = LOGIN_DIR / "salida"
 JSON_DIR       = LOGIN_DIR / "json"
 COMBINED_JSON  = "payload_combined.json"
