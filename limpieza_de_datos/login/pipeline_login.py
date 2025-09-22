@@ -216,7 +216,7 @@ def run_pipeline(config: Dict[str, Any]) -> None:
       - db_echo: bool = False            # log detallado de SQLAlchemy
     """
     inputs      = config.get("inputs", [df1_alimentacion.csv])
-    outdir      = config.get("output_dir", "")
+    outdir      = config.get("output_dir", "salida")
     year        = int(config.get("year", 2025))
     drop_cols   = config.get("drop_cols", None)
     json_dir    = config.get("json_out_dir", None)
@@ -248,14 +248,14 @@ def run_pipeline(config: Dict[str, Any]) -> None:
             df_clean.to_csv(out_csv, index=False, encoding="utf-8")
             print(f"[OK] {inp} -> {out_csv} ({len(df)} filas -> {len(df_clean)} filas)")
 
-            # 3) Guardar JSON del payload (opcional)
+            # 3) Guardar JSON del payload
             if json_dir:
                 json_path = os.path.join(json_dir, f"{base}{suffix}_dbpayload.json")
                 with open(json_path, "w", encoding="utf-8") as f:
                     json.dump(df_to_records(df_clean), f, ensure_ascii=False)
                 print(f"[JSON] Payload BBDD guardado: {json_path}")
 
-            # 4) Enviar a BBDD (opcional)
+            # 4) Enviar a BBDD
             if use_db:
                 try:
                     send_to_db(
@@ -301,7 +301,7 @@ if __name__ == "__main__":
         "db_chunksize": 2000,
         "db_echo": False,
 
-        # Exportación JSON del payload (opcional)
-        "json_out_dir": r"C:\proyecto\data\json",
+        # Exportación JSON del payload
+        "json_out_dir": r"C:limpieza_de_datos\login",
     }
     run_pipeline(config)
