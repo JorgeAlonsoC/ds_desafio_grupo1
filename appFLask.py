@@ -1,9 +1,10 @@
 from flask import request, Flask, jsonify
-import sqlite3
+import psycopg2
 import os
 import pandas as pd
 import random 
 from flask_cors import CORS
+from datetime import datetime
 
 
 app = Flask(__name__)
