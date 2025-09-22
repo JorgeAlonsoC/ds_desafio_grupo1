@@ -12,12 +12,6 @@ app = Flask(__name__)
 app.config["DEBUG"] = True
 CORS(app)
 
-def phishing(dict):
-    pass
-
-def login(dict):
-    pass
-
 def malware_type_detection(dict):
     if 'FILENAME' in dict.keys():
         limpieza_phishing(dict)

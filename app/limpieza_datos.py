@@ -1,11 +1,10 @@
 import pandas as pd
 from datetime import datetime
 import psycopg2
-
-
+import numpy as np
 
 def clean_data_ddos(archive_dic):
-    df = pd.DataFrame(archive_dic)
+    df = pd.DataFrame([archive_dic])
     df.columns = df.columns.str.strip()
 
     df = df[['Destination Port', 'Flow Duration', 'Total Fwd Packets','Total Backward Packets','Flow Bytes/s','Flow Packets/s','Fwd Packet Length Mean','Fwd Packet Length Std','Min Packet Length','Max Packet Length','Flow IAT Mean','Flow IAT Std','SYN Flag Count','ACK Flag Count','Down/Up Ratio','Active Mean','Idle Mean','Label']]
@@ -54,19 +53,21 @@ def clean_data_ddos(archive_dic):
     cur = conn.cursor()
     records = [
         {
-            "type": row["Type"],
-            "indicators": row["Indicators"],
-            "severity": row["Severity"],
-            "date": row["Date"],
-            "time": row["Time"]
+            "company_id": 1,
+            "type": row['Tipo'],
+            "indicators": row['Indicadores'],
+            "severity": row['Severity'],
+            "date": row['Date'],
+            "time": row['Time'],
+            "actions_taken": 1
         }
         for _, row in df.iterrows()
     ]
     
 
     cur.executemany("""
-        INSERT INTO logs (type, indicators, severity, date, time)
-        VALUES (%(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s)
+        INSERT INTO logs (company_id, type, indicators, severity, date, time, actions_taken)
+        VALUES (%(company_id)s, %(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s, %(actions_taken)s)
     """, records)
 
     conn.commit()
@@ -90,7 +91,7 @@ def limpieza_phishing(dict):
     df["severity"] = df["IsPhishing"]
     now = datetime.now()
     df['date'] = now.date()
-    df['time'] = now.strftime("H%:%M:%S")
+    df['time'] = now.strftime("%H:%M:%S")
     df_r = df[['HasPopup',
                'Nivel3_Alta',
                'Nivel2_Media',
@@ -112,18 +113,20 @@ def limpieza_phishing(dict):
     cur = conn.cursor()
     records = [
         {
+            "company_id": 1,
             "type": row['type'],
             "indicators": row['indicators'],
             "severity": row['severity'],
             "date": row['date'],
-            "time": row['time']
+            "time": row['time'],
+            "actions_taken": 1
         }
         for _, row in df.iterrows()
     ]
 
     cur.executemany("""
-        INSERT INTO logs (type, indicators, severity, date, time)
-        VALUES (%(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s)
+        INSERT INTO logs (company_id, type, indicators, severity, date, time, actions_taken)
+        VALUES (%(company_id)s, %(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s, %(actions_taken)s)
     """, records)
     conn.commit()
     cur.close()
