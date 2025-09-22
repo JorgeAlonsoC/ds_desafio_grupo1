@@ -1,13 +1,12 @@
-#Pipeline
+# Pipeline
 """
-Pipeline de limpieza y registro incremental
+Pipeline de limpieza
 -------------------------------------------
 - Aplica la misma lógica a **cualquier** CSV (uno o varios a la vez).
-- Si "Round-Trip Time [ms]" es NaN -> "Duración no registrada".
 - Normaliza "Login Timestamp" al año indicado (por defecto, 2025).
-- Añade columna numérica 'Criticidad' (3=Rojo, 2=Naranja, 1=Amarillo, 0=Blanco).
+- Añade columna numérica 'severity' (3=Rojo, 2=Naranja, 1=Amarillo, 0=Blanco, -1=Indeterminado).
 - Elimina columnas ruido configurables.
-- Registro en BBDD y exportación JSON .
+- Registro en BBDD (mapeado al esquema) y exportación JSON.
 """
 
 import hashlib
@@ -17,10 +16,10 @@ from typing import List, Tuple, Optional, Dict, Any
 
 import numpy as np
 import pandas as pd
-from sqlalchemy import create_engine
-
+from sqlalchemy import create_engine  # pip install sqlalchemy
 
 # ---------------- Utilidades ----------------
+
 def coerce_bool_series(s: pd.Series) -> pd.Series:
     """Convierte valores varios a booleanos: yes/no, 0/1, true/false, si/sí, etc."""
     if s.dtype == bool:
@@ -66,35 +65,40 @@ def set_login_year(df: pd.DataFrame, col: str = "Login Timestamp", year: int = 2
     return df
 
 
-def add_criticidad(df: pd.DataFrame) -> pd.DataFrame:
+def add_severity(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Agrega columna numérica 'Criticidad' según:
+    Agrega columna numérica 'severity' según:
       - 3 (Rojo):     Login Success=True,  Is Attack=True,  Is Account Takeover=True
       - 2 (Naranja):  Login Success=True,  Is Attack=True,  Is Account Takeover=False
       - 1 (Amarillo): Login Success=False, Is Attack=True,  Is Account Takeover=False
       - 0 (Blanco):   Login Success=True,  Is Attack=False, Is Account Takeover=False
-    Otros casos: -1 (indeterminado).
+    Otros casos: -1 (indeterminado si hay NaN en cualquiera de los tres flags).
     """
     needed = ["Login Success", "Is Attack", "Is Account Takeover"]
     if not all(c in df.columns for c in needed):
         return df
 
-    ls = coerce_bool_series(df["Login Success"]).fillna(False)
-    ia = coerce_bool_series(df["Is Attack"]).fillna(False)
-    iat = coerce_bool_series(df["Is Account Takeover"]).fillna(False)
+    ls  = coerce_bool_series(df["Login Success"])  
+    ia  = coerce_bool_series(df["Is Attack"])      
+    iat = coerce_bool_series(df["Is Account Takeover"])
 
-    rojo     =  (ls)  & (ia) & (iat)
-    naranja  =  (ls)  & (ia) & (~iat)
-    amarillo = (~ls)  & (ia) & (~iat)
-    blanco   =  (ls)  & (~ia) & (~iat)
+    mask_valid = ls.notna() & ia.notna() & iat.notna()
 
-    criticidad = np.select(
+    # Sustitutos seguros para evaluar reglas sólo donde hay datos válidos
+    ls_f, ia_f, iat_f = ls.fillna(False), ia.fillna(False), iat.fillna(False)
+
+    rojo     =  mask_valid & (ls_f)  & (ia_f) & (iat_f)
+    naranja  =  mask_valid & (ls_f)  & (ia_f) & (~iat_f)
+    amarillo =  mask_valid & (~ls_f) & (ia_f) & (~iat_f)
+    blanco   =  mask_valid & (ls_f)  & (~ia_f) & (~iat_f)
+
+    severity = np.select(
         [rojo,  naranja,  amarillo,  blanco],
         [3,     2,        1,         0],
         default=-1
     ).astype(int)
 
-    df["Criticidad"] = criticidad
+    df["severity"] = severity
     return df
 
 
@@ -103,21 +107,19 @@ def drop_columns(df: pd.DataFrame, cols_to_drop: List[str]) -> pd.DataFrame:
     return df.drop(columns=[c for c in cols_to_drop if c in df.columns], errors="ignore")
 
 
-def ensure_rtt(df: pd.DataFrame, col: str = "Round-Trip Time [ms]") -> pd.DataFrame:
-    """Asegura que exista y reemplace NaN por 'Duración no registrada'."""
-    if col not in df.columns:
-        df[col] = np.nan
-    df[col] = df[col].where(~pd.isna(df[col]), "Duración no registrada")
-    return df
-
-
 def row_fingerprint(row: pd.Series) -> str:
-    """Hash estable por fila (omite columnas derivadas de criticidad)."""
+    """Hash estable por fila: ordena claves y omite derivadas/auxiliares."""
+    skip_prefixes = ("criticidad",)  # compat histórica
+    skip_exact = {"severity", "_row_hash"}  # derivadas que no deben afectar
     items = []
-    for k, v in row.items():
-        if str(k).lower().startswith("criticidad"):
+    for k in sorted(row.index, key=lambda x: str(x).lower()):
+        if k in skip_exact:
             continue
-        items.append(f"{k}={'' if pd.isna(v) else str(v)}")
+        kl = str(k).lower()
+        if any(kl.startswith(p) for p in skip_prefixes):
+            continue
+        v = row[k]
+        items.append(f"{k}={'"' if pd.isna(v) else str(v)}")
     blob = "\x1f".join(items)
     return hashlib.sha1(blob.encode("utf-8", errors="ignore")).hexdigest()
 
@@ -162,6 +164,7 @@ def incremental_register(df_clean: pd.DataFrame, state_path: str, train_out: str
 DEFAULT_DROP = [
     "index",
     "region",
+    "Round-Trip Time [ms]",
     "city",
     "Browser Name and Version",
     "OS Name and Version",
@@ -174,12 +177,69 @@ def clean_any_csv(df: pd.DataFrame, year: int = 2025, drop_cols: Optional[List[s
     drop_cols = drop_cols if drop_cols is not None else DEFAULT_DROP
     df = drop_columns(df, drop_cols)
     df = set_login_year(df, "Login Timestamp", year)
-    df = ensure_rtt(df, "Round-Trip Time [ms]")
-    df = add_criticidad(df)
+    df = add_severity(df)
     return df
 
 
+# ---------------- Mapeo al esquema de BBDD ----------------
+
+def map_to_db_schema(df_clean: pd.DataFrame) -> pd.DataFrame:
+    """
+    Adapta el DF limpio al esquema de la BBDD:
+      columnas_db_sql: [id; company_id; status; type; indicators; severity; date; time; actions_taken]
+    La BBDD rellena: id, company_id, status, actions_taken
+    Enviamos: type, indicators, severity, date, time
+
+    Reglas:
+      severity = severity
+      type:
+        3 -> "Incidencia"
+        2/1 -> "Alerta"
+        0 -> "Info"
+      indicators:
+        3 -> "Account Takeover"
+        2 -> "Cuenta comprometida"
+        1 -> "Ataque fallido"
+        0 -> "Log in válido"
+      Login Timestamp -> date(YYYY-MM-DD), time(HH:MM:SS)
+    """
+    if "severity" not in df_clean.columns:
+        raise ValueError("No se encontró 'severity' en el DataFrame limpio.")
+
+    severity = pd.to_numeric(df_clean["severity"], errors="coerce")
+
+    type_series = np.select(
+        [severity.eq(3), severity.isin([1, 2]), severity.eq(0)],
+        ["Incidencia", "Alerta", "Info"],
+        default="Info",
+    )
+
+    indicators = np.select(
+        [severity.eq(3), severity.eq(2), severity.eq(1), severity.eq(0)],
+        ["Account Takeover", "Cuenta comprometida", "Ataque fallido", "Log in válido"],
+        default="",
+    )
+
+    if "Login Timestamp" in df_clean.columns:
+        ts = pd.to_datetime(df_clean["Login Timestamp"], errors="coerce", utc=True)
+        date_str = ts.dt.strftime("%Y-%m-%d").where(ts.notna(), "")
+        time_str = ts.dt.strftime("%H:%M:%S").where(ts.notna(), "")
+    else:
+        date_str = pd.Series("", index=df_clean.index)
+        time_str = pd.Series("", index=df_clean.index)
+
+    df_db = pd.DataFrame({
+        "type": type_series.astype(str),
+        "indicators": indicators.astype(str),
+        "severity": severity.astype("Int64"),  # permite nulos
+        "date": date_str,
+        "time": time_str,
+    })
+    return df_db
+
+
 # ---------------- BBDD helpers ----------------
+
 def df_to_records(df: pd.DataFrame) -> List[dict]:
     """Convierte el DataFrame a lista de diccionarios (orient='records')."""
     return df.to_dict(orient="records")
@@ -194,15 +254,12 @@ def send_to_db(df: pd.DataFrame, db_url: str, table: str,
       - if_exists: 'append' | 'replace' | 'fail'
       - chunksize: tamaño de lote para inserciones
     """
-    # Si alguien quitara el import, esta comprobación ayuda:
-    if create_engine is None:
-        raise RuntimeError("SQLAlchemy no está instalado. Ejecuta: pip install sqlalchemy")
-
     engine = create_engine(db_url, echo=echo, future=True)
     df.to_sql(name=table, con=engine, if_exists=if_exists, index=False, chunksize=chunksize, method="multi")
 
 
 # ---------------- Runner ----------------
+
 def run_pipeline(config: Dict[str, Any]) -> None:
     """
     Ejecuta el pipeline con un diccionario de configuración.
@@ -222,7 +279,6 @@ def run_pipeline(config: Dict[str, Any]) -> None:
       - db_chunksize: int = 1000         # tamaño de lote inserciones
       - db_echo: bool = False            # log detallado de SQLAlchemy
     """
-    # --- Lectura de configuración y defaults ---
     inputs      = config.get("inputs", [])
     outdir      = config.get("output_dir", "")
     suffix      = config.get("suffix", "_clean")
@@ -259,36 +315,37 @@ def run_pipeline(config: Dict[str, Any]) -> None:
             print(f"[OK] {inp} -> {out_csv} ({len(df)} filas -> {len(df_clean)} filas)")
             cleaned_paths.append(out_csv)
 
-            # a) Convertir a dict
-            records = df_to_records(df_clean)
-            print(f"[DICT] {base}: {len(records)} registros")
+            # b) Construir payload para la BBDD (mapeo al esquema)
+            df_db = map_to_db_schema(df_clean)
+            records_db = df_to_records(df_db)
+            print(f"[DB-PAYLOAD] {base}: {len(records_db)} registros -> columnas {list(df_db.columns)}")
 
-            # b) Guardar JSON
+            # c) Guardar JSON del payload de BBDD
             if json_dir:
-                json_path = os.path.join(json_dir, f"{base}{suffix}.json")
+                json_path = os.path.join(json_dir, f"{base}{suffix}_dbpayload.json")
                 with open(json_path, "w", encoding="utf-8") as f:
-                    json.dump(records, f, ensure_ascii=False)
-                print(f"[JSON] Guardado: {json_path}")
+                    json.dump(records_db, f, ensure_ascii=False)
+                print(f"[JSON] Payload BBDD guardado: {json_path}")
 
-            # c) Enviar a BBDD
+            # d) Enviar a BBDD
             if use_db:
                 try:
                     send_to_db(
-                        df_clean,
+                        df_db,                 # enviamos SOLO las columnas del esquema
                         db_url=db_url,
                         table=db_table,
                         if_exists=db_if_exist,
                         chunksize=db_chunks,
                         echo=db_echo,
                     )
-                    print(f"[DB] Insertados {len(df_clean)} registros en '{db_table}'.")
+                    print(f"[DB] Insertados {len(df_db)} registros en '{db_table}'.")
                 except Exception as e:
                     print(f"[DB][ERROR] {base}: {e}")
 
         except Exception as e:
             print(f"[ERROR] {inp}: {e}")
 
-    # --- Registro incremental global ---
+    # --- Registro incremental global sobre el CSV limpio ---
     if train_out:
         if not state_file:
             raise SystemExit("Se especificó 'train_out' pero falta 'state_file' para el incremental.")
