@@ -5,6 +5,7 @@ import pandas as pd
 import random 
 from flask_cors import CORS
 from datetime import datetime
+from limpieza_datos import *
 
 
 app = Flask(__name__)
@@ -14,17 +15,14 @@ CORS(app)
 def phishing(dict):
     pass
 
-def ddos(dict):
-    pass
-
 def login(dict):
     pass
 
 def malware_type_detection(dict):
     if 'FILENAME' in dict.keys():
-        print("Esto es un phishing")#phishing(dict)
+        limpieza_phishing(dict)
     elif 'Destination Port' in dict.keys():
-        print("Esto es un ddos")#ddos(dict)
+        clean_data_ddos(dict)
     else:
         print("Esto es un login")#login(dict)
 
