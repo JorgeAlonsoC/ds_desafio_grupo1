@@ -1,0 +1,1297 @@
+[
+    {
+        "url": "https://www.southbankmosaics.com",
+        "last_analysis_stats": {
+            "malicious": 0,
+            "suspicious": 0,
+            "undetected": 32,
+            "harmless": 66,
+            "timeout": 0
+        },
+        "status": "OK",
+        "network_location": {
+            "whois": "Admin City: Denver\nAdmin Country: US\nAdmin Email: 6c019f7aba0353e7s@NameBrightPrivacy.com\nAdmin Organization: NameBrightPrivacy.com\nAdmin Postal Code: 80205\nAdmin State/Province: CO\nCreation Date: 2020-02-04T19:06:42.000Z\nCreation Date: 2020-02-04T19:06:42Z\nDNSSEC: unsigned\nDomain Name: SOUTHBANKMOSAICS.COM\nDomain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited\nDomain Status: clientTransferProhibited https://www.icann.org/epp#clientTransferProhibited\nName Server: NS1.NAMEBRIGHTDNS.COM\nName Server: NS2.NAMEBRIGHTDNS.COM\nRegistrant City: 7545cbbbc34dcb54\nRegistrant Country: US\nRegistrant Email: 6c019f7aba0353e7s@NameBrightPrivacy.com\nRegistrant Fax Ext: 3432650ec337c945\nRegistrant Fax: 3432650ec337c945\nRegistrant Name: 37bfbc24cafea5d2\nRegistrant Organization: 6acf07867035f323\nRegistrant Phone Ext: 3432650ec337c945\nRegistrant Phone: 9e70ea3af3a29f0e\nRegistrant Postal Code: 6f09be6fa67504f5\nRegistrant State/Province: 5909b98f8d0e7f8a\nRegistrant Street: 87e13c28e0c7de68\nRegistrar Abuse Contact Email: abuse@NameBright.com\nRegistrar Abuse Contact Email: support@namebright.com\nRegistrar Abuse Contact Phone: +1.7204960020\nRegistrar Abuse Contact Phone: 17204960020\nRegistrar IANA ID: 3482\nRegistrar Registration Expiration Date: 2026-02-04T19:06:42.000Z\nRegistrar URL: http://www.DropCatch1273.com\nRegistrar URL: https://www.NameBright.com\nRegistrar WHOIS Server: whois.NameBright.com\nRegistrar WHOIS Server: whois.namebright.com\nRegistrar: DropCatch.com 1273 LLC\nRegistry Admin ID: Not Available From Registry\nRegistry Domain ID: 2488382168_DOMAIN_COM-VRSN\nRegistry Expiry Date: 2026-02-04T19:06:42Z\nRegistry Registrant ID: Not Available From Registry\nRegistry Tech ID: Not Available From Registry\nTech City: Denver\nTech Country: US\nTech Email: 6c019f7aba0353e7s@NameBrightPrivacy.com\nTech Organization: NameBrightPrivacy.com\nTech Postal Code: 80205\nTech State/Province: CO\nUpdated Date: 2022-02-10T04:30:18.278Z\nUpdated Date: 2024-12-16T04:07:21Z",
+            "tags": [],
+            "last_dns_records": [
+                {
+                    "type": "CNAME",
+                    "ttl": 300,
+                    "value": "cdl-prd-http-a5ed094605213071.elb.us-east-1.amazonaws.com"
+                },
+                {
+                    "type": "A",
+                    "ttl": 9014,
+                    "value": "142.93.145.212"
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 9014,
+                    "value": "comingsoon.namebright.com"
+                }
+            ],
+            "popularity_ranks": {},
+            "last_analysis_date": 1758098240,
+            "last_https_certificate": {
+                "cert_signature": {
+                    "signature_algorithm": "sha256RSA",
+                    "signature": "252e7ff777d3fd9a0525ef7d111d640916ace50f58877b887c105acbf3ec518bab4a12662a40ea52b269fa266f5c6df70e071fc31b20f7f43e067e934608a8a82b8a4266ff8506069bae510771cd113e311cebccc3d9e39e20e5a2efde9904e91464483d094aa48176e0ac832ccd58e7ed7bed7b6da474c8f8b06320ddd6ee589ad6fc3de3c51a1d5f4e92504c8e7c285a5bb334edbd81ec1623d029661e97fd81358685311489078372b36cbd78d60a9bf3664ea77416bfa06c6d53f8b1556b8c27e2e9223d8531749790b7f52a9f04be0b911c9b63f5b7695b101eb8299edfad11f019f5202d654a8f17aa16a14ce4c14a9aeccce4e952f15e0e487b1033e5"
+                },
+                "extensions": {
+                    "key_usage": [
+                        "digitalSignature",
+                        "keyEncipherment"
+                    ],
+                    "extended_key_usage": [
+                        "serverAuth",
+                        "clientAuth"
+                    ],
+                    "CA": false,
+                    "subject_key_identifier": "7d727ea11371ef8b63c2517b1fcc024af3e1d157",
+                    "authority_key_identifier": {
+                        "keyid": "e7ab9f0f2c33a053d35e4f78c8b2840e3bd69233"
+                    },
+                    "ca_information_access": {
+                        "CA Issuers": "http://r13.i.lencr.org/"
+                    },
+                    "subject_alternative_name": [
+                        "southbankmosaics.com",
+                        "www.southbankmosaics.com"
+                    ],
+                    "certificate_policies": [
+                        "2.23.140.1.2.1"
+                    ],
+                    "crl_distribution_points": [
+                        "http://r13.c.lencr.org/88.crl"
+                    ],
+                    "1.3.6.1.4.1.11129.2.4.2": "0481f300f1007600a442c506496061548f0fd4ea9cfb7a2d26454d87a97f2fdf"
+                },
+                "validity": {
+                    "not_after": "2025-12-15 18:50:44",
+                    "not_before": "2025-09-16 18:50:45"
+                },
+                "size": 1315,
+                "version": "V3",
+                "public_key": {
+                    "algorithm": "RSA",
+                    "rsa": {
+                        "modulus": "dadce2ecee51d1ab8d2ccf31a74dda963a6b8a51dc51ae1f1325f6e1014747e0d818b0b763a348d6712f1f3fe479a2a888607ea652ed258366260ec0dfbb6ab3ce7ca2709eabc3212da5e22620861b8b09f63fb3e8e997589c675d573e4a9faeff3534fd8152dfc0e914f3136475a93fe8ba64f55d50b9a3836d74d39c414756cc34e97e841862d0be1851289f687158f8c7d1be7a6ab073a1395f6bb9fa05fce7c269365d28768509240515b647a35d2b301c644982afed687004f2e7a44474f6479e1248705810150f0eab512dc790866928e81b123b1ac4a6cec6cef626643e7fffaefb7eaf9cfe63c14e90c146546550f02456ee5d9eb9f3cfc71cf1584b",
+                        "exponent": "10001",
+                        "key_size": 2048
+                    }
+                },
+                "thumbprint_sha256": "6917235b099dc7e749d7547f2d65bb7c4650acda02c5ebd7ff326931a662eadd",
+                "thumbprint": "fe1fde9a19c4c414bfba9c7c8ff392210ad6ae7b",
+                "serial_number": "606ac3b6298fc7b796eae3958dc022152d7",
+                "issuer": {
+                    "C": "US",
+                    "O": "Let's Encrypt",
+                    "CN": "R13"
+                },
+                "subject": {
+                    "CN": "southbankmosaics.com"
+                }
+            },
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 34,
+                "harmless": 61,
+                "timeout": 0
+            },
+            "last_dns_records_date": 1758098255,
+            "last_modification_date": 1758098256,
+            "registrar": "DropCatch.com 1273 LLC",
+            "reputation": 0,
+            "expiration_date": 1770232002,
+            "tld": "com",
+            "last_https_certificate_date": 1758098255,
+            "jarm": "2ad2ad16d2ad2ad00042d42d000000df133019600a83abfb096ff3e86cd79d",
+            "categories": {}
+        }
+    },
+    {
+        "url": "https://www.uni-mainz.de",
+        "last_analysis_stats": {
+            "malicious": 0,
+            "suspicious": 0,
+            "undetected": 30,
+            "harmless": 68,
+            "timeout": 0
+        },
+        "status": "OK",
+        "network_location": {
+            "whois": "Changed: 2007-08-13T15:35:12+02:00\nDomain: uni-mainz.de\nNserver: ns-extern.zdv.uni-mainz.de 134.93.144.7\nNserver: xlink1.xlink.net\nStatus: connect",
+            "tags": [],
+            "last_dns_records": [
+                {
+                    "type": "A",
+                    "ttl": 21600,
+                    "value": "134.93.178.47"
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 18433,
+                    "value": "cms.zdv.uni-mainz.de"
+                },
+                {
+                    "type": "AAAA",
+                    "ttl": 17105,
+                    "value": "2001:4c80:40:63c:4:86ff:fe5d:be2f"
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 21600,
+                    "value": "cms.zdv.uni-mainz.de"
+                }
+            ],
+            "popularity_ranks": {
+                "Cisco Umbrella": {
+                    "rank": 953509,
+                    "timestamp": 1743518307
+                }
+            },
+            "last_analysis_date": 1758583081,
+            "last_https_certificate": {
+                "cert_signature": {
+                    "signature_algorithm": "sha256RSA",
+                    "signature": "71478c71687a041dd9d16e8b8df0c0b904b4d3a196681e11f3057a5627583ba41e5b9867110a8a74a6fcea17a12bd350dab448e359673c1ac61e05e3aecb919985ce891ecd4d1ef9ff1677dc7ebf0d47735cd7e18f2a39996ae7dfecf54af15ea5c446171ec37163b2cee643a51eb1ae507da32e12dac0faee05c21acb79f56ca7f47c4f6056b1574886f2d7a15a9d71ad947fbc86785fee269f28628207a71d68cc9a5175d717eeb34451b70fbe040febac1f3fed2302e95d62ce79685d5546472da6cfd9fa1cd4b7745f10d9d9efa4714f2dc06f11f6980324ccfedec8754853ab9e6a7fbcc2567d38f0693025f80d50d8a44defe8478d03bcd4fa2cca363d"
+                },
+                "extensions": {
+                    "key_usage": [
+                        "digitalSignature",
+                        "keyEncipherment"
+                    ],
+                    "extended_key_usage": [
+                        "serverAuth",
+                        "clientAuth"
+                    ],
+                    "CA": false,
+                    "subject_key_identifier": "62cac3f1321f7f9fc1422adddbb08b328697d262",
+                    "authority_key_identifier": {
+                        "keyid": "c5cf46a4eaf4c3c07a6c95c42db05e922f26e3b9"
+                    },
+                    "ca_information_access": {
+                        "CA Issuers": "http://r11.i.lencr.org/"
+                    },
+                    "subject_alternative_name": [
+                        "www.uni-mainz.de"
+                    ],
+                    "certificate_policies": [
+                        "2.23.140.1.2.1"
+                    ],
+                    "crl_distribution_points": [
+                        "http://r11.c.lencr.org/21.crl"
+                    ],
+                    "1.3.6.1.4.1.11129.2.4.2": "0481f100ef007500ccfb0f6a85710965fe959b53cee9b27c22e9855c0d978db6"
+                },
+                "validity": {
+                    "not_after": "2025-11-04 01:44:12",
+                    "not_before": "2025-08-06 01:44:13"
+                },
+                "size": 1279,
+                "version": "V3",
+                "public_key": {
+                    "algorithm": "RSA",
+                    "rsa": {
+                        "modulus": "bfc65700743159e18102190ce2ceaf9e7b10c647899d0701354a8a53aa84408600fef2af542a83e8c062dc919d9f887f9b0ee249747a30445dcdcc3f95fa2a72e0baff9ccd81697640dcfef199e6fa236ee396011b083784c4ac67f5a8ce7ee9f353927312dc4bb38964d0015e4a842c02cbb760694ba85d196d6683f416a387b7d9114223809445f3a5825d95f8d60bbf46793385d400fd7d394df581a4fc41a91f96b28576637471de2a152b26f856ea1d2a7d43087a93c15251c8d43092aa534ac3c261398b6ce5931d0dfda98563a0b69afe2efedccc5ef5d8a2cbc112a12c5395c8573efdeedc6228cdeb33eb0b2b3754ead165980e08fe335d40f282f7",
+                        "exponent": "10001",
+                        "key_size": 2048
+                    }
+                },
+                "thumbprint_sha256": "26a08b98d21e46be44b38329272f60c1121f49456884689217958cbbc26d146e",
+                "thumbprint": "56870d820f19ea9c5a938f73fab9d81a68295920",
+                "serial_number": "6b0e618f3d17d0fdc09e0aad086ce884594",
+                "issuer": {
+                    "C": "US",
+                    "O": "Let's Encrypt",
+                    "CN": "R11"
+                },
+                "subject": {
+                    "CN": "www.uni-mainz.de"
+                }
+            },
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 32,
+                "harmless": 63,
+                "timeout": 0
+            },
+            "last_dns_records_date": 1758583386,
+            "last_modification_date": 1758583391,
+            "registrar": null,
+            "reputation": 0,
+            "expiration_date": null,
+            "tld": "de",
+            "last_https_certificate_date": 1758583386,
+            "jarm": "15d3fd16d29d29d00042d43d000000dbc8859ec5c93c3d80eba6c8e9820a03",
+            "categories": {}
+        }
+    },
+    {
+        "url": "https://www.voicefmradio.co.uk",
+        "last_analysis_stats": {
+            "malicious": 0,
+            "suspicious": 0,
+            "undetected": 31,
+            "harmless": 67,
+            "timeout": 0
+        },
+        "status": "OK",
+        "network_location": {
+            "whois": "Expiry date: 20-Apr-2027\nLast updated: 13-Feb-2025\nRegistered on: 20-Apr-2010\nns1.livedns.co.uk 217.160.81.244 2001:8d8:fe:53:fa::1\nns2.livedns.co.uk 217.160.82.244 2001:8d8:fe:53:fa::2\nns3.livedns.co.uk 185.132.35.244 2607:f1c0:fe:53:185:132:35:244",
+            "tags": [],
+            "last_dns_records": [
+                {
+                    "type": "CNAME",
+                    "ttl": 1840,
+                    "value": "1219-62bb2dacc0085.radiocms.com"
+                },
+                {
+                    "type": "A",
+                    "ttl": 60,
+                    "value": "18.154.185.128"
+                },
+                {
+                    "type": "A",
+                    "ttl": 60,
+                    "value": "18.154.185.5"
+                },
+                {
+                    "type": "A",
+                    "ttl": 60,
+                    "value": "18.154.185.99"
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 1004,
+                    "value": "1219-62bb2dacc0085.radiocms.com"
+                },
+                {
+                    "type": "A",
+                    "ttl": 60,
+                    "value": "18.154.185.54"
+                }
+            ],
+            "popularity_ranks": {},
+            "last_analysis_date": 1758098274,
+            "last_https_certificate": {
+                "cert_signature": {
+                    "signature_algorithm": "sha256RSA",
+                    "signature": "290f015fd3c4b7096f0352efef9430b438882eeaa11993897a3baa47f9014c2b0cb63782fafad4b597c7dd9df7df0eda0773c26443ddc03a0730f87e45dd5ead478ce5022ba8ee66378930a345a87e3a7d3ce71b35f37ce801e4c099bf4eb475dcae5b7eb9f5d9029ec8570b169b0523d7438b8dd8dc6299f5686a8f3c5ee90befb8b4e0922c56ad1837104b19b5c96ea437d6f4da40b02179b470b9c975e31ba6b6bd3b60fb6ac0b0cfe934e20d5197e49ffa52e012c9e300e980be2793022d044d001a000df9289b6e427ab4cbecb571932e51bb49d421e39786f5c502a97a1a1c3590dd8c8c8227f5eff931acda3bdfb3b04a4b6e28e6b091b7953e457ecb"
+                },
+                "extensions": {
+                    "authority_key_identifier": {
+                        "keyid": "c03152cd5a50c3827c7471cecbe99cf97aeb82e2"
+                    },
+                    "subject_key_identifier": "c9f1994292dd4861b72da1b0f5e5b3922f364c66",
+                    "subject_alternative_name": [
+                        "*.voicefmradio.co.uk",
+                        "1219-62bb2dacc0085.radiocms.com"
+                    ],
+                    "certificate_policies": [
+                        "2.23.140.1.2.1"
+                    ],
+                    "key_usage": [
+                        "digitalSignature",
+                        "keyEncipherment"
+                    ],
+                    "extended_key_usage": [
+                        "serverAuth"
+                    ],
+                    "crl_distribution_points": [
+                        "http://crl.r2m02.amazontrust.com/r2m02.crl"
+                    ],
+                    "ca_information_access": {
+                        "OCSP": "http://ocsp.r2m02.amazontrust.com",
+                        "CA Issuers": "http://crt.r2m02.amazontrust.com/r2m02.cer"
+                    },
+                    "CA": false,
+                    "1.3.6.1.4.1.11129.2.4.2": "048201690167007600d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0"
+                },
+                "validity": {
+                    "not_after": "2026-09-22 23:59:59",
+                    "not_before": "2025-08-24 00:00:00"
+                },
+                "size": 1518,
+                "version": "V3",
+                "public_key": {
+                    "algorithm": "RSA",
+                    "rsa": {
+                        "modulus": "de67b459e7528c02e11b87fdc880d4c707c2b9122afb6e0ca1914dc49bf8eca87c588e00cc6d144564a77a2caa7b7f5fdf1c4779e3acdcb4c14c99b5be64a6faddbe222a551bc70d6a605bf758456cc1c079dffad0d59853a6dfd71287fabc303ec645e5e349bda8e8137977bff16637ab37bdafc54f15a99681512e5f913059a1b15f53d312db1efc9b8e25a8c1373acde001011a41b2cea8ccf71e90886bb91c0abe2eed00c3b41f248aaa73dfc076f6a112c968389e625dc3dd422426d49b54d8aff2ceadf1e82bab9c42553c0e127b07db5dca41fad2e3b19f3f41b55754110a17a8967ad68d9fa6e97220bdcdcbd6010501da2b7ae29fb72ad2390d0abf",
+                        "exponent": "10001",
+                        "key_size": 2048
+                    }
+                },
+                "thumbprint_sha256": "a26e4e41d90bd1f915a02288ef7c16796d9b6c246a6d2d999cccea6215306b60",
+                "thumbprint": "f9ebaa8f17b6148c45b40d429f7d86122a4f06cf",
+                "serial_number": "3c36adfc17dcd7d43f77e4e437692ac",
+                "issuer": {
+                    "C": "US",
+                    "O": "Amazon",
+                    "CN": "Amazon RSA 2048 M02"
+                },
+                "subject": {
+                    "CN": "*.voicefmradio.co.uk"
+                }
+            },
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 33,
+                "harmless": 62,
+                "timeout": 0
+            },
+            "last_dns_records_date": 1758098290,
+            "last_modification_date": 1758098291,
+            "registrar": null,
+            "reputation": 0,
+            "expiration_date": null,
+            "tld": "co.uk",
+            "last_https_certificate_date": 1758098290,
+            "jarm": "29d29d00029d29d00041d41d00041db78309d03c04b7072bacbf1ce396279b",
+            "categories": {}
+        }
+    },
+    {
+        "url": "https://www.sfnmjournal.com",
+        "last_analysis_stats": {
+            "malicious": 1,
+            "suspicious": 0,
+            "undetected": 31,
+            "harmless": 66,
+            "timeout": 0
+        },
+        "status": "OK",
+        "network_location": {
+            "whois": "Admin City: Milton Keynes\nAdmin Country: UK\nAdmin Email: d52ad5e18ac11e26s@safenames.net\nAdmin Organisation: Safenames Ltd\nAdmin Postal Code: MK14 6LS\nAdmin State/Province: Bucks\nCreation Date: 2006-10-11T08:30:08Z\nDNSSEC: unsigned\nDomain Name: SFNMJOURNAL.COM\nDomain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited\nDomain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited\nDomain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited\nName Server: NS1.REEDELSEVIER.COM\nName Server: NS2.REEDELSEVIER.COM\nName Server: NS3.REEDELSEVIER.COM\nName Server: ns1.reedelsevier.com\nName Server: ns2.reedelsevier.com\nName Server: ns3.reedelsevier.com\nRegistrant City: 26e106227fad0d6a\nRegistrant Country: UK\nRegistrant Email: 5295374d8ff24693s@idp.email\nRegistrant Fax: 26e106227fad0d6a\nRegistrant Name: 26e106227fad0d6a\nRegistrant Organisation: e3cf40605b5ff6a1\nRegistrant Phone: 26e106227fad0d6a\nRegistrant Postal Code: 26e106227fad0d6a\nRegistrant State/Province: 26e106227fad0d6a\nRegistrant Street: 26e106227fad0d6a\nRegistrar Abuse Contact Email: abuse@safenames.net\nRegistrar Abuse Contact Phone: +44.1908200022\nRegistrar IANA ID: 447\nRegistrar Registration Expiration Date: 2025-10-11T08:30:08Z\nRegistrar URL: http://www.safenames.net\nRegistrar WHOIS Server: whois.safenames.net\nRegistrar: SafeNames Ltd.\nRegistrar: Safenames Ltd\nRegistry Admin ID: Not Available From Registry\nRegistry Domain ID: 628671159_DOMAIN_COM-VRSN\nRegistry Expiry Date: 2025-10-11T08:30:08Z\nRegistry Registrant ID: Not Available From Registry\nRegistry Tech ID: Not Available From Registry\nTech City: Milton Keynes\nTech Country: UK\nTech Email: d52ad5e18ac11e26s@safenames.net\nTech Organisation: Safenames Ltd\nTech Postal Code: MK14 6LS\nTech State/Province: Bucks\nUpdated Date: 2024-10-12T00:00:17Z\nUpdated Date: 2024-10-12T01:00:18Z",
+            "tags": [],
+            "last_dns_records": [
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "162.159.140.114"
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 3599,
+                    "value": "secure.jbs.elsevierhealth.com"
+                },
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "172.66.0.112"
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 3600,
+                    "value": "secure.jbs.elsevierhealth.com"
+                }
+            ],
+            "popularity_ranks": {
+                "Cisco Umbrella": {
+                    "timestamp": 1663606691,
+                    "rank": 815233
+                }
+            },
+            "last_analysis_date": 1758098283,
+            "last_https_certificate": {
+                "cert_signature": {
+                    "signature_algorithm": "1.2.840.10045.4.3.2",
+                    "signature": "304402200f33761819032c604f7eca92cdee8d81787c154f530dccce8946259f8f7163b7022007ceab115d6dd9bd3d82b5bc3dea80a7b334b0642fd532b5ce2450f4ae11c086"
+                },
+                "extensions": {
+                    "key_usage": [
+                        "digitalSignature"
+                    ],
+                    "extended_key_usage": [
+                        "serverAuth"
+                    ],
+                    "CA": false,
+                    "subject_key_identifier": "46f5d870aa21d7018a45615f1a82cb8a063c2f25",
+                    "authority_key_identifier": {
+                        "keyid": "9077923567c4ffa8cca9e67bd980797bcc93f938"
+                    },
+                    "ca_information_access": {
+                        "OCSP": "http://o.pki.goog/s/we1/d3c",
+                        "CA Issuers": "http://i.pki.goog/we1.crt"
+                    },
+                    "subject_alternative_name": [
+                        "www.sfnmjournal.com"
+                    ],
+                    "certificate_policies": [
+                        "2.23.140.1.2.1"
+                    ],
+                    "crl_distribution_points": [
+                        "http://c.pki.goog/we1/OuqGbJkzwhU.crl"
+                    ],
+                    "1.3.6.1.4.1.11129.2.4.2": "0481f400f2007700ccfb0f6a85710965fe959b53cee9b27c22e9855c0d978db6"
+                },
+                "validity": {
+                    "not_after": "2025-10-31 06:26:27",
+                    "not_before": "2025-08-02 05:26:37"
+                },
+                "size": 938,
+                "version": "V3",
+                "public_key": {
+                    "algorithm": "EC",
+                    "ec": {
+                        "oid": "secp256r1",
+                        "pub": "3059301306072a8648ce3d020106082a8648ce3d03010703420004832147f06a596df3efaf6696a2c88003b2f4da114db47fb612fc9ca156dabddc131d5c030ce4a26e0677cc8117e86314a549d26d295e1095f249ab81807fabb2"
+                    }
+                },
+                "thumbprint_sha256": "a778a8d6a1592a461ab737fa2ab47b6dd11cb8d10d32fbe1c04c261340b7cd5f",
+                "thumbprint": "ca00b3705c4cca1b06a427ac0c5688ab7041ed63",
+                "serial_number": "77770890054ad73a11396245ba4a4bfe",
+                "issuer": {
+                    "C": "US",
+                    "O": "Google Trust Services",
+                    "CN": "WE1"
+                },
+                "subject": {
+                    "CN": "www.sfnmjournal.com"
+                }
+            },
+            "last_analysis_stats": {
+                "malicious": 1,
+                "suspicious": 0,
+                "undetected": 33,
+                "harmless": 61,
+                "timeout": 0
+            },
+            "last_dns_records_date": 1758098297,
+            "last_modification_date": 1758098299,
+            "registrar": "SafeNames Ltd.",
+            "reputation": 0,
+            "expiration_date": 1760171408,
+            "tld": "com",
+            "last_https_certificate_date": 1758098297,
+            "jarm": "27d40d40d00040d00042d43d00041df04c41293ba84f6efe3a613b22f983e6",
+            "categories": {}
+        }
+    },
+    {
+        "url": "https://www.rewildingargentina.org",
+        "last_analysis_stats": {
+            "malicious": 0,
+            "suspicious": 0,
+            "undetected": 31,
+            "harmless": 67,
+            "timeout": 0
+        },
+        "status": "OK",
+        "network_location": {
+            "whois": "Admin City: REDACTED FOR PRIVACY\nAdmin Country: REDACTED FOR PRIVACY\nAdmin Organization: REDACTED FOR PRIVACY\nAdmin Postal Code: REDACTED FOR PRIVACY\nAdmin State/Province: REDACTED FOR PRIVACY\nCreation Date: 2019-07-19T12:36:37Z\nDNSSEC: unsigned\nDomain Name: rewildingargentina.org\nDomain Status: ok https://icann.org/epp#ok\nName Server: ns1.lantech.com.ar\nName Server: ns2.lantech.com.ar\nRegistrant City: 1f8f4166599d23ee\nRegistrant Country: AR\nRegistrant Email: f651612a2f356ad3s@\nRegistrant Fax Ext: 1f8f4166599d23ee\nRegistrant Fax: 1f8f4166599d23ee\nRegistrant Name: 1f8f4166599d23ee\nRegistrant Organization: 35837d2711414416\nRegistrant Phone Ext: 1f8f4166599d23ee\nRegistrant Phone: 1f8f4166599d23ee\nRegistrant Postal Code: 1f8f4166599d23ee\nRegistrant State/Province: f6b7de62eec16ef5\nRegistrant Street: 1f8f4166599d23ee\nRegistrar Abuse Contact Email: abuse@donweb.com\nRegistrar Abuse Contact Phone: +54.3414360555\nRegistrar IANA ID: 1388\nRegistrar URL: http://donweb.com\nRegistrar WHOIS Server: http://whois.donweb.com\nRegistrar: Dattatec Corp\nRegistry Admin ID: REDACTED FOR PRIVACY\nRegistry Domain ID: 9e49f55439ec45ecbc47dfbbdd93a4cd-LROR\nRegistry Expiry Date: 2025-07-19T12:36:37Z\nRegistry Registrant ID: REDACTED FOR PRIVACY\nRegistry Tech ID: REDACTED FOR PRIVACY\nTech City: REDACTED FOR PRIVACY\nTech Country: REDACTED FOR PRIVACY\nTech Organization: REDACTED FOR PRIVACY\nTech Postal Code: REDACTED FOR PRIVACY\nTech State/Province: REDACTED FOR PRIVACY\nUpdated Date: 2024-07-11T19:43:58Z",
+            "tags": [],
+            "last_dns_records": [
+                {
+                    "type": "A",
+                    "ttl": 1850,
+                    "value": "45.167.121.53"
+                }
+            ],
+            "popularity_ranks": {
+                "Cisco Umbrella": {
+                    "timestamp": 1666371492,
+                    "rank": 796541
+                }
+            },
+            "last_analysis_date": 1758098300,
+            "last_https_certificate": {
+                "cert_signature": {
+                    "signature_algorithm": "sha256RSA",
+                    "signature": "43788ce4dc5a5baa0a5b59c6b549373931d674a54e5afed3c856fb5ebcfc3795b7ff7fe0faa52027e9e6a6d8210302f94b576a01be224ace2901275b640287fe4a632cb3d904891a5e871b612fce6cac7429338262a923b6c231b54c8673f8fe9aec698615b8f62ed3d192716bf9481ba2025be2cb5decf9001747def19888196d2b96b3a755525e691e57e4d04eff1809bf3ae85cf9ba8e83eae479836b207feffda8a8e58f9ac423e8d01c9c99a223a6e6734388daea85931688d38d6fc84c13ded7981a2fa1bccc61165bd88610540d9cc2f27ea44fc0e62ee1a887327de5949bb23215545bbfdbe7422ae1345bf38c4d7d7c98518cf1de53bb588414c11f"
+                },
+                "extensions": {
+                    "key_usage": [
+                        "digitalSignature",
+                        "keyEncipherment"
+                    ],
+                    "extended_key_usage": [
+                        "serverAuth",
+                        "clientAuth"
+                    ],
+                    "CA": false,
+                    "subject_key_identifier": "9fee1d5638432b72526eb8bf1a89ee20035ecd27",
+                    "authority_key_identifier": {
+                        "keyid": "c5cf46a4eaf4c3c07a6c95c42db05e922f26e3b9"
+                    },
+                    "ca_information_access": {
+                        "CA Issuers": "http://r11.i.lencr.org/"
+                    },
+                    "subject_alternative_name": [
+                        "rewildingargentina.org",
+                        "www.rewildingargentina.org"
+                    ],
+                    "certificate_policies": [
+                        "2.23.140.1.2.1"
+                    ],
+                    "crl_distribution_points": [
+                        "http://r11.c.lencr.org/36.crl"
+                    ],
+                    "1.3.6.1.4.1.11129.2.4.2": "0481f400f2007700ccfb0f6a85710965fe959b53cee9b27c22e9855c0d978db6"
+                },
+                "validity": {
+                    "not_after": "2025-11-06 18:44:48",
+                    "not_before": "2025-08-08 18:44:49"
+                },
+                "size": 1322,
+                "version": "V3",
+                "public_key": {
+                    "algorithm": "RSA",
+                    "rsa": {
+                        "modulus": "c7eb4296030c072d431959431b4943745b8873602d2d029b8d5d0c0a28886022a1027abaee2066d9cce8ab909652766f35e190d755880b5ed908fea1fbebd33af8fbb1abd4e101ad597f0024be3df615442c969b8877e8c4636b82cf3e609226b5ecafe3fb75796af2e9132038602d8bb346b6d4fdd88998ea43b0c7b3dccf87d7aa8e9da5de792cf0f8defe196a8a815707c4c5c83bbce9f4e7d53a8c1e26a9ca1fa0b2cfe5a528369a7cbbb5c9eca95281d8d3424ffed5ee03526780747146866a417d150c5d47b5e79576462f15f0d1f3de9cf5ee919906e68ec798d6f723e7345c5ac7f67bf6bdb437470e8585f2d4bfe398de2ec498a19d1c0acb11e485",
+                        "exponent": "10001",
+                        "key_size": 2048
+                    }
+                },
+                "thumbprint_sha256": "0bb1c603df36b4622a9ec5954f0ce2a7b83aac1eb0af1b401d4fd03c55d8ca43",
+                "thumbprint": "359181234085da2a9605ee8c07941c4626d1f4d9",
+                "serial_number": "610ebb4f413f0531cae6e3faad141a5ff23",
+                "issuer": {
+                    "C": "US",
+                    "O": "Let's Encrypt",
+                    "CN": "R11"
+                },
+                "subject": {
+                    "CN": "rewildingargentina.org"
+                }
+            },
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 33,
+                "harmless": 62,
+                "timeout": 0
+            },
+            "last_dns_records_date": 1758098320,
+            "last_modification_date": 1758098320,
+            "registrar": "Dattatec Corp",
+            "reputation": 0,
+            "expiration_date": 1752928597,
+            "tld": "org",
+            "last_https_certificate_date": 1758098320,
+            "jarm": "15d3fd16d29d29d00042d43d0000001ae0802418786940cae38f1d9eed5b9b",
+            "categories": {}
+        }
+    },
+    {
+        "url": "https://www.globalreporting.org",
+        "last_analysis_stats": {
+            "malicious": 0,
+            "suspicious": 0,
+            "undetected": 30,
+            "harmless": 68,
+            "timeout": 0
+        },
+        "status": "OK",
+        "network_location": {
+            "whois": "Admin City: REDACTED\nAdmin Country: REDACTED\nAdmin Organization: REDACTED\nAdmin Postal Code: REDACTED\nAdmin State/Province: REDACTED\nCreation Date: 1999-01-27T05:00:00Z\nDNSSEC: unsigned\nDomain Name: globalreporting.org\nDomain Status: ok https://icann.org/epp#ok\nName Server: coco.ns.cloudflare.com\nName Server: george.ns.cloudflare.com\nRegistrant City: 3495bcf1839c6374\nRegistrant Country: NL\nRegistrant Email: fb6ff66ef97c0518s@\nRegistrant Fax Ext: 3495bcf1839c6374\nRegistrant Fax: 3495bcf1839c6374\nRegistrant Name: 3495bcf1839c6374\nRegistrant Organization: c0195156ced443a6\nRegistrant Phone Ext: 3495bcf1839c6374\nRegistrant Phone: 3495bcf1839c6374\nRegistrant Postal Code: 3495bcf1839c6374\nRegistrant State/Province: b13f94349ef97012\nRegistrant Street: 3495bcf1839c6374\nRegistrar Abuse Contact Email: abuse@registrar.eu\nRegistrar Abuse Contact Phone: +31.104482297\nRegistrar IANA ID: 1647\nRegistrar URL: http://www.openprovider.com\nRegistrar WHOIS Server: http://whois.registrar.eu\nRegistrar: Hosting Concepts B.V. d/b/a Registrar.eu\nRegistry Admin ID: REDACTED\nRegistry Domain ID: REDACTED\nRegistry Expiry Date: 2026-01-27T05:00:00Z\nRegistry Registrant ID: REDACTED\nRegistry Tech ID: REDACTED\nTech City: REDACTED\nTech Country: REDACTED\nTech Organization: REDACTED\nTech Postal Code: REDACTED\nTech State/Province: REDACTED\nUpdated Date: 2025-07-22T07:56:25Z",
+            "tags": [],
+            "last_dns_records": [
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "104.20.37.79"
+                },
+                {
+                    "type": "AAAA",
+                    "ttl": 300,
+                    "value": "2606:4700:10::ac42:9f71"
+                },
+                {
+                    "type": "AAAA",
+                    "ttl": 300,
+                    "value": "2606:4700:10::6814:254f"
+                },
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "172.66.159.113"
+                }
+            ],
+            "popularity_ranks": {
+                "Cisco Umbrella": {
+                    "rank": 655730,
+                    "timestamp": 1758033504
+                }
+            },
+            "last_analysis_date": 1758625760,
+            "last_https_certificate": {
+                "cert_signature": {
+                    "signature_algorithm": "1.2.840.10045.4.3.2",
+                    "signature": "3046022100a904a97cf0528d9d2778f8867f72a98c461954a68149af08fd6b341af2661ebd022100c8f1609f204db61aea951a6b7fef9e1649423dd5df0c2addc08432311fd21939"
+                },
+                "extensions": {
+                    "key_usage": [
+                        "digitalSignature"
+                    ],
+                    "extended_key_usage": [
+                        "serverAuth"
+                    ],
+                    "CA": false,
+                    "subject_key_identifier": "fbdda9f69c31122879de43cfeda150152527fe88",
+                    "authority_key_identifier": {
+                        "keyid": "9077923567c4ffa8cca9e67bd980797bcc93f938"
+                    },
+                    "ca_information_access": {
+                        "OCSP": "http://o.pki.goog/s/we1/tVI",
+                        "CA Issuers": "http://i.pki.goog/we1.crt"
+                    },
+                    "subject_alternative_name": [
+                        "globalreporting.org",
+                        "*.globalreporting.org"
+                    ],
+                    "certificate_policies": [
+                        "2.23.140.1.2.1"
+                    ],
+                    "crl_distribution_points": [
+                        "http://c.pki.goog/we1/AHWhP7ZvfeI.crl"
+                    ],
+                    "1.3.6.1.4.1.11129.2.4.2": "0481f100ef00760012f14e34bd53724c840619c38f3f7a13f8e7b56287889c6d"
+                },
+                "validity": {
+                    "not_after": "2025-11-26 23:20:49",
+                    "not_before": "2025-08-28 22:34:53"
+                },
+                "size": 961,
+                "version": "V3",
+                "public_key": {
+                    "algorithm": "EC",
+                    "ec": {
+                        "oid": "secp256r1",
+                        "pub": "3059301306072a8648ce3d020106082a8648ce3d030107034200048771f290064512453826fffd65859ae529ab287ae723396c6cf30305c893b3b7f397781bda7b4a584af691b97d3f3ff4c6d212502aa103118a1607af580c255b"
+                    }
+                },
+                "thumbprint_sha256": "7f8af9bea9385a1fe7da5da166b470bdc3ab04761a7f5f8b60a4f99815fd262c",
+                "thumbprint": "426fcce8df39ab384a92e34f55b0c7e548ed27e8",
+                "serial_number": "b5520621ef1cb1d81109c60000d05109",
+                "issuer": {
+                    "C": "US",
+                    "O": "Google Trust Services",
+                    "CN": "WE1"
+                },
+                "subject": {
+                    "CN": "globalreporting.org"
+                }
+            },
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 32,
+                "harmless": 63,
+                "timeout": 0
+            },
+            "last_dns_records_date": 1758626063,
+            "last_modification_date": 1758626068,
+            "registrar": "Hosting Concepts B.V. d/b/a Registrar.eu",
+            "reputation": 0,
+            "expiration_date": 1769490000,
+            "tld": "org",
+            "last_https_certificate_date": 1758626063,
+            "jarm": "27d40d40d00040d1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c",
+            "categories": {}
+        }
+    },
+    {
+        "url": "https://www.saffronart.com",
+        "last_analysis_stats": {
+            "malicious": 0,
+            "suspicious": 0,
+            "undetected": 30,
+            "harmless": 68,
+            "timeout": 0
+        },
+        "status": "OK",
+        "network_location": {
+            "whois": "Admin City: Mumbai\nAdmin Country: IN\nAdmin Email: 702e51963f51ca98s@planetsaffron.com\nAdmin Organization: Saffron Art Private Limited\nAdmin Postal Code: 400025\nAdmin State/Province: Maharashtra\nCreation Date: 1999-10-21T07:44:21Z\nDNSSEC: unsigned\nDomain Name: SAFFRONART.COM\nDomain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited\nName Server: DAMIEN.NS.CLOUDFLARE.COM\nName Server: ROMINA.NS.CLOUDFLARE.COM\nRegistrant City: 32de23f60a1ef50e\nRegistrant Country: IN\nRegistrant Email: 702e51963f51ca98s@planetsaffron.com\nRegistrant Fax Ext: 3432650ec337c945\nRegistrant Fax: 3432650ec337c945\nRegistrant Name: dd83341bed17048d\nRegistrant Organization: d843b14849ac689c\nRegistrant Phone Ext: 3432650ec337c945\nRegistrant Phone: 7d394771a33da53c\nRegistrant Postal Code: deeab4063e8c3876\nRegistrant State/Province: 79f3a59ab273632b\nRegistrant Street: 6c7193ead0d294e3\nRegistrar Abuse Contact Email: domain.operations@web.com\nRegistrar Abuse Contact Phone: +1.8777228662\nRegistrar IANA ID: 2\nRegistrar Registration Expiration Date: 2026-10-21T07:44:21Z\nRegistrar URL: http://networksolutions.com\nRegistrar WHOIS Server: whois.networksolutions.com\nRegistrar: Network Solutions, LLC\nRegistry Domain ID: 11542699_DOMAIN_COM-VRSN\nRegistry Expiry Date: 2026-10-21T07:44:21Z\nTech City: Mumbai\nTech Country: IN\nTech Email: 702e51963f51ca98s@planetsaffron.com\nTech Organization: Saffron Art Private Limited\nTech Postal Code: 400025\nTech State/Province: Maharashtra\nUpdated Date: 2024-01-02T08:15:22Z\nUpdated Date: 2024-01-02T08:15:28Z",
+            "tags": [],
+            "last_dns_records": [
+                {
+                    "type": "AAAA",
+                    "ttl": 300,
+                    "value": "2606:4700:20::ac43:440a"
+                },
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "172.67.68.10"
+                },
+                {
+                    "type": "AAAA",
+                    "ttl": 300,
+                    "value": "2606:4700:20::681a:907"
+                },
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "104.26.8.7"
+                },
+                {
+                    "type": "AAAA",
+                    "ttl": 300,
+                    "value": "2606:4700:20::681a:807"
+                },
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "104.26.9.7"
+                }
+            ],
+            "popularity_ranks": {
+                "Cisco Umbrella": {
+                    "rank": 723329,
+                    "timestamp": 1749566302
+                }
+            },
+            "last_analysis_date": 1758098317,
+            "last_https_certificate": {
+                "cert_signature": {
+                    "signature_algorithm": "1.2.840.10045.4.3.2",
+                    "signature": "30450220227ea7ed0a4d71ad1e7aed3603579ef556a1f861213e98e1e70bb065eb512a77022100e83b0334be15c7b1a5f928ad8e8641ac856cfb14a38ccac42ba37e1ea50e4b01"
+                },
+                "extensions": {
+                    "key_usage": [
+                        "digitalSignature"
+                    ],
+                    "extended_key_usage": [
+                        "serverAuth"
+                    ],
+                    "CA": false,
+                    "subject_key_identifier": "98b13cec46e2bae7fcaf6446559324e123b4b77a",
+                    "authority_key_identifier": {
+                        "keyid": "9077923567c4ffa8cca9e67bd980797bcc93f938"
+                    },
+                    "ca_information_access": {
+                        "OCSP": "http://o.pki.goog/s/we1/b9A",
+                        "CA Issuers": "http://i.pki.goog/we1.crt"
+                    },
+                    "subject_alternative_name": [
+                        "saffronart.com",
+                        "sourcing.saffronart.com",
+                        "wsbo.saffronart.com",
+                        "*.saffronart.com",
+                        "intel.saffronart.com"
+                    ],
+                    "certificate_policies": [
+                        "2.23.140.1.2.1"
+                    ],
+                    "crl_distribution_points": [
+                        "http://c.pki.goog/we1/tqAYaqExRbM.crl"
+                    ],
+                    "1.3.6.1.4.1.11129.2.4.2": "0481f100ef007600dddcca3495d7e11605e79532fac79ff83d1c50dfdb003a14"
+                },
+                "validity": {
+                    "not_after": "2025-11-28 09:47:43",
+                    "not_before": "2025-08-30 08:47:48"
+                },
+                "size": 1012,
+                "version": "V3",
+                "public_key": {
+                    "algorithm": "EC",
+                    "ec": {
+                        "oid": "secp256r1",
+                        "pub": "3059301306072a8648ce3d020106082a8648ce3d030107034200049f7bd4bda7e6340c4633752f508f749080145191af2504d183feb48dc33c5116454f79ad84b163d98a39c751020d97444098adbb42f93c959844631ed97002a9"
+                    }
+                },
+                "thumbprint_sha256": "e50d669690fe5f5fd23b4d480be7015420f7b47f9d7388948352bbf069da9266",
+                "thumbprint": "7255feac8d9302642dcda84493e679fe82eac407",
+                "serial_number": "6fd06bc8bea82dc90e1b112e91c2c112",
+                "issuer": {
+                    "C": "US",
+                    "O": "Google Trust Services",
+                    "CN": "WE1"
+                },
+                "subject": {
+                    "CN": "saffronart.com"
+                }
+            },
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 32,
+                "harmless": 63,
+                "timeout": 0
+            },
+            "last_dns_records_date": 1758098332,
+            "last_modification_date": 1758098335,
+            "registrar": "Network Solutions, LLC",
+            "reputation": 0,
+            "expiration_date": 1792568661,
+            "tld": "com",
+            "last_https_certificate_date": 1758098332,
+            "jarm": "27d40d40d00040d00042d43d00041df04c41293ba84f6efe3a613b22f983e6",
+            "categories": {}
+        }
+    },
+    {
+        "url": "https://www.nerdscandy.com",
+        "last_analysis_stats": {
+            "malicious": 0,
+            "suspicious": 0,
+            "undetected": 30,
+            "harmless": 68,
+            "timeout": 0
+        },
+        "status": "OK",
+        "network_location": {
+            "whois": "Creation Date: 2007-07-08T18:45:47Z\nDNSSEC: unsigned\nDomain Name: NERDSCANDY.COM\nDomain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited\nDomain Status: clientRenewProhibited https://icann.org/epp#clientRenewProhibited\nDomain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited\nDomain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited\nName Server: NS10.DIGICERTDNS.COM\nName Server: NS11.DIGICERTDNS.COM\nName Server: NS12.DIGICERTDNS.COM\nName Server: NS13.DIGICERTDNS.NET\nName Server: NS14.DIGICERTDNS.NET\nName Server: NS15.DIGICERTDNS.NET\nRegistrar Abuse Contact Email: abuse@godaddy.com\nRegistrar Abuse Contact Phone: 480-624-2505\nRegistrar IANA ID: 146\nRegistrar URL: http://www.godaddy.com\nRegistrar WHOIS Server: whois.godaddy.com\nRegistrar: GoDaddy.com, LLC\nRegistry Domain ID: 1073636623_DOMAIN_COM-VRSN\nRegistry Expiry Date: 2026-07-08T18:45:47Z\nUpdated Date: 2025-07-09T11:45:45Z",
+            "tags": [],
+            "last_dns_records": [
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "104.18.12.41"
+                },
+                {
+                    "type": "AAAA",
+                    "ttl": 300,
+                    "value": "2606:4700::6812:c29"
+                },
+                {
+                    "type": "AAAA",
+                    "ttl": 300,
+                    "value": "2606:4700::6812:d29"
+                },
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "104.18.13.41"
+                }
+            ],
+            "popularity_ranks": {
+                "Cisco Umbrella": {
+                    "rank": 993202,
+                    "timestamp": 1749134294
+                }
+            },
+            "last_analysis_date": 1758098327,
+            "last_https_certificate": {
+                "cert_signature": {
+                    "signature_algorithm": "1.2.840.10045.4.3.2",
+                    "signature": "3045022100e0665dd6a934a34b0b93e801aff55f8e2c4b44ea3517ca42cccacdeb02b128c20220646d5b7abad65309f7ddef634ea5d890b4461aaf3c6a66152dcf08773ed8f137"
+                },
+                "extensions": {
+                    "key_usage": [
+                        "digitalSignature"
+                    ],
+                    "extended_key_usage": [
+                        "serverAuth"
+                    ],
+                    "CA": false,
+                    "subject_key_identifier": "be99904546487ad124cf701501be141bf746b325",
+                    "authority_key_identifier": {
+                        "keyid": "9077923567c4ffa8cca9e67bd980797bcc93f938"
+                    },
+                    "ca_information_access": {
+                        "OCSP": "http://o.pki.goog/s/we1/9EY",
+                        "CA Issuers": "http://i.pki.goog/we1.crt"
+                    },
+                    "subject_alternative_name": [
+                        "nerdscandy.com",
+                        "*.nerdscandy.com"
+                    ],
+                    "certificate_policies": [
+                        "2.23.140.1.2.1"
+                    ],
+                    "crl_distribution_points": [
+                        "http://c.pki.goog/we1/FARePxy0M2M.crl"
+                    ],
+                    "1.3.6.1.4.1.11129.2.4.2": "0481f100ef00750012f14e34bd53724c840619c38f3f7a13f8e7b56287889c6d"
+                },
+                "validity": {
+                    "not_after": "2025-12-09 15:52:27",
+                    "not_before": "2025-09-10 14:52:33"
+                },
+                "size": 945,
+                "version": "V3",
+                "public_key": {
+                    "algorithm": "EC",
+                    "ec": {
+                        "oid": "secp256r1",
+                        "pub": "3059301306072a8648ce3d020106082a8648ce3d030107034200049b1482c5a962b8b2e223a194e218569ec7c9390fce43d8bb53f6474a125975505a3e665752e1a8711191066d8325ad695441d78fe1d1bd186633fdc6fda3ba56"
+                    }
+                },
+                "thumbprint_sha256": "f73ff8d98b3f342342086ade06d3f8301881be8970a1df0874820a2623a193d2",
+                "thumbprint": "3463bf19c4283d20b5b064cb4152347d9e0be727",
+                "serial_number": "f446ea48a528bdfc0e66a9e12a865412",
+                "issuer": {
+                    "C": "US",
+                    "O": "Google Trust Services",
+                    "CN": "WE1"
+                },
+                "subject": {
+                    "CN": "nerdscandy.com"
+                }
+            },
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 32,
+                "harmless": 63,
+                "timeout": 0
+            },
+            "last_dns_records_date": 1758098342,
+            "last_modification_date": 1758098343,
+            "registrar": "GoDaddy.com, LLC",
+            "reputation": 0,
+            "expiration_date": 1783536347,
+            "tld": "com",
+            "last_https_certificate_date": 1758098342,
+            "jarm": "27d40d40d00040d1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c",
+            "categories": {}
+        }
+    },
+    {
+        "url": "https://www.hyderabadonline.in",
+        "last_analysis_stats": {
+            "malicious": 0,
+            "suspicious": 0,
+            "undetected": 30,
+            "harmless": 68,
+            "timeout": 0
+        },
+        "status": "OK",
+        "network_location": {
+            "whois": "Admin City: REDACTED FOR PRIVACY\nAdmin Country: REDACTED FOR PRIVACY\nAdmin Organization: REDACTED FOR PRIVACY\nAdmin Postal Code: REDACTED FOR PRIVACY\nAdmin State/Province: REDACTED FOR PRIVACY\nBilling City: REDACTED FOR PRIVACY\nBilling Country: REDACTED FOR PRIVACY\nBilling Organization: REDACTED FOR PRIVACY\nBilling Postal Code: REDACTED FOR PRIVACY\nBilling State/Province: REDACTED FOR PRIVACY\nCreation Date: 2005-02-16T07:17:39.941Z\nDNSSEC: unsigned\nDomain Name: hyderabadonline.in\nDomain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited\nName Server: chan.ns.cloudflare.com\nName Server: yahir.ns.cloudflare.com\nRegistrant City: 1f8f4166599d23ee\nRegistrant Country: IN\nRegistrant Email: f651612a2f356ad3s@\nRegistrant Fax: 1f8f4166599d23ee\nRegistrant Name: 1f8f4166599d23ee\nRegistrant Organization: f410fc409108fccd\nRegistrant Phone: 1f8f4166599d23ee\nRegistrant Postal Code: 1f8f4166599d23ee\nRegistrant State/Province: 693482d3384ace39\nRegistrant Street: 1f8f4166599d23ee\nRegistrar Abuse Contact Email: info@mitsu.in\nRegistrar Abuse Contact Phone: +91.9322203242\nRegistrar IANA ID: 800001\nRegistrar URL: http://www.mitsu.in\nRegistrar: #1 Indian Domains dba Mitsu.in\nRegistry Admin ID: REDACTED FOR PRIVACY\nRegistry Billing ID: REDACTED FOR PRIVACY\nRegistry Domain ID: D528648-IN\nRegistry Expiry Date: 2026-02-16T07:17:39.941Z\nRegistry Registrant ID: REDACTED FOR PRIVACY\nRegistry Tech ID: REDACTED FOR PRIVACY\nTech City: REDACTED FOR PRIVACY\nTech Country: REDACTED FOR PRIVACY\nTech Organization: REDACTED FOR PRIVACY\nTech Postal Code: REDACTED FOR PRIVACY\nTech State/Province: REDACTED FOR PRIVACY\nUpdated Date: 2025-01-31T14:27:07.528Z",
+            "tags": [],
+            "last_dns_records": [
+                {
+                    "type": "AAAA",
+                    "ttl": 300,
+                    "value": "2606:4700:3030::6815:49b6"
+                },
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "172.67.165.62"
+                },
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "104.21.73.182"
+                },
+                {
+                    "type": "AAAA",
+                    "ttl": 300,
+                    "value": "2606:4700:3037::ac43:a53e"
+                }
+            ],
+            "popularity_ranks": {},
+            "last_analysis_date": 1758098334,
+            "last_https_certificate": {
+                "cert_signature": {
+                    "signature_algorithm": "1.2.840.10045.4.3.2",
+                    "signature": "304502207fbcdcbdbc06ccf0c45942b37a967aa17faa52c7f99a2834ef34eee35e864b0102210088f2de61c6549ec159ef1a3fd56dda26879c0c98e919cf35827551f752331c0b"
+                },
+                "extensions": {
+                    "key_usage": [
+                        "digitalSignature"
+                    ],
+                    "extended_key_usage": [
+                        "serverAuth"
+                    ],
+                    "CA": false,
+                    "subject_key_identifier": "50c8df4171f866af10238bb3addbd1e2f53f6e26",
+                    "authority_key_identifier": {
+                        "keyid": "9077923567c4ffa8cca9e67bd980797bcc93f938"
+                    },
+                    "ca_information_access": {
+                        "OCSP": "http://o.pki.goog/s/we1/_Kg",
+                        "CA Issuers": "http://i.pki.goog/we1.crt"
+                    },
+                    "subject_alternative_name": [
+                        "hyderabadonline.in",
+                        "*.hyderabadonline.in"
+                    ],
+                    "certificate_policies": [
+                        "2.23.140.1.2.1"
+                    ],
+                    "crl_distribution_points": [
+                        "http://c.pki.goog/we1/ZIovFvGuJMU.crl"
+                    ],
+                    "1.3.6.1.4.1.11129.2.4.2": "0481f200f0007600dddcca3495d7e11605e79532fac79ff83d1c50dfdb003a14"
+                },
+                "validity": {
+                    "not_after": "2025-10-26 14:19:59",
+                    "not_before": "2025-07-28 13:21:36"
+                },
+                "size": 958,
+                "version": "V3",
+                "public_key": {
+                    "algorithm": "EC",
+                    "ec": {
+                        "oid": "secp256r1",
+                        "pub": "3059301306072a8648ce3d020106082a8648ce3d030107034200040ce1cef10092029dfba0d4520e4767554775e2937c7a0712e479b030c202b9fee7f425c54865f35cb47451a2436cff16e3b2a71cb6ae45ff7d6884fb4a94b7db"
+                    }
+                },
+                "thumbprint_sha256": "d9d0d44ab2513eac57fd3be906e457c02da1e6f5e07cdefd55bf6352c08ed318",
+                "thumbprint": "e2208f5df134b4e3d864651d0e0d1335f176ac24",
+                "serial_number": "fca8e296423bb1d713aa351a9479725e",
+                "issuer": {
+                    "C": "US",
+                    "O": "Google Trust Services",
+                    "CN": "WE1"
+                },
+                "subject": {
+                    "CN": "hyderabadonline.in"
+                }
+            },
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 32,
+                "harmless": 63,
+                "timeout": 0
+            },
+            "last_dns_records_date": 1758098354,
+            "last_modification_date": 1758098354,
+            "registrar": "#1 Indian Domains dba Mitsu.in",
+            "reputation": 0,
+            "expiration_date": 1771226259,
+            "tld": "in",
+            "last_https_certificate_date": 1758098354,
+            "jarm": "27d40d40d00040d1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c",
+            "categories": {}
+        }
+    },
+    {
+        "url": "https://www.aap.org",
+        "last_analysis_stats": {
+            "malicious": 0,
+            "suspicious": 0,
+            "undetected": 30,
+            "harmless": 68,
+            "timeout": 0
+        },
+        "status": "OK",
+        "network_location": {
+            "whois": "Admin City: REDACTED\nAdmin Country: REDACTED\nAdmin Organization: REDACTED\nAdmin Postal Code: REDACTED\nAdmin State/Province: REDACTED\nCreation Date: 1995-01-30T05:00:00Z\nDNSSEC: unsigned\nDomain Name: aap.org\nDomain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited\nDomain Status: clientRenewProhibited https://icann.org/epp#clientRenewProhibited\nDomain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited\nDomain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited\nName Server: ns1.p201.dns.oraclecloud.net\nName Server: ns2.p201.dns.oraclecloud.net\nName Server: ns3.p201.dns.oraclecloud.net\nName Server: ns4.p201.dns.oraclecloud.net\nRegistrant City: 3495bcf1839c6374\nRegistrant Country: US\nRegistrant Email: fb6ff66ef97c0518s@\nRegistrant Fax Ext: 3495bcf1839c6374\nRegistrant Fax: 3495bcf1839c6374\nRegistrant Name: 3495bcf1839c6374\nRegistrant Organization: b46a98a26fe2fd9f\nRegistrant Phone Ext: 3495bcf1839c6374\nRegistrant Phone: 3495bcf1839c6374\nRegistrant Postal Code: 3495bcf1839c6374\nRegistrant State/Province: 30bdd2917a604c83\nRegistrant Street: 3495bcf1839c6374\nRegistrar Abuse Contact Email: abuse@godaddy.com\nRegistrar Abuse Contact Phone: +1.4806242505\nRegistrar IANA ID: 146\nRegistrar URL: http://www.whois.godaddy.com\nRegistrar WHOIS Server: http://whois.godaddy.com\nRegistrar: GoDaddy.com, LLC\nRegistry Admin ID: REDACTED\nRegistry Domain ID: REDACTED\nRegistry Expiry Date: 2026-01-31T05:00:00Z\nRegistry Registrant ID: REDACTED\nRegistry Tech ID: REDACTED\nTech City: REDACTED\nTech Country: REDACTED\nTech Organization: REDACTED\nTech Postal Code: REDACTED\nTech State/Province: REDACTED\nUpdated Date: 2024-12-08T14:35:39Z",
+            "tags": [],
+            "last_dns_records": [
+                {
+                    "type": "NS",
+                    "ttl": 21600,
+                    "value": "ns1.p201.dns.oraclecloud.net"
+                },
+                {
+                    "type": "TXT",
+                    "ttl": 3600,
+                    "value": "cisco-ci-domain-verification=2b9fe75478033f850993726fa434ddc82f0f6a6943154064bde11625ad858d4b"
+                },
+                {
+                    "type": "NS",
+                    "ttl": 21600,
+                    "value": "ns3.p201.dns.oraclecloud.net"
+                },
+                {
+                    "type": "A",
+                    "ttl": 737,
+                    "value": "184.154.38.11"
+                },
+                {
+                    "type": "CAA",
+                    "ttl": 3600,
+                    "flag": 0,
+                    "tag": "issue",
+                    "value": "globalsign.com"
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 2166,
+                    "value": "aap.org"
+                },
+                {
+                    "type": "SOA",
+                    "ttl": 300,
+                    "value": "ns1.p201.dns.oraclecloud.net",
+                    "rname": "hostmaster.aap.org",
+                    "serial": 347,
+                    "refresh": 3600,
+                    "retry": 600,
+                    "expire": 604800,
+                    "minimum": 1800
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 737,
+                    "value": "aap.org"
+                },
+                {
+                    "type": "CAA",
+                    "ttl": 3600,
+                    "flag": 0,
+                    "tag": "issue",
+                    "value": "letsencrypt.org"
+                },
+                {
+                    "type": "MX",
+                    "ttl": 3600,
+                    "priority": 10,
+                    "value": "aap-org.mail.protection.outlook.com"
+                },
+                {
+                    "type": "TXT",
+                    "ttl": 3600,
+                    "value": "logmein-verification-code=fe1ab6a2-527d-41c5-9efe-91b3ac05b7ac"
+                },
+                {
+                    "type": "CAA",
+                    "ttl": 3600,
+                    "flag": 0,
+                    "tag": "iodef",
+                    "value": "mailto:infosec@aap.org"
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 734,
+                    "value": "aap.org"
+                },
+                {
+                    "type": "TXT",
+                    "ttl": 3600,
+                    "value": "apple-domain-verification=Pr2oTWnmXsV7KuZb"
+                },
+                {
+                    "type": "TXT",
+                    "ttl": 3600,
+                    "value": "v=spf1 include:_s00205576.autospf.email -all"
+                },
+                {
+                    "type": "TXT",
+                    "ttl": 3600,
+                    "value": "uZtXx+aHLju05wkhYJolAMpy4EQ8TTAB30kuIXXDGuvxznW2Yl8op1X0+wezSl/higK82i0slg15V8DXJDLRMQ=="
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 735,
+                    "value": "aap.org"
+                },
+                {
+                    "type": "TXT",
+                    "ttl": 3600,
+                    "value": "MS=ms94795231"
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 719,
+                    "value": "aap.org"
+                },
+                {
+                    "type": "CAA",
+                    "ttl": 3600,
+                    "flag": 0,
+                    "tag": "issue",
+                    "value": "godaddy.com"
+                },
+                {
+                    "type": "CAA",
+                    "ttl": 3600,
+                    "flag": 0,
+                    "tag": "issue",
+                    "value": "pki.goog;"
+                },
+                {
+                    "type": "NS",
+                    "ttl": 21600,
+                    "value": "ns4.p201.dns.oraclecloud.net"
+                },
+                {
+                    "type": "TXT",
+                    "ttl": 3600,
+                    "value": "google-site-verification=2w1SOGPr7TGczYyisCoa9u7PKTzIp7Yw9sYPwblC5qc"
+                },
+                {
+                    "type": "NS",
+                    "ttl": 21600,
+                    "value": "ns2.p201.dns.oraclecloud.net"
+                }
+            ],
+            "popularity_ranks": {
+                "Cisco Umbrella": {
+                    "rank": 269390,
+                    "timestamp": 1758551897
+                }
+            },
+            "last_analysis_date": 1758625766,
+            "last_https_certificate": {
+                "cert_signature": {
+                    "signature_algorithm": "sha256RSA",
+                    "signature": "3dc01f9552e39da4d9d9ebf5f61345cb7f38805d4cb599f14c1155a9cf9aef899a72f5459c34c14bbe012c826822abb6206a02f71c68f5bfc43421baa00277287e865397ee96a4cab102532f312db3a598291506f4398bf5d76486f16040b8de98449ab654e629042f37128a968b167710b4a86f7d81713356ac9051f6db891d4613b6ad113fbd009698b3392a2867f76e557bd0b287808608ec0e3cffa6bb03ddc6495bc33fe3d11c6fa3c023abb8b3c8120e5d993d0159117a037107a11d32b6f9b07511e9269fef790887572fc3e6def4b794e7461cb98b516022ac82759e142bd0283a8f8055acf2dbfd257618330a536a66a791b12d3dcf3a18fbd46ac8"
+                },
+                "extensions": {
+                    "key_usage": [
+                        "digitalSignature",
+                        "keyEncipherment"
+                    ],
+                    "CA": false,
+                    "ca_information_access": {
+                        "CA Issuers": "http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt",
+                        "OCSP": "http://ocsp.globalsign.com/gsgccr6alphasslca2023"
+                    },
+                    "certificate_policies": [
+                        "2.23.140.1.2.1",
+                        "1.3.6.1.4.1.4146.10.1.3"
+                    ],
+                    "crl_distribution_points": [
+                        "http://crl.globalsign.com/gsgccr6alphasslca2023.crl"
+                    ],
+                    "subject_alternative_name": [
+                        "*.aap.org",
+                        "aap.org"
+                    ],
+                    "extended_key_usage": [
+                        "serverAuth",
+                        "clientAuth"
+                    ],
+                    "authority_key_identifier": {
+                        "keyid": "bd05b7f38a933c73cb79fa0f8512a17796189174"
+                    },
+                    "subject_key_identifier": "10a362be3111b57555da6c93ad015a472de6f765",
+                    "1.3.6.1.4.1.11129.2.4.2": "048201690167007500af181a28d68ca3e0a98a4c9c67ab09f8bbbc22baaebcb1"
+                },
+                "validity": {
+                    "not_after": "2025-11-10 19:15:51",
+                    "not_before": "2024-10-09 19:15:52"
+                },
+                "size": 1617,
+                "version": "V3",
+                "public_key": {
+                    "algorithm": "RSA",
+                    "rsa": {
+                        "modulus": "b8704f619ddc8e4e8d8628ba3bf8c1d52e75b4adb0381eab1e9ee04e129222f88506d279bde5f1ab38d4b7e57bc1f77350f910ce6cd956fda017a4cd3c2348466bdc90479da2dd3f3e2df422b316aaea0c0facbef08d010acce04b978f0e396469f950b7a3456dc28ee52b8e0cbec15c495be6402a8fb3ae068458724972f00237003ae26230769dd8b6cd04f236c5b99a3e10f57738a30d3a9557f99b0957b390fc1b5296171be991894799460bc12635dfdca2088a524f61e93d46a59081f139865dd58115c8096b7af848dfb4b19415f237c1a689294c6f33b41b8a8cb7040014b90f286e69125dc6441dbe3525e76642d94bc9754266b691bc5b4acc03d9",
+                        "exponent": "10001",
+                        "key_size": 2048
+                    }
+                },
+                "thumbprint_sha256": "7dbfc2c5e908772d504dadc7e73e8a3e441a9117f7a6eaeae6be00ff0863d5b5",
+                "thumbprint": "adcef6746c34285a95c3883bc076fe4c5ae60005",
+                "serial_number": "4811b5439c985e728d04822d",
+                "issuer": {
+                    "C": "BE",
+                    "O": "GlobalSign nv-sa",
+                    "CN": "GlobalSign GCC R6 AlphaSSL CA 2023"
+                },
+                "subject": {
+                    "CN": "*.aap.org"
+                }
+            },
+            "last_analysis_stats": {
+                "malicious": 0,
+                "suspicious": 0,
+                "undetected": 32,
+                "harmless": 63,
+                "timeout": 0
+            },
+            "last_dns_records_date": 1758626099,
+            "last_modification_date": 1758626103,
+            "registrar": "GoDaddy.com, LLC",
+            "reputation": 0,
+            "expiration_date": 1769835600,
+            "tld": "org",
+            "last_https_certificate_date": 1749412260,
+            "jarm": "2ad2ad0000000000000000000000003e8a5b6c69e5472c4f8897a7e36396bf",
+            "categories": {}
+        }
+    }
+]
