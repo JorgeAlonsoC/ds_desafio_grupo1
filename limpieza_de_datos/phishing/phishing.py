@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import psycopg2
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 def limpieza_phishing(dict):
     df = pd.DataFrame([dict])
@@ -57,3 +58,41 @@ def limpieza_phishing(dict):
     cur.close()
     conn.close()
 
+
+def dibujar_grafica():
+    conn = psycopg2.connect(
+            dbname="desafiogrupo1",
+            user="desafiogrupo1_user",
+            password="g7jS0htW8QqiGPRymmJw0IJgb04QO3Jy",
+            host="dpg-d36i177fte5s73bgaisg-a.oregon-postgres.render.com",
+            port="5432"
+        )
+        
+    cur = conn.cursor()
+
+    cur.execute("""
+                SELECT indicators, COUNT(*) AS cantidad
+                FROM logs
+                WHERE indicators IN ('Correo seguro', 'Posible phishing')
+                GROUP BY indicators;
+            """)
+
+    resultados = cur.fetchall()
+        
+    etiquetas = [r[0] for r in resultados]
+    valores   = [r[1] for r in resultados]
+
+    plt.figure()
+    plt.pie(
+            valores,
+            labels=etiquetas,
+            autopct=lambda p: f'{p:.0f}%' if p > 0 else '',
+            startangle=90,
+            wedgeprops={'width': 0.45}
+            )
+    plt.title('Distribución de indicadores')
+    plt.axis('equal')
+    plt.show()
+
+    cur.close()
+    conn.close()
