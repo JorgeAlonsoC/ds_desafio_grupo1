@@ -54,11 +54,11 @@ def clean_data(archive_dic):
     cur = conn.cursor()
     records = [
         {
-            "type": row["Type"],
-            "indicators": row["Indicators"],
+            "type": row["Tipo"],
+            "indicators": row["Indicadores"],
             "severity": row["Severity"],
             "date": row["Date"],
-            "time": row["Time"]
+            "time": row["Time"],
         }
         for _, row in df.iterrows()
     ]
@@ -72,6 +72,7 @@ def clean_data(archive_dic):
     conn.commit()
     cur.close()
     conn.close()
+
 
 
 
