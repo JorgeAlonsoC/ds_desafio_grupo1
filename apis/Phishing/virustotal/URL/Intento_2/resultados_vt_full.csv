@@ -1,0 +1,197 @@
+url,status,last_analysis_stats.malicious,last_analysis_stats.suspicious,last_analysis_stats.undetected,last_analysis_stats.harmless,last_analysis_stats.timeout,network_location.whois,network_location.tags,network_location.last_dns_records,network_location.last_analysis_date,network_location.last_https_certificate.cert_signature.signature_algorithm,network_location.last_https_certificate.cert_signature.signature,network_location.last_https_certificate.extensions.key_usage,network_location.last_https_certificate.extensions.extended_key_usage,network_location.last_https_certificate.extensions.CA,network_location.last_https_certificate.extensions.subject_key_identifier,network_location.last_https_certificate.extensions.authority_key_identifier.keyid,network_location.last_https_certificate.extensions.ca_information_access.OCSP,network_location.last_https_certificate.extensions.ca_information_access.CA Issuers,network_location.last_https_certificate.extensions.subject_alternative_name,network_location.last_https_certificate.extensions.certificate_policies,network_location.last_https_certificate.extensions.crl_distribution_points,network_location.last_https_certificate.extensions.1.3.6.1.4.1.11129.2.4.2,network_location.last_https_certificate.validity.not_after,network_location.last_https_certificate.validity.not_before,network_location.last_https_certificate.size,network_location.last_https_certificate.version,network_location.last_https_certificate.public_key.algorithm,network_location.last_https_certificate.public_key.rsa.modulus,network_location.last_https_certificate.public_key.rsa.exponent,network_location.last_https_certificate.public_key.rsa.key_size,network_location.last_https_certificate.thumbprint_sha256,network_location.last_https_certificate.thumbprint,network_location.last_https_certificate.serial_number,network_location.last_https_certificate.issuer.C,network_location.last_https_certificate.issuer.O,network_location.last_https_certificate.issuer.CN,network_location.last_https_certificate.subject.CN,network_location.last_analysis_stats.malicious,network_location.last_analysis_stats.suspicious,network_location.last_analysis_stats.undetected,network_location.last_analysis_stats.harmless,network_location.last_analysis_stats.timeout,network_location.last_dns_records_date,network_location.last_modification_date,network_location.registrar,network_location.reputation,network_location.expiration_date,network_location.tld,network_location.last_https_certificate_date,network_location.jarm,network_location.categories.alphaMountain.ai,network_location.categories.Sophos,network_location.categories.Webroot,network_location.categories.Forcepoint ThreatSeeker,network_location.last_https_certificate.public_key.ec.oid,network_location.last_https_certificate.public_key.ec.pub
+https://conflrma57843.com/u6383644457,OK,18,1,17,56,0,"Admin City: Los Angeles
+Admin Country: United States
+Admin Email: 374754e45373fcd8s@whoissecure.net
+Admin Organization: WhoisSecure
+Admin Postal Code: 94110
+Admin State/Province: California
+Creation Date: 2024-04-27T11:17:07Z
+DNSSEC: Unsigned
+DNSSEC: unsigned
+Domain Name: CONFLRMA57843.COM
+Domain Name: conflrma57843.com
+Domain Status: ok https://icann.org/epp#ok
+Domain Status: redemptionPeriod https://icann.org/epp#redemptionPeriod
+Name Server: NS1.MANAGEDNS1.COM
+Name Server: NS2.MANAGEDNS1.COM
+Name Server: aisha.ns.cloudflare.com
+Name Server: null
+Name Server: rommy.ns.cloudflare.com
+Registrant City: 14ac44352c27e121
+Registrant Country: United States
+Registrant Email: 374754e45373fcd8s@whoissecure.net
+Registrant Fax Ext: 758e5474eab77422
+Registrant Fax: 758e5474eab77422
+Registrant Name: 7f9fc133014160e3
+Registrant Organization: 7f9fc133014160e3
+Registrant Phone Ext: 5438af33b590d476
+Registrant Phone: b288f9e4d2b974aa
+Registrant Postal Code: ff3dda6320d4723a
+Registrant State/Province: 77ab92f1911d7c5f
+Registrant Street: addb90704ddf559a
+Registrar Abuse Contact Email: abuse@ownregistrar.com
+Registrar Abuse Contact Phone: +1.2124016235
+Registrar Abuse Contact Phone: +91.2261426042
+Registrar IANA ID: 1250
+Registrar Registration Expiration Date: 2025-04-27T11:17:07Z
+Registrar URL: http://www.ownregistrar.com
+Registrar WHOIS Server: whois.ownregistrar.com
+Registrar: OwnRegistrar, Inc.
+Registry Admin ID: OR_1396
+Registry Domain ID: 2089431
+Registry Domain ID: 2876141922_DOMAIN_COM-VRSN
+Registry Expiry Date: 2025-04-27T11:17:07Z
+Registry Registrant ID: OR_1396
+Registry Tech ID: OR_1396
+Tech City: Los Angeles
+Tech Country: United States
+Tech Email: 374754e45373fcd8s@whoissecure.net
+Tech Organization: WhoisSecure
+Tech Postal Code: 94110
+Tech State/Province: California
+Updated Date: 2024-04-27T11:17:06Z
+Updated Date: 2025-06-07T00:03:12Z",['dga'],"[{'type': 'TXT', 'ttl': 3600, 'value': '0ad094978b47130a6a809a0396525cae21191ed6'}, {'type': 'MX', 'ttl': 3600, 'priority': 10, 'value': 'park-mx.above.com'}, {'type': 'SOA', 'ttl': 60, 'value': 'ns1.abovedomains.com', 'rname': 'hostmaster.trellian.com', 'serial': 2025052801, 'refresh': 10800, 'retry': 3600, 'expire': 604800, 'minimum': 3600}, {'type': 'NS', 'ttl': 21600, 'value': 'ns1.abovedomains.com'}, {'type': 'A', 'ttl': 1464, 'value': '103.224.212.204'}, {'type': 'NS', 'ttl': 21600, 'value': 'ns2.abovedomains.com'}, {'type': 'TXT', 'ttl': 3600, 'value': 'v=spf1 ip6:fdcf:abda:4154::/48 -all'}]",1758281114,sha256RSA,626d5147dc7a7412ea1ac1030c084dad49c00e1b49a10bb4d38263f8398bf9b5af0e5744219a665922e4940a9084bf5db3cc04a744702bddc14ca636d60cd92e76b22b0f257d03579a7db5e5e38ba99db4d5207e2ab78aa60b9782c463e7a56b3fccbfec6c507a91155a5431f23e1aa72282ff58c02505a4f8c2ad1d509791acb05163ab607b022806921b3dd1cba4917d662dd40da7bebaa46b7462f37b0efa2980782f577748f991a6822a7db748669529a81566f8125f1f3912857c8175df96c8957c07f60864c306f7aac07a10481308a3dfab3e19ab4344a223f9ecca65ded97a7a02ab1f6fb9d9a5c800df7048425f5d6b09373c1095acfb34c2f4b6b9,"['digitalSignature', 'keyEncipherment']","['serverAuth', 'clientAuth']",False,4cd4d28e685097eee4c6dd3744c9beb9f7a30222,bbbcc347a5e4bca9c6c3a4720c108da235e1c8e8,http://r10.o.lencr.org,http://r10.i.lencr.org/,"['*.akterreview.com', '*.alchimie.studio', '*.analytic.irwinmotors.com', '*.api.irwinmotors.com', '*.app.irwinmotors.com', '*.assetsgeniuscb.com', '*.azmadatahub.com', '*.backend.irwinmotors.com', '*.bi.irwinmotors.com', '*.conflrma57843.com', '*.dashboard.irwinmotors.com', '*.data.irwinmotors.com', '*.demo.irwinmotors.com', '*.dev.irwinmotors.com', '*.doublegsafaris.com', '*.drogariabemfarma.online', '*.explore.irwinmotors.com', '*.fixway.pro', '*.harborfields.org', '*.health4allfoundation.com', '*.helda.info', '*.home.irwinmotors.com', '*.insight.irwinmotors.com', '*.integrityhome.pro', '*.intelligence.irwinmotors.com', '*.irwinmotors.com', '*.kyalstahl.com', '*.logicaltrading.pro', '*.m.irwinmotors.com', '*.metrics.irwinmotors.com', '*.misslanecounty.org', '*.mobile.irwinmotors.com', '*.news.irwinmotors.com', '*.notexistsww5.irwinmotors.com', '*.notexistsww6.irwinmotors.com', '*.onlyrockets.io', '*.ordinalculture.com', '*.papazsports161.pro', '*.perfectminers.org', '*.phmll.xyz', '*.pkk.homes', '*.remote.irwinmotors.com', '*.report.irwinmotors.com', '*.reporting.irwinmotors.com', '*.staging.irwinmotors.com', '*.superset.irwinmotors.com', '*.visualization.irwinmotors.com', '*.vpn.irwinmotors.com', '*.vps3.irwinmotors.com', '*.wap.irwinmotors.com', '*.web.irwinmotors.com', '*.webdisk.akterreview.com', '*.ww.irwinmotors.com', '*.ww3.irwinmotors.com', '*.ww5.irwinmotors.com', '*.ww6.irwinmotors.com', '*.www.irwinmotors.com', 'akterreview.com', 'alchimie.studio', 'assetsgeniuscb.com', 'azmadatahub.com', 'conflrma57843.com', 'doublegsafaris.com', 'drogariabemfarma.online', 'fixway.pro', 'harborfields.org', 'health4allfoundation.com', 'helda.info', 'integrityhome.pro', 'irwinmotors.com', 'kyalstahl.com', 'logicaltrading.pro', 'misslanecounty.org', 'onlyrockets.io', 'ordinalculture.com', 'papazsports161.pro', 'perfectminers.org', 'phmll.xyz', 'pkk.homes']",['2.23.140.1.2.1'],['http://r10.c.lencr.org/82.crl'],0481f300f10077000de1f2302bd30dc140621209ea552efc47747cb1d7e930ef,2025-07-27 01:07:19,2025-04-28 01:07:20,3284,V3,RSA,bc2c6fe763a92e1e49c2ea660b2b9852d9c85114224680b532419c4b6203014ba3948aba09cfb3df31304f3eaa741e7fce16103355c939dbf4e4df7fb589705ac7f49a25bb22fe70a8c74ff1ca6f9c37e9961ae4ee954a8ba23c61fa53765f06c4def69debd9e9c2735f2549fd37d651ed9888e1415218d084c9c242da5e3da7eada93c764f9a3cfe4b6fc6838dea7b2f972dd3295d34e701ccb3b13fa425d29825f38ae8706d0a4f5abf8029dec6b5df81b6d2ecf33db08880008e40c9fb9730bd46a7b89c974b6fe4869df444159cb47f12a68d8034c9545116e7c7089f55606032c124782631ff856e07c38a14918cf9744e95d38e19f33c3e6055554c42cd6a81f1c69fb8da3c7a97618f746aad2abb2db9709d98800e8173c76f302ced86c2b81557c9c69d990b2ff585f69c6bd9e0dc8eeab91941ce5ab21dd3582b68d6dc59e2dc12bdf6ac4fdd28577d775da3bab56ea947c18c60275ba52b4d48e2eba062678505872ae6c5e3e60a02e38527eddcdf09759b172f9bb51612d3d38529f6b552db6c60e8d8ac27fe58eadbda5a92b9fbafde90dcf09a518e54fd40c90c0794c40d4c00fd293dff4542237ffb3337264fed2c322e06ddd11f9a1f29dd83b1a9ce7ebbc07fed8a1238c197f33930aeed1278e8aa4edd7ed882567b66cbb62d1e86f9e0c30213f3cdeafe263890d36ba11dce98c50a3ee49841b34c1d5b7,10001,4096.0,90451ef6ea7eab7635f3f29ea30942d3b350b3f7f137109d29020ee48cf0dda5,ef54b7718065baacc817bd3ba0cef67ca4446c90,57befe3da118784b9e1c6026c9d82e51651,US,Let's Encrypt,R10,akterreview.com,12,0,33,50,0,1748382313,1758463177,"OwnRegistrar, Inc.",0,1745752627.0,com,1748382313,2ad2ad0002ad2ad00042d42d00000051af7d8070a18e002eaaedf620fa118c,"Phishing, Scam/Illegal/Unethical (alphaMountain.ai)",,,,,
+https://www.zgahdjm.com,OK,10,0,27,57,0,"Creation Date: 2021-04-01T06:22:41Z
+DNSSEC: unsigned
+Domain Name: ZGAHDJM.COM
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: redemptionPeriod https://icann.org/epp#redemptionPeriod
+Name Server: JM1.DNS.COM
+Name Server: JM2.DNS.COM
+Registrar IANA ID: 1923
+Registrar URL: http://www.gname.com
+Registrar WHOIS Server: whois.gname.com
+Registrar: Gname.com Pte. Ltd.
+Registry Domain ID: 2602049762_DOMAIN_COM-VRSN
+Registry Expiry Date: 2024-04-01T06:22:41Z
+Updated Date: 2024-05-03T07:10:16Z",['dga'],"[{'type': 'A', 'ttl': 600, 'value': '168.76.121.114'}]",1720951485,sha256RSA,b4454811735c80158d05f262b177eb163816c867a2449980753877691f4ab09085dc59a0ab860789f3204189aaea5a5602039f4badca759c28e7e0efba9e54512f2a0f3e6cc222062714e930874df2242af82bc25724ae6a651b183a14cab9a379ff9a58b72faa29d4a5ba7b203bdf6258a6c53201c1376160df65940dd6e97d9a71d30527ebdd227d218b0a75287bec45c6956943c42d50c885d558cb56b954522ae3bb3a0a9a7d2e81358d2e64c97856a003cf96bd26f1668d592d4fcc4e3703196d2b2433eae31b596f10f23657c7261cf93a7e6fe34b748818ca6d5aa69683b704453947f9b91d0cf01fe9a14a2daa7ff14169399e1bb519b2f440b42374,"['digitalSignature', 'keyEncipherment']","['serverAuth', 'clientAuth']",False,8759cc08a271f1e75c6caa5c5d59875f8c48ce16,142eb317b75856cbae500940e61faf9d8b14c2c6,http://r3.o.lencr.org,http://r3.i.lencr.org/,"['www.ats-sp.com', 'www.b0ptc7ew.com', 'www.bgkaotu.com', 'www.blotvn.com', 'www.bvckmsy.com', 'www.cqiuzk.com', 'www.csxyqczl.com', 'www.danquezxw.com', 'www.dfypsc.com', 'www.fsjfsgc.com', 'www.globaljzb.com', 'www.glqanran.com', 'www.godswen.com', 'www.ierryy.com', 'www.jhxrling.com', 'www.kmcjlylxs.com', 'www.kuoiiso.com', 'www.lexppf.com', 'www.ltekids.com', 'www.paskata.com', 'www.rlkkfgq.com', 'www.shsuwanjc.com', 'www.sineviabr.com', 'www.slwstny.com', 'www.smqgov.com', 'www.tipizv.com', 'www.vbawkd.com', 'www.woflsw.com', 'www.wxmvfr.com', 'www.yezsxdf.com', 'www.ylixjcv.com', 'www.zdjxkknw.com', 'www.zgahdjm.com']",['2.23.140.1.2.1'],,0481f100ef007600a2e2bfd61ede2f2f07a0d64e6d37a7dc6543b0c6b52ea2da,2024-06-29 13:51:25,2024-03-31 13:51:26,1815,V3,RSA,ec12304ee7aa5b8c761830a5a6b073cae3f3d5c75a433af5cd87a67592d5f6feb68929d30e0f51312e0f6c685f93ba02a445f535542908e1909c99b70bb961e686781bf9c3266fb9b137a5a93f8984048e44af6d0e2b38698c5d24412ad2c2f7a75a47a25446e5b4cb8d7d74b6bd17ed9edff820ab91a268a7fea90c7a4171f47c6cec873eb5bf709609c75026eba22f30a0fe25aa4e44cde40bd030bfce7577ac70bc1f0f232944e5c6c975ce9fd33553b47e78f473a17339c3c7b61affb2cf1cda6df85dc1def413d6197f83905477da8f32902a07950426897c78e19205ed32d040cbec8c4f42737a24da2c541f859be9713a3d9043b3b50535cee11a0a0b,10001,2048.0,f6152562ade3a23f6e81d4fa838d96d07c797fdad58998b46bec83946787bf0e,3e67b341fb5cd2bd26dbbc6a8dd328bd2413d2fe,4a8abba88af83727275ad51eb656f138013,US,Let's Encrypt,R3,www.lexppf.com,0,0,95,0,0,1712213161,1720951486,Gname.com Pte. Ltd.,-55,1711952561.0,com,1712213161,3fd3fd0003fd3fd21c42d42d000000bdfc58c9a46434368cf60aa440385763,,phishing and fraud,Phishing and Other Frauds,phishing and other frauds,,
+https://attt.pages.dev/,OK,8,1,28,61,0,"Admin City: DATA REDACTED
+Admin City: REDACTED FOR PRIVACY
+Admin Country: DATA REDACTED
+Admin Country: REDACTED FOR PRIVACY
+Admin Organization: DATA REDACTED
+Admin Organization: REDACTED FOR PRIVACY
+Admin Postal Code: DATA REDACTED
+Admin Postal Code: REDACTED FOR PRIVACY
+Admin State/Province: DATA REDACTED
+Admin State/Province: REDACTED FOR PRIVACY
+Billing City: DATA REDACTED
+Billing City: REDACTED FOR PRIVACY
+Billing Country: DATA REDACTED
+Billing Country: REDACTED FOR PRIVACY
+Billing Organization: DATA REDACTED
+Billing Organization: REDACTED FOR PRIVACY
+Billing Postal Code: DATA REDACTED
+Billing Postal Code: REDACTED FOR PRIVACY
+Billing State/Province: DATA REDACTED
+Billing State/Province: REDACTED FOR PRIVACY
+Creation Date: 2020-09-02T02:33:29Z
+DNSSEC: unsigned
+Domain Name: PAGES.DEV
+Domain Name: pages.dev
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+Domain Status: clientdeleteprohibited https://icann.org/epp#clientdeleteprohibited
+Domain Status: clienttransferprohibited https://icann.org/epp#clienttransferprohibited
+Domain Status: clientupdateprohibited https://icann.org/epp#clientupdateprohibited
+Name Server: adi.ns.cloudflare.com
+Name Server: karl.ns.cloudflare.com
+Registrant City: 1f8f4166599d23ee
+Registrant City: acfd0ee3752cd95d
+Registrant Country: US
+Registrant Email: 256f9e523b2ede94s@
+Registrant Email: d807ea723facd141s@
+Registrant Fax Ext: acfd0ee3752cd95d
+Registrant Fax: 1f8f4166599d23ee
+Registrant Fax: acfd0ee3752cd95d
+Registrant Name: 1f8f4166599d23ee
+Registrant Name: acfd0ee3752cd95d
+Registrant Organization: acfd0ee3752cd95d
+Registrant Phone Ext: acfd0ee3752cd95d
+Registrant Phone: 1f8f4166599d23ee
+Registrant Phone: acfd0ee3752cd95d
+Registrant Postal Code: 1f8f4166599d23ee
+Registrant Postal Code: acfd0ee3752cd95d
+Registrant State/Province: b1952dfc047df18a
+Registrant Street: 1f8f4166599d23ee
+Registrant Street: acfd0ee3752cd95d
+Registrar Abuse Contact Email: registrar-abuse@cloudflare.com
+Registrar Abuse Contact Phone: +1.4153197517
+Registrar IANA ID: 1910
+Registrar Registration Expiration Date: 2026-09-02T02:33:29Z
+Registrar URL: None
+Registrar URL: https://www.cloudflare.com
+Registrar WHOIS Server: whois.cloudflare.com
+Registrar: CloudFlare, Inc.
+Registrar: Cloudflare, Inc.
+Registry Admin ID: REDACTED FOR PRIVACY
+Registry Billing ID: REDACTED FOR PRIVACY
+Registry Domain ID: 4394CC0DF-DEV
+Registry Expiry Date: 2026-09-02T02:33:29Z
+Registry Registrant ID: REDACTED FOR PRIVACY
+Registry Tech ID: REDACTED FOR PRIVACY
+Tech City: DATA REDACTED
+Tech City: REDACTED FOR PRIVACY
+Tech Country: DATA REDACTED
+Tech Country: REDACTED FOR PRIVACY
+Tech Organization: DATA REDACTED
+Tech Organization: REDACTED FOR PRIVACY
+Tech Postal Code: DATA REDACTED
+Tech Postal Code: REDACTED FOR PRIVACY
+Tech State/Province: DATA REDACTED
+Tech State/Province: REDACTED FOR PRIVACY
+Updated Date: 2023-09-04T18:15:07Z
+Updated Date: 2025-03-17T14:56:22Z",[],"[{'type': 'AAAA', 'ttl': 300, 'value': '2606:4700:310c::ac42:2c93'}, {'type': 'NS', 'ttl': 21600, 'value': 'lily.ns.cloudflare.com'}, {'type': 'AAAA', 'ttl': 300, 'value': '2606:4700:310c::ac42:2f6d'}, {'type': 'A', 'ttl': 300, 'value': '172.66.47.109'}, {'type': 'NS', 'ttl': 21600, 'value': 'watson.ns.cloudflare.com'}, {'type': 'SOA', 'ttl': 1800, 'value': 'lily.ns.cloudflare.com', 'rname': 'dns.cloudflare.com', 'serial': 2378253638, 'refresh': 10000, 'retry': 2400, 'expire': 604800, 'minimum': 1800}, {'type': 'A', 'ttl': 300, 'value': '172.66.44.147'}]",1757463239,1.2.840.10045.4.3.2,30440220079ef1e44ce0a33b7b64f6475882c3b1c8bab558d6b0dfa86860849562b8df620220103c40f20560381efed37ab97a36439ef265750c141e1d4153ebb36fc69b82da,['digitalSignature'],['serverAuth'],False,ab4b163fbb50540056281a643e6fe26cce6fcad5,9077923567c4ffa8cca9e67bd980797bcc93f938,http://o.pki.goog/s/we1/gWY,http://i.pki.goog/we1.crt,"['attt.pages.dev', '*.attt.pages.dev']",['2.23.140.1.2.1'],['http://c.pki.goog/we1/OuqGbJkzwhU.crl'],0481f000ee007500ccfb0f6a85710965fe959b53cee9b27c22e9855c0d978db6,2025-10-15 15:56:09,2025-07-17 14:58:26,943,V3,EC,,,,123ee9221dd60f18a27c53777c980e0667f92f8e22c93069ac423979f23ee5d0,1c101941a5bfe209b0a69831666518d3d2be867b,8166a6210ad97d930eebd773b0616b4c,US,Google Trust Services,WE1,attt.pages.dev,8,1,30,56,0,1757463657,1757463822,"CloudFlare, Inc.",0,1788316409.0,dev,1757463657,27d40d40d00040d00042d43d00041df04c41293ba84f6efe3a613b22f983e6,,,,,secp256r1,3059301306072a8648ce3d020106082a8648ce3d030107034200048692c695963703bd3653a7c69042c130ef71d6c80c3fd0f17409c4d93fc43ebd870ba5fc9418e35ae7c4c0a7653ae16eb61b0f658d7189fe43985759bfdbb463
+https://chermate.weeblysite.com/,OK,8,1,27,61,0,"Admin City: Milton Keynes
+Admin Country: UK
+Admin Email: d52ad5e18ac11e26s@safenames.net
+Admin Organisation: Safenames Ltd
+Admin Postal Code: MK14 6LS
+Admin State/Province: Bucks
+Creation Date: 2012-12-19T04:07:22Z
+DNSSEC: unsigned
+Domain Name: WEEBLYSITE.COM
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+Name Server: NS-1375.AWSDNS-43.ORG
+Name Server: NS-1854.AWSDNS-39.CO.UK
+Name Server: NS-510.AWSDNS-63.COM
+Name Server: NS-522.AWSDNS-01.NET
+Name Server: ns-1375.awsdns-43.org
+Name Server: ns-1854.awsdns-39.co.uk
+Name Server: ns-510.awsdns-63.com
+Name Server: ns-522.awsdns-01.net
+Registrant City: 26e106227fad0d6a
+Registrant Country: US
+Registrant Email: dbe9ec14384cdf58s@idp.email
+Registrant Fax: 26e106227fad0d6a
+Registrant Name: 26e106227fad0d6a
+Registrant Organisation: b718f45271af6aa3
+Registrant Phone: 26e106227fad0d6a
+Registrant Postal Code: 26e106227fad0d6a
+Registrant State/Province: 26e106227fad0d6a
+Registrant Street: 26e106227fad0d6a
+Registrar Abuse Contact Email: abuse@safenames.net
+Registrar Abuse Contact Phone: +44.1908200022
+Registrar IANA ID: 447
+Registrar Registration Expiration Date: 2025-12-19T00:00:00Z
+Registrar URL: http://www.safenames.net
+Registrar WHOIS Server: whois.safenames.net
+Registrar: SafeNames Ltd.
+Registrar: Safenames Ltd
+Registry Admin ID: Not Available From Registry
+Registry Domain ID: 1767369527_DOMAIN_COM-VRSN
+Registry Expiry Date: 2025-12-19T04:07:22Z
+Registry Registrant ID: Not Available From Registry
+Registry Tech ID: Not Available From Registry
+Tech City: Milton Keynes
+Tech Country: UK
+Tech Email: d52ad5e18ac11e26s@safenames.net
+Tech Organisation: Safenames Ltd
+Tech Postal Code: MK14 6LS
+Tech State/Province: Bucks
+Updated Date: 2024-12-19T08:49:30Z
+Updated Date: 2024-12-20T00:44:22Z",[],"[{'type': 'A', 'ttl': 3600, 'value': '74.115.51.55'}, {'type': 'A', 'ttl': 3600, 'value': '74.115.51.54'}]",1755788072,1.2.840.10045.4.3.2,3046022100960c72988591d23ef72aea01681d5fb4df41c6a9ba8bac2ae917fbb06ecf6a9702210089f0881de3b04eec3b775f47c6d766254fab1323255af1cb7261ca56cffbd8cc,['digitalSignature'],['serverAuth'],False,524f97d6616a5863e297377080518c07e525c655,9077923567c4ffa8cca9e67bd980797bcc93f938,http://o.pki.goog/s/we1/2p4,http://i.pki.goog/we1.crt,"['weeblysite.com', '*.weeblysite.com']",['2.23.140.1.2.1'],['http://c.pki.goog/we1/t4Y_tS4oQ9A.crl'],0481f200f0007500dddcca3495d7e11605e79532fac79ff83d1c50dfdb003a14,2025-11-15 02:33:39,2025-08-17 01:33:44,947,V3,EC,,,,1fe60575ec81651f266a9f8954780d08dc8cfcb81d52c4ae1de6005b53afda6f,26499af940621d9772f75aae555e5574707d4239,da9ecf8a6cf5f3770d9c2f5fc8d1072,US,Google Trust Services,WE1,weeblysite.com,10,1,30,54,0,1755788642,1758207418,SafeNames Ltd.,0,1766117242.0,com,1755788642,27d40d40d00040d00042d43d00041df04c41293ba84f6efe3a613b22f983e6,Phishing (alphaMountain.ai),,,,secp256r1,3059301306072a8648ce3d020106082a8648ce3d030107034200043fc30c2330327582933da212d4f6501279967f07d4a448ace5b942e827ca13fff4e59939b68e1653c4398bcb3e49e1589d139a6d469a5bed100e5d12c46d26c2
+"https://allegrolokalnie.oferta73.pl/oferta/l/iPhone-13,-128Gb-417004823?id=5b660c58-cfc8-4f71-9f20-e50aa2b8af88",OK,3,0,23,66,0,,['dga'],"[{'type': 'NS', 'ttl': 3600, 'value': 'ns2.dns-suspended.com'}, {'type': 'NS', 'ttl': 3600, 'value': 'ns1.dns-suspended.com'}, {'type': 'SOA', 'ttl': 3600, 'value': 'ns1.dns-suspended.com', 'rname': 'hostmaster.hostinger.com', 'serial': 2023081800, 'refresh': 10800, 'retry': 3600, 'expire': 604800, 'minimum': 3600}, {'type': 'TXT', 'ttl': 3600, 'value': 'This domain is suspended by hostinger!'}]",1758081340,sha256RSA,2e4935949a8be9f367cc1199153ef78f25c149e1b9697be198925fee3cd7b3744a6dcebff405385445853e12870df10a6a430373219e89e54bbae33dcb9173fc8712dd58a2de5c5c74904ac39f8072aa73843a3de5e541ade7a42d2e037b67f24d89b7eb323b7661b14e0eff8a942e808ceb00595cb39f891a1e6a590cc4815a264cf79ad0698cca6931d86e8c5f819cf3f0a4c8a69d5f144f5be16e45a9b75b49f12b0a43a2311a4ed1191e4c6ba977fd91f0d31d904b9e803e35d43a5b1c48268b25b5327cb81b024d4f1b0e3b5eef46a8a65d1f5b77abd0eab0a68d645e560073d6d6c26a7f07ea3d1277fd8d7fe60ef6db9e9aa977848882522df0cd5d88,"['digitalSignature', 'keyEncipherment']",['serverAuth'],False,6e12d8809be2b0e6b4d2ba69454986c62bc75b2a,d5fc9e0ddf1ecadd0897976e2bc55fc52bf5ecb8,http://ocsp.pki.goog/s/gts1p5/x703eYFgYlQ,http://pki.goog/repo/certs/gts1p5.der,"['oferta73.pl', '*.oferta73.pl']","['2.23.140.1.2.1', '1.3.6.1.4.1.11129.2.5.3']",['http://crls.pki.goog/gts1p5/jLygdbXX6mo.crl'],0481f300f100770076ff883f0ab6fb9551c261ccf587ba34b4a4cdbb29dc6842,2024-06-27 20:58:56,2024-03-29 20:58:57,1391,V3,RSA,978f9ddb478e83dd2d72d39e6590da7af39fdef11228bf6271c25a873197067da2970207e6c1d615a5de38d045016ad5737d69cd68491edfd786fa04a71b8cce8e15cfa1d23ab1269d750a984ed16e17a36f182cfa1e40ea9aae975d8f2606daeb6ed2b3beb5f8a22be4d5002ea4144d85fa753adb2adf73b811a3930c49f66d20a25f87673c359036fe11ba10e270413f0885d0f8e4a2e91db91732b4f7fb4c4667d92227ce48b2574f85411e1c22632b3691aed72361fa22aac9afa1680a230a1f21009866e1a3a335a14280237dac44f3bea40723848d5a9b041fcc07b1906d6d3afb8f69ad664ee2298f8f79f673d3dbe5a84788ce8e06133c855c60649d,10001,2048.0,fb5c2516c94c081dc46bc0d80357c5e3eafa24f52861d209257163d1442496cf,b115a185342d3a8f71dbe5f485fc73d0835dc11c,bb7706e5781adc6f11dec54148355f9e,US,Google Trust Services LLC,GTS CA 1P5,oferta73.pl,0,1,33,61,0,1742544183,1758085204,,0,,pl,1712255889,29d3dd00029d29d21c42d43d00041d44609a5a9a88e797f466e878a82e8365,Unrated (alphaMountain.ai),,,,,
