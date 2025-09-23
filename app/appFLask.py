@@ -14,11 +14,11 @@ CORS(app)
 
 def malware_type_detection(dict):
     if 'FILENAME' in dict.keys():
-        limpieza_phishing(dict)
+        clean_data_phishing(dict)
     elif 'Destination Port' in dict.keys():
         clean_data_ddos(dict)
     else:
-        print("Esto es un login")#login(dict)
+        clean_data_login(dict)
 
 def procesamiento_datos():
     login_list =[]
