@@ -25,16 +25,11 @@ def limpieza_phishing(dict):
     df["severity"] = df["IsPhishing"]
     now = datetime.now()
     df['date'] = now.date()
-    df['time'] = now.strftime("H%:%M:%S")
-    df_r = df[['HasPopup',
-               'Nivel3_Alta',
-               'Nivel2_Media',
-               'Nivel1_Baja',
-               'type',
-               'indicators',
-               'severity',
-               'date',
-               'time']]
+    df['time'] = now.strftime("%H:%M:%S")
+ 
+    # Lo de merche -----------------------------------------------------
+    # df_front["log_id"] = ["Log" + uuid.uuid4().hex for _ in range(len(df_front))]
+    # df["log_id"] = df_front["log_id"]
 
     conn = psycopg2.connect(
         dbname="desafiogrupo1",
@@ -254,4 +249,57 @@ def tablas_enriquecimiento_phishing(url):
         }
         filas.append(fila)
     return pd.DataFrame(filas)
+# df_enriquecimiento = tablas_enriquecimiento_phishing(df['URL'].iloc[0]) *******    df['URL'].iloc[0]         O        la url           ********
 
+def insertar_phishing_enriquecido(url):
+    df = tablas_enriquecimiento_phishing(url)
+
+    conn = psycopg2.connect(
+        dbname="desafiogrupo1",
+        user="desafiogrupo1_user",
+        password="g7jS0htW8QqiGPRymmJw0IJgb04QO3Jy",
+        host="dpg-d36i177fte5s73bgaisg-a.oregon-postgres.render.com",
+        port="5432"
+    )
+    
+    cur = conn.cursor()
+    records = [
+        {
+            "URL": row['URL'],
+            "status": row['status'],
+            "malicious": row['malicious'],
+            "suspicious": row['suspicious'],
+            "undetected": row['undetected'],
+            "harmless": row['harmless'],
+            "timeout": row['timeout'],
+            "whois": row['whois'],
+            "tags": row['tags'],
+            "dns_records": row['dns_records'],
+            "last_dns_records_date": row['last_dns_records_date'],
+            "registrar": row['registrar'],
+            "expiration_date": row['expiration_date'],
+            "tld": row['tld'],
+            "issuer": row['issuer'],
+            "subject_CN": row['subject_CN'],
+            "cert_not_before": row['cert_not_before'],
+            "cert_not_after": row['cert_not_after'],
+            "cert_key_size": row['cert_key_size'],
+            "thumbprint_sha256": row['thumbprint_sha256'],
+            "popularity_ranks": row['popularity_ranks'],
+            "jarm": row['jarm'],
+            "categories": row['categories']
+        }
+        for _, row in df.iterrows()
+    ]
+
+    cur.executemany("""
+        INSERT INTO ***** (URL, status, malicious, suspicious, undetected, harmless, timeout, whois, tags, dns_records,
+                    last_dns_records_date, registrar, expiration_date, tld, issuer, subject_CN, cert_not_before, cert_not_after,
+                    cert_key_size, thumbprint_sha256, reputation, popularity_ranks, jarm, categories)
+        VALUES (%(URL)s, %(status)s, %(malicious)s, %(suspicious)s, %(undetected)s, %(harmless)s, %(timeout)s, %(whois)s, %(tags)s, %(dns_records)s,
+                    %(last_dns_records_date)s, %(registrar)s, %(expiration_date)s, %(tld)s, %(issuer)s, %(subject_CN)s, %(cert_not_before)s, %(cert_not_after)s,
+                    %(cert_key_size)s, %(thumbprint_sha256)s, %(reputation)s, %(popularity_ranks)s, %(jarm)s, %(categories)s)
+    """, records)
+    conn.commit()
+    cur.close()
+    conn.close()
