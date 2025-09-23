@@ -2,6 +2,16 @@ import pandas as pd
 from datetime import datetime
 import psycopg2
 import numpy as np
+import requests
+import time
+import os
+from dotenv import load_dotenv
+import uuid
+
+load_dotenv()
+API_KEY = os.getenv("ABUSEIPDB_API_KEY")
+CHECK_URL = "https://api.abuseipdb.com/api/v2/check"
+HEADERS = {"Accept": "application/json", "Key": API_KEY}
 
 def clean_data_ddos(archive_dic):
     df = pd.DataFrame([archive_dic])
@@ -212,7 +222,7 @@ def clean_data_login(archive_dic):
         "Login Timestamp", "Login Successful",
         "Is Attack IP", "Is Account Takeover"
     ]
-    df = df[[c for c in keep_cols if c in df.columns]]
+    df_front = df[[c for c in keep_cols if c in df.columns]]
 
     # --- Normalizar timestamp y fijar año 2025 ---
     ts = pd.to_datetime(df["Login Timestamp"], errors="coerce", utc=True)
@@ -244,6 +254,17 @@ def clean_data_login(archive_dic):
         ["Robo de credenciales","Cuenta comprometida","Ataque fallido","Login válido"], default=""
     )
 
+    # --- ASIGNAR log_id ---
+    df_front["log_id"] = ["Log" + str(uuid.uuid4().int) ]
+    df["log_id"] = df_front["log_id"]
+
+        # --- Preparar tabla enriquecida ---
+    df_id = df.copy()
+
+
+    from enriquecimiento import check_ip_info, enrich_login_record
+
+
     # --- Conexión a PostgreSQL ---
     conn = psycopg2.connect(
         dbname="desafiogrupo1",
@@ -257,6 +278,7 @@ def clean_data_login(archive_dic):
 
     records = [
         {
+            "log_id": row["log_id"],
             "company_id": 1,
             "type": row["Tipo"],
             "indicators": row["Indicadores"],
@@ -269,13 +291,60 @@ def clean_data_login(archive_dic):
     ]
 
     cur.executemany("""
-        INSERT INTO logs (company_id, type, indicators, severity, date, time, actions_taken)
-        VALUES (%(company_id)s, %(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s, %(actions_taken)s)
+        INSERT INTO logs (log_id, company_id, type, indicators, severity, date, time, actions_taken)
+        VALUES (%(log_id)s, %(company_id)s, %(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s, %(actions_taken)s)
     """, records)
 
     conn.commit()
     cur.close()
     conn.close()
+
+    df_id = enrich_login_record(df_id.iloc[0].to_dict())
+
+    """    # --- Conexión a PostgreSQL para insertar en tabla enriquecida ---
+    try:
+        conn = psycopg2.connect(
+            dbname="desafiogrupo1",
+            user="desafiogrupo1_user",
+            password="g7jS0htW8QqiGPRymmJw0IJgb04QO3Jy",
+            host="dpg-d36i177fte5s73bgaisg-a.oregon-postgres.render.com",
+            port="5432"
+        )
+        cur = conn.cursor()
+        
+        # Preparar diccionario de la fila para insert
+        row = df_id.iloc[0]
+        record = {
+            "log_id": row["log_id"],
+            "login_timestamp": row.get("Login Timestamp").isoformat() if pd.notna(row.get("Login Timestamp")) else None,
+            "user_id": None if pd.isna(row.get("User ID")) else row.get("User ID"),
+            "round_trip_time": None if pd.isna(row.get("Round-Trip Time [ms]")) else row.get("Round-Trip Time [ms]"),
+            "ip_address": None if pd.isna(row.get("IP Address")) else row.get("IP Address"),
+            "country": None if pd.isna(row.get("Country")) else row.get("Country"),
+            "asn": None if pd.isna(row.get("ASN")) else row.get("ASN"),
+            "user_agent": None if pd.isna(row.get("User Agent String")) else row.get("User Agent String"),
+            "country_code": None if pd.isna(row.get("countryCode")) else row.get("countryCode"),
+            "abuse_confidence_score": None if pd.isna(row.get("abuseConfidenceScore")) else row.get("abuseConfidenceScore"),
+            "last_reported_at": row.get("lastReportedAt").isoformat() if pd.notna(row.get("lastReportedAt")) else None,
+            "usage_type": None if pd.isna(row.get("usageType")) else row.get("usageType"),
+            "domain": None if pd.isna(row.get("domain")) else row.get("domain"),
+            "total_reports": None if pd.isna(row.get("totalReports")) else row.get("totalReports"),
+        }
+        
+        cur.execute("""
+            INSERT INTO enriched_logs 
+            (log_id, login_timestamp, user_id, round_trip_time, ip_address, country, asn, user_agent,
+            country_code, abuse_confidence_score, last_reported_at, usage_type, domain, total_reports)
+            VALUES (%(log_id)s, %(login_timestamp)s, %(user_id)s, %(round_trip_time)s, %(ip_address)s, %(country)s, %(asn)s, %(user_agent)s,
+            %(country_code)s, %(abuse_confidence_score)s, %(last_reported_at)s, %(usage_type)s, %(domain)s, %(total_reports)s)
+            ON CONFLICT (log_id) DO NOTHING
+        """, record)
+        
+        conn.commit()
+        cur.close()
+        conn.close()
+    except Exception as e:
+        print(f"Error insertando en DB: {e}")"""
     
 
 
