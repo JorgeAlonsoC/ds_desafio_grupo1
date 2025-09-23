@@ -128,7 +128,6 @@ NETLOC_FIELDS_DEFAULTS = {
     "last_analysis_stats": {},
     "categories": {}
 }
-
 # -----------------------------
 # Funciones auxiliares
 def _remove_key_recursive(obj, key_to_remove="last_analysis_results"):
@@ -215,9 +214,6 @@ def get_url_info(url, retries=2, timeout=10, pause_between_calls=1.0):
 
     return _ordered_url_object(result)
 
-# -----------------------------
-# Ejecutar para todas las URLs del archivo
-
 def enriquecimiento_phishing(url):
     resultados = []
 
@@ -225,7 +221,8 @@ def enriquecimiento_phishing(url):
     resultados.append(r)
     time.sleep(2)
     return resultados
-
+# -----------------------------
+# Directamente usar esta
 def tablas_enriquecimiento_phishing(url):
     filas = []
     for r in enriquecimiento_phishing(url):
