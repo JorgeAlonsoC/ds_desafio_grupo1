@@ -1,0 +1,342 @@
+url,status,last_analysis_stats.malicious,last_analysis_stats.suspicious,last_analysis_stats.undetected,last_analysis_stats.harmless,last_analysis_stats.timeout,network_location.whois,network_location.tags,network_location.last_dns_records,network_location.last_analysis_date,network_location.last_https_certificate.cert_signature.signature_algorithm,network_location.last_https_certificate.cert_signature.signature,network_location.last_https_certificate.extensions.key_usage,network_location.last_https_certificate.extensions.extended_key_usage,network_location.last_https_certificate.extensions.CA,network_location.last_https_certificate.extensions.subject_key_identifier,network_location.last_https_certificate.extensions.authority_key_identifier.keyid,network_location.last_https_certificate.extensions.ca_information_access.CA Issuers,network_location.last_https_certificate.extensions.subject_alternative_name,network_location.last_https_certificate.extensions.certificate_policies,network_location.last_https_certificate.extensions.crl_distribution_points,network_location.last_https_certificate.extensions.1.3.6.1.4.1.11129.2.4.2,network_location.last_https_certificate.validity.not_after,network_location.last_https_certificate.validity.not_before,network_location.last_https_certificate.size,network_location.last_https_certificate.version,network_location.last_https_certificate.public_key.algorithm,network_location.last_https_certificate.public_key.rsa.modulus,network_location.last_https_certificate.public_key.rsa.exponent,network_location.last_https_certificate.public_key.rsa.key_size,network_location.last_https_certificate.thumbprint_sha256,network_location.last_https_certificate.thumbprint,network_location.last_https_certificate.serial_number,network_location.last_https_certificate.issuer.C,network_location.last_https_certificate.issuer.O,network_location.last_https_certificate.issuer.CN,network_location.last_https_certificate.subject.CN,network_location.last_analysis_stats.malicious,network_location.last_analysis_stats.suspicious,network_location.last_analysis_stats.undetected,network_location.last_analysis_stats.harmless,network_location.last_analysis_stats.timeout,network_location.last_dns_records_date,network_location.last_modification_date,network_location.registrar,network_location.reputation,network_location.expiration_date,network_location.tld,network_location.last_https_certificate_date,network_location.jarm,network_location.popularity_ranks.Cisco Umbrella.rank,network_location.popularity_ranks.Cisco Umbrella.timestamp,network_location.last_https_certificate.extensions.ca_information_access.OCSP,network_location.last_https_certificate.public_key.ec.oid,network_location.last_https_certificate.public_key.ec.pub
+https://www.southbankmosaics.com,OK,0,0,32,66,0,"Admin City: Denver
+Admin Country: US
+Admin Email: 6c019f7aba0353e7s@NameBrightPrivacy.com
+Admin Organization: NameBrightPrivacy.com
+Admin Postal Code: 80205
+Admin State/Province: CO
+Creation Date: 2020-02-04T19:06:42.000Z
+Creation Date: 2020-02-04T19:06:42Z
+DNSSEC: unsigned
+Domain Name: SOUTHBANKMOSAICS.COM
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientTransferProhibited https://www.icann.org/epp#clientTransferProhibited
+Name Server: NS1.NAMEBRIGHTDNS.COM
+Name Server: NS2.NAMEBRIGHTDNS.COM
+Registrant City: 7545cbbbc34dcb54
+Registrant Country: US
+Registrant Email: 6c019f7aba0353e7s@NameBrightPrivacy.com
+Registrant Fax Ext: 3432650ec337c945
+Registrant Fax: 3432650ec337c945
+Registrant Name: 37bfbc24cafea5d2
+Registrant Organization: 6acf07867035f323
+Registrant Phone Ext: 3432650ec337c945
+Registrant Phone: 9e70ea3af3a29f0e
+Registrant Postal Code: 6f09be6fa67504f5
+Registrant State/Province: 5909b98f8d0e7f8a
+Registrant Street: 87e13c28e0c7de68
+Registrar Abuse Contact Email: abuse@NameBright.com
+Registrar Abuse Contact Email: support@namebright.com
+Registrar Abuse Contact Phone: +1.7204960020
+Registrar Abuse Contact Phone: 17204960020
+Registrar IANA ID: 3482
+Registrar Registration Expiration Date: 2026-02-04T19:06:42.000Z
+Registrar URL: http://www.DropCatch1273.com
+Registrar URL: https://www.NameBright.com
+Registrar WHOIS Server: whois.NameBright.com
+Registrar WHOIS Server: whois.namebright.com
+Registrar: DropCatch.com 1273 LLC
+Registry Admin ID: Not Available From Registry
+Registry Domain ID: 2488382168_DOMAIN_COM-VRSN
+Registry Expiry Date: 2026-02-04T19:06:42Z
+Registry Registrant ID: Not Available From Registry
+Registry Tech ID: Not Available From Registry
+Tech City: Denver
+Tech Country: US
+Tech Email: 6c019f7aba0353e7s@NameBrightPrivacy.com
+Tech Organization: NameBrightPrivacy.com
+Tech Postal Code: 80205
+Tech State/Province: CO
+Updated Date: 2022-02-10T04:30:18.278Z
+Updated Date: 2024-12-16T04:07:21Z",[],"[{'type': 'CNAME', 'ttl': 300, 'value': 'cdl-prd-http-a5ed094605213071.elb.us-east-1.amazonaws.com'}, {'type': 'A', 'ttl': 9014, 'value': '142.93.145.212'}, {'type': 'CNAME', 'ttl': 9014, 'value': 'comingsoon.namebright.com'}]",1758098240,sha256RSA,252e7ff777d3fd9a0525ef7d111d640916ace50f58877b887c105acbf3ec518bab4a12662a40ea52b269fa266f5c6df70e071fc31b20f7f43e067e934608a8a82b8a4266ff8506069bae510771cd113e311cebccc3d9e39e20e5a2efde9904e91464483d094aa48176e0ac832ccd58e7ed7bed7b6da474c8f8b06320ddd6ee589ad6fc3de3c51a1d5f4e92504c8e7c285a5bb334edbd81ec1623d029661e97fd81358685311489078372b36cbd78d60a9bf3664ea77416bfa06c6d53f8b1556b8c27e2e9223d8531749790b7f52a9f04be0b911c9b63f5b7695b101eb8299edfad11f019f5202d654a8f17aa16a14ce4c14a9aeccce4e952f15e0e487b1033e5,"['digitalSignature', 'keyEncipherment']","['serverAuth', 'clientAuth']",False,7d727ea11371ef8b63c2517b1fcc024af3e1d157,e7ab9f0f2c33a053d35e4f78c8b2840e3bd69233,http://r13.i.lencr.org/,"['southbankmosaics.com', 'www.southbankmosaics.com']",['2.23.140.1.2.1'],['http://r13.c.lencr.org/88.crl'],0481f300f1007600a442c506496061548f0fd4ea9cfb7a2d26454d87a97f2fdf,2025-12-15 18:50:44,2025-09-16 18:50:45,1315,V3,RSA,dadce2ecee51d1ab8d2ccf31a74dda963a6b8a51dc51ae1f1325f6e1014747e0d818b0b763a348d6712f1f3fe479a2a888607ea652ed258366260ec0dfbb6ab3ce7ca2709eabc3212da5e22620861b8b09f63fb3e8e997589c675d573e4a9faeff3534fd8152dfc0e914f3136475a93fe8ba64f55d50b9a3836d74d39c414756cc34e97e841862d0be1851289f687158f8c7d1be7a6ab073a1395f6bb9fa05fce7c269365d28768509240515b647a35d2b301c644982afed687004f2e7a44474f6479e1248705810150f0eab512dc790866928e81b123b1ac4a6cec6cef626643e7fffaefb7eaf9cfe63c14e90c146546550f02456ee5d9eb9f3cfc71cf1584b,10001,2048.0,6917235b099dc7e749d7547f2d65bb7c4650acda02c5ebd7ff326931a662eadd,fe1fde9a19c4c414bfba9c7c8ff392210ad6ae7b,606ac3b6298fc7b796eae3958dc022152d7,US,Let's Encrypt,R13,southbankmosaics.com,0,0,34,61,0,1758098255,1758098256,DropCatch.com 1273 LLC,0,1770232002.0,com,1758098255,2ad2ad16d2ad2ad00042d42d000000df133019600a83abfb096ff3e86cd79d,,,,,
+https://www.uni-mainz.de,OK,0,0,30,68,0,"Changed: 2007-08-13T15:35:12+02:00
+Domain: uni-mainz.de
+Nserver: ns-extern.zdv.uni-mainz.de 134.93.144.7
+Nserver: xlink1.xlink.net
+Status: connect",[],"[{'type': 'A', 'ttl': 21600, 'value': '134.93.178.47'}, {'type': 'CNAME', 'ttl': 18433, 'value': 'cms.zdv.uni-mainz.de'}, {'type': 'AAAA', 'ttl': 17105, 'value': '2001:4c80:40:63c:4:86ff:fe5d:be2f'}, {'type': 'CNAME', 'ttl': 21600, 'value': 'cms.zdv.uni-mainz.de'}]",1758583081,sha256RSA,71478c71687a041dd9d16e8b8df0c0b904b4d3a196681e11f3057a5627583ba41e5b9867110a8a74a6fcea17a12bd350dab448e359673c1ac61e05e3aecb919985ce891ecd4d1ef9ff1677dc7ebf0d47735cd7e18f2a39996ae7dfecf54af15ea5c446171ec37163b2cee643a51eb1ae507da32e12dac0faee05c21acb79f56ca7f47c4f6056b1574886f2d7a15a9d71ad947fbc86785fee269f28628207a71d68cc9a5175d717eeb34451b70fbe040febac1f3fed2302e95d62ce79685d5546472da6cfd9fa1cd4b7745f10d9d9efa4714f2dc06f11f6980324ccfedec8754853ab9e6a7fbcc2567d38f0693025f80d50d8a44defe8478d03bcd4fa2cca363d,"['digitalSignature', 'keyEncipherment']","['serverAuth', 'clientAuth']",False,62cac3f1321f7f9fc1422adddbb08b328697d262,c5cf46a4eaf4c3c07a6c95c42db05e922f26e3b9,http://r11.i.lencr.org/,['www.uni-mainz.de'],['2.23.140.1.2.1'],['http://r11.c.lencr.org/21.crl'],0481f100ef007500ccfb0f6a85710965fe959b53cee9b27c22e9855c0d978db6,2025-11-04 01:44:12,2025-08-06 01:44:13,1279,V3,RSA,bfc65700743159e18102190ce2ceaf9e7b10c647899d0701354a8a53aa84408600fef2af542a83e8c062dc919d9f887f9b0ee249747a30445dcdcc3f95fa2a72e0baff9ccd81697640dcfef199e6fa236ee396011b083784c4ac67f5a8ce7ee9f353927312dc4bb38964d0015e4a842c02cbb760694ba85d196d6683f416a387b7d9114223809445f3a5825d95f8d60bbf46793385d400fd7d394df581a4fc41a91f96b28576637471de2a152b26f856ea1d2a7d43087a93c15251c8d43092aa534ac3c261398b6ce5931d0dfda98563a0b69afe2efedccc5ef5d8a2cbc112a12c5395c8573efdeedc6228cdeb33eb0b2b3754ead165980e08fe335d40f282f7,10001,2048.0,26a08b98d21e46be44b38329272f60c1121f49456884689217958cbbc26d146e,56870d820f19ea9c5a938f73fab9d81a68295920,6b0e618f3d17d0fdc09e0aad086ce884594,US,Let's Encrypt,R11,www.uni-mainz.de,0,0,32,63,0,1758583386,1758583391,,0,,de,1758583386,15d3fd16d29d29d00042d43d000000dbc8859ec5c93c3d80eba6c8e9820a03,953509.0,1743518307.0,,,
+https://www.voicefmradio.co.uk,OK,0,0,31,67,0,"Expiry date: 20-Apr-2027
+Last updated: 13-Feb-2025
+Registered on: 20-Apr-2010
+ns1.livedns.co.uk 217.160.81.244 2001:8d8:fe:53:fa::1
+ns2.livedns.co.uk 217.160.82.244 2001:8d8:fe:53:fa::2
+ns3.livedns.co.uk 185.132.35.244 2607:f1c0:fe:53:185:132:35:244",[],"[{'type': 'CNAME', 'ttl': 1840, 'value': '1219-62bb2dacc0085.radiocms.com'}, {'type': 'A', 'ttl': 60, 'value': '18.154.185.128'}, {'type': 'A', 'ttl': 60, 'value': '18.154.185.5'}, {'type': 'A', 'ttl': 60, 'value': '18.154.185.99'}, {'type': 'CNAME', 'ttl': 1004, 'value': '1219-62bb2dacc0085.radiocms.com'}, {'type': 'A', 'ttl': 60, 'value': '18.154.185.54'}]",1758098274,sha256RSA,290f015fd3c4b7096f0352efef9430b438882eeaa11993897a3baa47f9014c2b0cb63782fafad4b597c7dd9df7df0eda0773c26443ddc03a0730f87e45dd5ead478ce5022ba8ee66378930a345a87e3a7d3ce71b35f37ce801e4c099bf4eb475dcae5b7eb9f5d9029ec8570b169b0523d7438b8dd8dc6299f5686a8f3c5ee90befb8b4e0922c56ad1837104b19b5c96ea437d6f4da40b02179b470b9c975e31ba6b6bd3b60fb6ac0b0cfe934e20d5197e49ffa52e012c9e300e980be2793022d044d001a000df9289b6e427ab4cbecb571932e51bb49d421e39786f5c502a97a1a1c3590dd8c8c8227f5eff931acda3bdfb3b04a4b6e28e6b091b7953e457ecb,"['digitalSignature', 'keyEncipherment']",['serverAuth'],False,c9f1994292dd4861b72da1b0f5e5b3922f364c66,c03152cd5a50c3827c7471cecbe99cf97aeb82e2,http://crt.r2m02.amazontrust.com/r2m02.cer,"['*.voicefmradio.co.uk', '1219-62bb2dacc0085.radiocms.com']",['2.23.140.1.2.1'],['http://crl.r2m02.amazontrust.com/r2m02.crl'],048201690167007600d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0,2026-09-22 23:59:59,2025-08-24 00:00:00,1518,V3,RSA,de67b459e7528c02e11b87fdc880d4c707c2b9122afb6e0ca1914dc49bf8eca87c588e00cc6d144564a77a2caa7b7f5fdf1c4779e3acdcb4c14c99b5be64a6faddbe222a551bc70d6a605bf758456cc1c079dffad0d59853a6dfd71287fabc303ec645e5e349bda8e8137977bff16637ab37bdafc54f15a99681512e5f913059a1b15f53d312db1efc9b8e25a8c1373acde001011a41b2cea8ccf71e90886bb91c0abe2eed00c3b41f248aaa73dfc076f6a112c968389e625dc3dd422426d49b54d8aff2ceadf1e82bab9c42553c0e127b07db5dca41fad2e3b19f3f41b55754110a17a8967ad68d9fa6e97220bdcdcbd6010501da2b7ae29fb72ad2390d0abf,10001,2048.0,a26e4e41d90bd1f915a02288ef7c16796d9b6c246a6d2d999cccea6215306b60,f9ebaa8f17b6148c45b40d429f7d86122a4f06cf,3c36adfc17dcd7d43f77e4e437692ac,US,Amazon,Amazon RSA 2048 M02,*.voicefmradio.co.uk,0,0,33,62,0,1758098290,1758098291,,0,,co.uk,1758098290,29d29d00029d29d00041d41d00041db78309d03c04b7072bacbf1ce396279b,,,http://ocsp.r2m02.amazontrust.com,,
+https://www.sfnmjournal.com,OK,1,0,31,66,0,"Admin City: Milton Keynes
+Admin Country: UK
+Admin Email: d52ad5e18ac11e26s@safenames.net
+Admin Organisation: Safenames Ltd
+Admin Postal Code: MK14 6LS
+Admin State/Province: Bucks
+Creation Date: 2006-10-11T08:30:08Z
+DNSSEC: unsigned
+Domain Name: SFNMJOURNAL.COM
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+Name Server: NS1.REEDELSEVIER.COM
+Name Server: NS2.REEDELSEVIER.COM
+Name Server: NS3.REEDELSEVIER.COM
+Name Server: ns1.reedelsevier.com
+Name Server: ns2.reedelsevier.com
+Name Server: ns3.reedelsevier.com
+Registrant City: 26e106227fad0d6a
+Registrant Country: UK
+Registrant Email: 5295374d8ff24693s@idp.email
+Registrant Fax: 26e106227fad0d6a
+Registrant Name: 26e106227fad0d6a
+Registrant Organisation: e3cf40605b5ff6a1
+Registrant Phone: 26e106227fad0d6a
+Registrant Postal Code: 26e106227fad0d6a
+Registrant State/Province: 26e106227fad0d6a
+Registrant Street: 26e106227fad0d6a
+Registrar Abuse Contact Email: abuse@safenames.net
+Registrar Abuse Contact Phone: +44.1908200022
+Registrar IANA ID: 447
+Registrar Registration Expiration Date: 2025-10-11T08:30:08Z
+Registrar URL: http://www.safenames.net
+Registrar WHOIS Server: whois.safenames.net
+Registrar: SafeNames Ltd.
+Registrar: Safenames Ltd
+Registry Admin ID: Not Available From Registry
+Registry Domain ID: 628671159_DOMAIN_COM-VRSN
+Registry Expiry Date: 2025-10-11T08:30:08Z
+Registry Registrant ID: Not Available From Registry
+Registry Tech ID: Not Available From Registry
+Tech City: Milton Keynes
+Tech Country: UK
+Tech Email: d52ad5e18ac11e26s@safenames.net
+Tech Organisation: Safenames Ltd
+Tech Postal Code: MK14 6LS
+Tech State/Province: Bucks
+Updated Date: 2024-10-12T00:00:17Z
+Updated Date: 2024-10-12T01:00:18Z",[],"[{'type': 'A', 'ttl': 300, 'value': '162.159.140.114'}, {'type': 'CNAME', 'ttl': 3599, 'value': 'secure.jbs.elsevierhealth.com'}, {'type': 'A', 'ttl': 300, 'value': '172.66.0.112'}, {'type': 'CNAME', 'ttl': 3600, 'value': 'secure.jbs.elsevierhealth.com'}]",1758098283,1.2.840.10045.4.3.2,304402200f33761819032c604f7eca92cdee8d81787c154f530dccce8946259f8f7163b7022007ceab115d6dd9bd3d82b5bc3dea80a7b334b0642fd532b5ce2450f4ae11c086,['digitalSignature'],['serverAuth'],False,46f5d870aa21d7018a45615f1a82cb8a063c2f25,9077923567c4ffa8cca9e67bd980797bcc93f938,http://i.pki.goog/we1.crt,['www.sfnmjournal.com'],['2.23.140.1.2.1'],['http://c.pki.goog/we1/OuqGbJkzwhU.crl'],0481f400f2007700ccfb0f6a85710965fe959b53cee9b27c22e9855c0d978db6,2025-10-31 06:26:27,2025-08-02 05:26:37,938,V3,EC,,,,a778a8d6a1592a461ab737fa2ab47b6dd11cb8d10d32fbe1c04c261340b7cd5f,ca00b3705c4cca1b06a427ac0c5688ab7041ed63,77770890054ad73a11396245ba4a4bfe,US,Google Trust Services,WE1,www.sfnmjournal.com,1,0,33,61,0,1758098297,1758098299,SafeNames Ltd.,0,1760171408.0,com,1758098297,27d40d40d00040d00042d43d00041df04c41293ba84f6efe3a613b22f983e6,815233.0,1663606691.0,http://o.pki.goog/s/we1/d3c,secp256r1,3059301306072a8648ce3d020106082a8648ce3d03010703420004832147f06a596df3efaf6696a2c88003b2f4da114db47fb612fc9ca156dabddc131d5c030ce4a26e0677cc8117e86314a549d26d295e1095f249ab81807fabb2
+https://www.rewildingargentina.org,OK,0,0,31,67,0,"Admin City: REDACTED FOR PRIVACY
+Admin Country: REDACTED FOR PRIVACY
+Admin Organization: REDACTED FOR PRIVACY
+Admin Postal Code: REDACTED FOR PRIVACY
+Admin State/Province: REDACTED FOR PRIVACY
+Creation Date: 2019-07-19T12:36:37Z
+DNSSEC: unsigned
+Domain Name: rewildingargentina.org
+Domain Status: ok https://icann.org/epp#ok
+Name Server: ns1.lantech.com.ar
+Name Server: ns2.lantech.com.ar
+Registrant City: 1f8f4166599d23ee
+Registrant Country: AR
+Registrant Email: f651612a2f356ad3s@
+Registrant Fax Ext: 1f8f4166599d23ee
+Registrant Fax: 1f8f4166599d23ee
+Registrant Name: 1f8f4166599d23ee
+Registrant Organization: 35837d2711414416
+Registrant Phone Ext: 1f8f4166599d23ee
+Registrant Phone: 1f8f4166599d23ee
+Registrant Postal Code: 1f8f4166599d23ee
+Registrant State/Province: f6b7de62eec16ef5
+Registrant Street: 1f8f4166599d23ee
+Registrar Abuse Contact Email: abuse@donweb.com
+Registrar Abuse Contact Phone: +54.3414360555
+Registrar IANA ID: 1388
+Registrar URL: http://donweb.com
+Registrar WHOIS Server: http://whois.donweb.com
+Registrar: Dattatec Corp
+Registry Admin ID: REDACTED FOR PRIVACY
+Registry Domain ID: 9e49f55439ec45ecbc47dfbbdd93a4cd-LROR
+Registry Expiry Date: 2025-07-19T12:36:37Z
+Registry Registrant ID: REDACTED FOR PRIVACY
+Registry Tech ID: REDACTED FOR PRIVACY
+Tech City: REDACTED FOR PRIVACY
+Tech Country: REDACTED FOR PRIVACY
+Tech Organization: REDACTED FOR PRIVACY
+Tech Postal Code: REDACTED FOR PRIVACY
+Tech State/Province: REDACTED FOR PRIVACY
+Updated Date: 2024-07-11T19:43:58Z",[],"[{'type': 'A', 'ttl': 1850, 'value': '45.167.121.53'}]",1758098300,sha256RSA,43788ce4dc5a5baa0a5b59c6b549373931d674a54e5afed3c856fb5ebcfc3795b7ff7fe0faa52027e9e6a6d8210302f94b576a01be224ace2901275b640287fe4a632cb3d904891a5e871b612fce6cac7429338262a923b6c231b54c8673f8fe9aec698615b8f62ed3d192716bf9481ba2025be2cb5decf9001747def19888196d2b96b3a755525e691e57e4d04eff1809bf3ae85cf9ba8e83eae479836b207feffda8a8e58f9ac423e8d01c9c99a223a6e6734388daea85931688d38d6fc84c13ded7981a2fa1bccc61165bd88610540d9cc2f27ea44fc0e62ee1a887327de5949bb23215545bbfdbe7422ae1345bf38c4d7d7c98518cf1de53bb588414c11f,"['digitalSignature', 'keyEncipherment']","['serverAuth', 'clientAuth']",False,9fee1d5638432b72526eb8bf1a89ee20035ecd27,c5cf46a4eaf4c3c07a6c95c42db05e922f26e3b9,http://r11.i.lencr.org/,"['rewildingargentina.org', 'www.rewildingargentina.org']",['2.23.140.1.2.1'],['http://r11.c.lencr.org/36.crl'],0481f400f2007700ccfb0f6a85710965fe959b53cee9b27c22e9855c0d978db6,2025-11-06 18:44:48,2025-08-08 18:44:49,1322,V3,RSA,c7eb4296030c072d431959431b4943745b8873602d2d029b8d5d0c0a28886022a1027abaee2066d9cce8ab909652766f35e190d755880b5ed908fea1fbebd33af8fbb1abd4e101ad597f0024be3df615442c969b8877e8c4636b82cf3e609226b5ecafe3fb75796af2e9132038602d8bb346b6d4fdd88998ea43b0c7b3dccf87d7aa8e9da5de792cf0f8defe196a8a815707c4c5c83bbce9f4e7d53a8c1e26a9ca1fa0b2cfe5a528369a7cbbb5c9eca95281d8d3424ffed5ee03526780747146866a417d150c5d47b5e79576462f15f0d1f3de9cf5ee919906e68ec798d6f723e7345c5ac7f67bf6bdb437470e8585f2d4bfe398de2ec498a19d1c0acb11e485,10001,2048.0,0bb1c603df36b4622a9ec5954f0ce2a7b83aac1eb0af1b401d4fd03c55d8ca43,359181234085da2a9605ee8c07941c4626d1f4d9,610ebb4f413f0531cae6e3faad141a5ff23,US,Let's Encrypt,R11,rewildingargentina.org,0,0,33,62,0,1758098320,1758098320,Dattatec Corp,0,1752928597.0,org,1758098320,15d3fd16d29d29d00042d43d0000001ae0802418786940cae38f1d9eed5b9b,796541.0,1666371492.0,,,
+https://www.globalreporting.org,OK,0,0,30,68,0,"Admin City: REDACTED
+Admin Country: REDACTED
+Admin Organization: REDACTED
+Admin Postal Code: REDACTED
+Admin State/Province: REDACTED
+Creation Date: 1999-01-27T05:00:00Z
+DNSSEC: unsigned
+Domain Name: globalreporting.org
+Domain Status: ok https://icann.org/epp#ok
+Name Server: coco.ns.cloudflare.com
+Name Server: george.ns.cloudflare.com
+Registrant City: 3495bcf1839c6374
+Registrant Country: NL
+Registrant Email: fb6ff66ef97c0518s@
+Registrant Fax Ext: 3495bcf1839c6374
+Registrant Fax: 3495bcf1839c6374
+Registrant Name: 3495bcf1839c6374
+Registrant Organization: c0195156ced443a6
+Registrant Phone Ext: 3495bcf1839c6374
+Registrant Phone: 3495bcf1839c6374
+Registrant Postal Code: 3495bcf1839c6374
+Registrant State/Province: b13f94349ef97012
+Registrant Street: 3495bcf1839c6374
+Registrar Abuse Contact Email: abuse@registrar.eu
+Registrar Abuse Contact Phone: +31.104482297
+Registrar IANA ID: 1647
+Registrar URL: http://www.openprovider.com
+Registrar WHOIS Server: http://whois.registrar.eu
+Registrar: Hosting Concepts B.V. d/b/a Registrar.eu
+Registry Admin ID: REDACTED
+Registry Domain ID: REDACTED
+Registry Expiry Date: 2026-01-27T05:00:00Z
+Registry Registrant ID: REDACTED
+Registry Tech ID: REDACTED
+Tech City: REDACTED
+Tech Country: REDACTED
+Tech Organization: REDACTED
+Tech Postal Code: REDACTED
+Tech State/Province: REDACTED
+Updated Date: 2025-07-22T07:56:25Z",[],"[{'type': 'A', 'ttl': 300, 'value': '104.20.37.79'}, {'type': 'AAAA', 'ttl': 300, 'value': '2606:4700:10::ac42:9f71'}, {'type': 'AAAA', 'ttl': 300, 'value': '2606:4700:10::6814:254f'}, {'type': 'A', 'ttl': 300, 'value': '172.66.159.113'}]",1758625760,1.2.840.10045.4.3.2,3046022100a904a97cf0528d9d2778f8867f72a98c461954a68149af08fd6b341af2661ebd022100c8f1609f204db61aea951a6b7fef9e1649423dd5df0c2addc08432311fd21939,['digitalSignature'],['serverAuth'],False,fbdda9f69c31122879de43cfeda150152527fe88,9077923567c4ffa8cca9e67bd980797bcc93f938,http://i.pki.goog/we1.crt,"['globalreporting.org', '*.globalreporting.org']",['2.23.140.1.2.1'],['http://c.pki.goog/we1/AHWhP7ZvfeI.crl'],0481f100ef00760012f14e34bd53724c840619c38f3f7a13f8e7b56287889c6d,2025-11-26 23:20:49,2025-08-28 22:34:53,961,V3,EC,,,,7f8af9bea9385a1fe7da5da166b470bdc3ab04761a7f5f8b60a4f99815fd262c,426fcce8df39ab384a92e34f55b0c7e548ed27e8,b5520621ef1cb1d81109c60000d05109,US,Google Trust Services,WE1,globalreporting.org,0,0,32,63,0,1758626063,1758626068,Hosting Concepts B.V. d/b/a Registrar.eu,0,1769490000.0,org,1758626063,27d40d40d00040d1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c,655730.0,1758033504.0,http://o.pki.goog/s/we1/tVI,secp256r1,3059301306072a8648ce3d020106082a8648ce3d030107034200048771f290064512453826fffd65859ae529ab287ae723396c6cf30305c893b3b7f397781bda7b4a584af691b97d3f3ff4c6d212502aa103118a1607af580c255b
+https://www.saffronart.com,OK,0,0,30,68,0,"Admin City: Mumbai
+Admin Country: IN
+Admin Email: 702e51963f51ca98s@planetsaffron.com
+Admin Organization: Saffron Art Private Limited
+Admin Postal Code: 400025
+Admin State/Province: Maharashtra
+Creation Date: 1999-10-21T07:44:21Z
+DNSSEC: unsigned
+Domain Name: SAFFRONART.COM
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Name Server: DAMIEN.NS.CLOUDFLARE.COM
+Name Server: ROMINA.NS.CLOUDFLARE.COM
+Registrant City: 32de23f60a1ef50e
+Registrant Country: IN
+Registrant Email: 702e51963f51ca98s@planetsaffron.com
+Registrant Fax Ext: 3432650ec337c945
+Registrant Fax: 3432650ec337c945
+Registrant Name: dd83341bed17048d
+Registrant Organization: d843b14849ac689c
+Registrant Phone Ext: 3432650ec337c945
+Registrant Phone: 7d394771a33da53c
+Registrant Postal Code: deeab4063e8c3876
+Registrant State/Province: 79f3a59ab273632b
+Registrant Street: 6c7193ead0d294e3
+Registrar Abuse Contact Email: domain.operations@web.com
+Registrar Abuse Contact Phone: +1.8777228662
+Registrar IANA ID: 2
+Registrar Registration Expiration Date: 2026-10-21T07:44:21Z
+Registrar URL: http://networksolutions.com
+Registrar WHOIS Server: whois.networksolutions.com
+Registrar: Network Solutions, LLC
+Registry Domain ID: 11542699_DOMAIN_COM-VRSN
+Registry Expiry Date: 2026-10-21T07:44:21Z
+Tech City: Mumbai
+Tech Country: IN
+Tech Email: 702e51963f51ca98s@planetsaffron.com
+Tech Organization: Saffron Art Private Limited
+Tech Postal Code: 400025
+Tech State/Province: Maharashtra
+Updated Date: 2024-01-02T08:15:22Z
+Updated Date: 2024-01-02T08:15:28Z",[],"[{'type': 'AAAA', 'ttl': 300, 'value': '2606:4700:20::ac43:440a'}, {'type': 'A', 'ttl': 300, 'value': '172.67.68.10'}, {'type': 'AAAA', 'ttl': 300, 'value': '2606:4700:20::681a:907'}, {'type': 'A', 'ttl': 300, 'value': '104.26.8.7'}, {'type': 'AAAA', 'ttl': 300, 'value': '2606:4700:20::681a:807'}, {'type': 'A', 'ttl': 300, 'value': '104.26.9.7'}]",1758098317,1.2.840.10045.4.3.2,30450220227ea7ed0a4d71ad1e7aed3603579ef556a1f861213e98e1e70bb065eb512a77022100e83b0334be15c7b1a5f928ad8e8641ac856cfb14a38ccac42ba37e1ea50e4b01,['digitalSignature'],['serverAuth'],False,98b13cec46e2bae7fcaf6446559324e123b4b77a,9077923567c4ffa8cca9e67bd980797bcc93f938,http://i.pki.goog/we1.crt,"['saffronart.com', 'sourcing.saffronart.com', 'wsbo.saffronart.com', '*.saffronart.com', 'intel.saffronart.com']",['2.23.140.1.2.1'],['http://c.pki.goog/we1/tqAYaqExRbM.crl'],0481f100ef007600dddcca3495d7e11605e79532fac79ff83d1c50dfdb003a14,2025-11-28 09:47:43,2025-08-30 08:47:48,1012,V3,EC,,,,e50d669690fe5f5fd23b4d480be7015420f7b47f9d7388948352bbf069da9266,7255feac8d9302642dcda84493e679fe82eac407,6fd06bc8bea82dc90e1b112e91c2c112,US,Google Trust Services,WE1,saffronart.com,0,0,32,63,0,1758098332,1758098335,"Network Solutions, LLC",0,1792568661.0,com,1758098332,27d40d40d00040d00042d43d00041df04c41293ba84f6efe3a613b22f983e6,723329.0,1749566302.0,http://o.pki.goog/s/we1/b9A,secp256r1,3059301306072a8648ce3d020106082a8648ce3d030107034200049f7bd4bda7e6340c4633752f508f749080145191af2504d183feb48dc33c5116454f79ad84b163d98a39c751020d97444098adbb42f93c959844631ed97002a9
+https://www.nerdscandy.com,OK,0,0,30,68,0,"Creation Date: 2007-07-08T18:45:47Z
+DNSSEC: unsigned
+Domain Name: NERDSCANDY.COM
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Domain Status: clientRenewProhibited https://icann.org/epp#clientRenewProhibited
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+Name Server: NS10.DIGICERTDNS.COM
+Name Server: NS11.DIGICERTDNS.COM
+Name Server: NS12.DIGICERTDNS.COM
+Name Server: NS13.DIGICERTDNS.NET
+Name Server: NS14.DIGICERTDNS.NET
+Name Server: NS15.DIGICERTDNS.NET
+Registrar Abuse Contact Email: abuse@godaddy.com
+Registrar Abuse Contact Phone: 480-624-2505
+Registrar IANA ID: 146
+Registrar URL: http://www.godaddy.com
+Registrar WHOIS Server: whois.godaddy.com
+Registrar: GoDaddy.com, LLC
+Registry Domain ID: 1073636623_DOMAIN_COM-VRSN
+Registry Expiry Date: 2026-07-08T18:45:47Z
+Updated Date: 2025-07-09T11:45:45Z",[],"[{'type': 'A', 'ttl': 300, 'value': '104.18.12.41'}, {'type': 'AAAA', 'ttl': 300, 'value': '2606:4700::6812:c29'}, {'type': 'AAAA', 'ttl': 300, 'value': '2606:4700::6812:d29'}, {'type': 'A', 'ttl': 300, 'value': '104.18.13.41'}]",1758098327,1.2.840.10045.4.3.2,3045022100e0665dd6a934a34b0b93e801aff55f8e2c4b44ea3517ca42cccacdeb02b128c20220646d5b7abad65309f7ddef634ea5d890b4461aaf3c6a66152dcf08773ed8f137,['digitalSignature'],['serverAuth'],False,be99904546487ad124cf701501be141bf746b325,9077923567c4ffa8cca9e67bd980797bcc93f938,http://i.pki.goog/we1.crt,"['nerdscandy.com', '*.nerdscandy.com']",['2.23.140.1.2.1'],['http://c.pki.goog/we1/FARePxy0M2M.crl'],0481f100ef00750012f14e34bd53724c840619c38f3f7a13f8e7b56287889c6d,2025-12-09 15:52:27,2025-09-10 14:52:33,945,V3,EC,,,,f73ff8d98b3f342342086ade06d3f8301881be8970a1df0874820a2623a193d2,3463bf19c4283d20b5b064cb4152347d9e0be727,f446ea48a528bdfc0e66a9e12a865412,US,Google Trust Services,WE1,nerdscandy.com,0,0,32,63,0,1758098342,1758098343,"GoDaddy.com, LLC",0,1783536347.0,com,1758098342,27d40d40d00040d1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c,993202.0,1749134294.0,http://o.pki.goog/s/we1/9EY,secp256r1,3059301306072a8648ce3d020106082a8648ce3d030107034200049b1482c5a962b8b2e223a194e218569ec7c9390fce43d8bb53f6474a125975505a3e665752e1a8711191066d8325ad695441d78fe1d1bd186633fdc6fda3ba56
+https://www.hyderabadonline.in,OK,0,0,30,68,0,"Admin City: REDACTED FOR PRIVACY
+Admin Country: REDACTED FOR PRIVACY
+Admin Organization: REDACTED FOR PRIVACY
+Admin Postal Code: REDACTED FOR PRIVACY
+Admin State/Province: REDACTED FOR PRIVACY
+Billing City: REDACTED FOR PRIVACY
+Billing Country: REDACTED FOR PRIVACY
+Billing Organization: REDACTED FOR PRIVACY
+Billing Postal Code: REDACTED FOR PRIVACY
+Billing State/Province: REDACTED FOR PRIVACY
+Creation Date: 2005-02-16T07:17:39.941Z
+DNSSEC: unsigned
+Domain Name: hyderabadonline.in
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Name Server: chan.ns.cloudflare.com
+Name Server: yahir.ns.cloudflare.com
+Registrant City: 1f8f4166599d23ee
+Registrant Country: IN
+Registrant Email: f651612a2f356ad3s@
+Registrant Fax: 1f8f4166599d23ee
+Registrant Name: 1f8f4166599d23ee
+Registrant Organization: f410fc409108fccd
+Registrant Phone: 1f8f4166599d23ee
+Registrant Postal Code: 1f8f4166599d23ee
+Registrant State/Province: 693482d3384ace39
+Registrant Street: 1f8f4166599d23ee
+Registrar Abuse Contact Email: info@mitsu.in
+Registrar Abuse Contact Phone: +91.9322203242
+Registrar IANA ID: 800001
+Registrar URL: http://www.mitsu.in
+Registrar: #1 Indian Domains dba Mitsu.in
+Registry Admin ID: REDACTED FOR PRIVACY
+Registry Billing ID: REDACTED FOR PRIVACY
+Registry Domain ID: D528648-IN
+Registry Expiry Date: 2026-02-16T07:17:39.941Z
+Registry Registrant ID: REDACTED FOR PRIVACY
+Registry Tech ID: REDACTED FOR PRIVACY
+Tech City: REDACTED FOR PRIVACY
+Tech Country: REDACTED FOR PRIVACY
+Tech Organization: REDACTED FOR PRIVACY
+Tech Postal Code: REDACTED FOR PRIVACY
+Tech State/Province: REDACTED FOR PRIVACY
+Updated Date: 2025-01-31T14:27:07.528Z",[],"[{'type': 'AAAA', 'ttl': 300, 'value': '2606:4700:3030::6815:49b6'}, {'type': 'A', 'ttl': 300, 'value': '172.67.165.62'}, {'type': 'A', 'ttl': 300, 'value': '104.21.73.182'}, {'type': 'AAAA', 'ttl': 300, 'value': '2606:4700:3037::ac43:a53e'}]",1758098334,1.2.840.10045.4.3.2,304502207fbcdcbdbc06ccf0c45942b37a967aa17faa52c7f99a2834ef34eee35e864b0102210088f2de61c6549ec159ef1a3fd56dda26879c0c98e919cf35827551f752331c0b,['digitalSignature'],['serverAuth'],False,50c8df4171f866af10238bb3addbd1e2f53f6e26,9077923567c4ffa8cca9e67bd980797bcc93f938,http://i.pki.goog/we1.crt,"['hyderabadonline.in', '*.hyderabadonline.in']",['2.23.140.1.2.1'],['http://c.pki.goog/we1/ZIovFvGuJMU.crl'],0481f200f0007600dddcca3495d7e11605e79532fac79ff83d1c50dfdb003a14,2025-10-26 14:19:59,2025-07-28 13:21:36,958,V3,EC,,,,d9d0d44ab2513eac57fd3be906e457c02da1e6f5e07cdefd55bf6352c08ed318,e2208f5df134b4e3d864651d0e0d1335f176ac24,fca8e296423bb1d713aa351a9479725e,US,Google Trust Services,WE1,hyderabadonline.in,0,0,32,63,0,1758098354,1758098354,#1 Indian Domains dba Mitsu.in,0,1771226259.0,in,1758098354,27d40d40d00040d1dc42d43d00041d6183ff1bfae51ebd88d70384363d525c,,,http://o.pki.goog/s/we1/_Kg,secp256r1,3059301306072a8648ce3d020106082a8648ce3d030107034200040ce1cef10092029dfba0d4520e4767554775e2937c7a0712e479b030c202b9fee7f425c54865f35cb47451a2436cff16e3b2a71cb6ae45ff7d6884fb4a94b7db
+https://www.aap.org,OK,0,0,30,68,0,"Admin City: REDACTED
+Admin Country: REDACTED
+Admin Organization: REDACTED
+Admin Postal Code: REDACTED
+Admin State/Province: REDACTED
+Creation Date: 1995-01-30T05:00:00Z
+DNSSEC: unsigned
+Domain Name: aap.org
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Domain Status: clientRenewProhibited https://icann.org/epp#clientRenewProhibited
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+Name Server: ns1.p201.dns.oraclecloud.net
+Name Server: ns2.p201.dns.oraclecloud.net
+Name Server: ns3.p201.dns.oraclecloud.net
+Name Server: ns4.p201.dns.oraclecloud.net
+Registrant City: 3495bcf1839c6374
+Registrant Country: US
+Registrant Email: fb6ff66ef97c0518s@
+Registrant Fax Ext: 3495bcf1839c6374
+Registrant Fax: 3495bcf1839c6374
+Registrant Name: 3495bcf1839c6374
+Registrant Organization: b46a98a26fe2fd9f
+Registrant Phone Ext: 3495bcf1839c6374
+Registrant Phone: 3495bcf1839c6374
+Registrant Postal Code: 3495bcf1839c6374
+Registrant State/Province: 30bdd2917a604c83
+Registrant Street: 3495bcf1839c6374
+Registrar Abuse Contact Email: abuse@godaddy.com
+Registrar Abuse Contact Phone: +1.4806242505
+Registrar IANA ID: 146
+Registrar URL: http://www.whois.godaddy.com
+Registrar WHOIS Server: http://whois.godaddy.com
+Registrar: GoDaddy.com, LLC
+Registry Admin ID: REDACTED
+Registry Domain ID: REDACTED
+Registry Expiry Date: 2026-01-31T05:00:00Z
+Registry Registrant ID: REDACTED
+Registry Tech ID: REDACTED
+Tech City: REDACTED
+Tech Country: REDACTED
+Tech Organization: REDACTED
+Tech Postal Code: REDACTED
+Tech State/Province: REDACTED
+Updated Date: 2024-12-08T14:35:39Z",[],"[{'type': 'NS', 'ttl': 21600, 'value': 'ns1.p201.dns.oraclecloud.net'}, {'type': 'TXT', 'ttl': 3600, 'value': 'cisco-ci-domain-verification=2b9fe75478033f850993726fa434ddc82f0f6a6943154064bde11625ad858d4b'}, {'type': 'NS', 'ttl': 21600, 'value': 'ns3.p201.dns.oraclecloud.net'}, {'type': 'A', 'ttl': 737, 'value': '184.154.38.11'}, {'type': 'CAA', 'ttl': 3600, 'flag': 0, 'tag': 'issue', 'value': 'globalsign.com'}, {'type': 'CNAME', 'ttl': 2166, 'value': 'aap.org'}, {'type': 'SOA', 'ttl': 300, 'value': 'ns1.p201.dns.oraclecloud.net', 'rname': 'hostmaster.aap.org', 'serial': 347, 'refresh': 3600, 'retry': 600, 'expire': 604800, 'minimum': 1800}, {'type': 'CNAME', 'ttl': 737, 'value': 'aap.org'}, {'type': 'CAA', 'ttl': 3600, 'flag': 0, 'tag': 'issue', 'value': 'letsencrypt.org'}, {'type': 'MX', 'ttl': 3600, 'priority': 10, 'value': 'aap-org.mail.protection.outlook.com'}, {'type': 'TXT', 'ttl': 3600, 'value': 'logmein-verification-code=fe1ab6a2-527d-41c5-9efe-91b3ac05b7ac'}, {'type': 'CAA', 'ttl': 3600, 'flag': 0, 'tag': 'iodef', 'value': 'mailto:infosec@aap.org'}, {'type': 'CNAME', 'ttl': 734, 'value': 'aap.org'}, {'type': 'TXT', 'ttl': 3600, 'value': 'apple-domain-verification=Pr2oTWnmXsV7KuZb'}, {'type': 'TXT', 'ttl': 3600, 'value': 'v=spf1 include:_s00205576.autospf.email -all'}, {'type': 'TXT', 'ttl': 3600, 'value': 'uZtXx+aHLju05wkhYJolAMpy4EQ8TTAB30kuIXXDGuvxznW2Yl8op1X0+wezSl/higK82i0slg15V8DXJDLRMQ=='}, {'type': 'CNAME', 'ttl': 735, 'value': 'aap.org'}, {'type': 'TXT', 'ttl': 3600, 'value': 'MS=ms94795231'}, {'type': 'CNAME', 'ttl': 719, 'value': 'aap.org'}, {'type': 'CAA', 'ttl': 3600, 'flag': 0, 'tag': 'issue', 'value': 'godaddy.com'}, {'type': 'CAA', 'ttl': 3600, 'flag': 0, 'tag': 'issue', 'value': 'pki.goog;'}, {'type': 'NS', 'ttl': 21600, 'value': 'ns4.p201.dns.oraclecloud.net'}, {'type': 'TXT', 'ttl': 3600, 'value': 'google-site-verification=2w1SOGPr7TGczYyisCoa9u7PKTzIp7Yw9sYPwblC5qc'}, {'type': 'NS', 'ttl': 21600, 'value': 'ns2.p201.dns.oraclecloud.net'}]",1758625766,sha256RSA,3dc01f9552e39da4d9d9ebf5f61345cb7f38805d4cb599f14c1155a9cf9aef899a72f5459c34c14bbe012c826822abb6206a02f71c68f5bfc43421baa00277287e865397ee96a4cab102532f312db3a598291506f4398bf5d76486f16040b8de98449ab654e629042f37128a968b167710b4a86f7d81713356ac9051f6db891d4613b6ad113fbd009698b3392a2867f76e557bd0b287808608ec0e3cffa6bb03ddc6495bc33fe3d11c6fa3c023abb8b3c8120e5d993d0159117a037107a11d32b6f9b07511e9269fef790887572fc3e6def4b794e7461cb98b516022ac82759e142bd0283a8f8055acf2dbfd257618330a536a66a791b12d3dcf3a18fbd46ac8,"['digitalSignature', 'keyEncipherment']","['serverAuth', 'clientAuth']",False,10a362be3111b57555da6c93ad015a472de6f765,bd05b7f38a933c73cb79fa0f8512a17796189174,http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt,"['*.aap.org', 'aap.org']","['2.23.140.1.2.1', '1.3.6.1.4.1.4146.10.1.3']",['http://crl.globalsign.com/gsgccr6alphasslca2023.crl'],048201690167007500af181a28d68ca3e0a98a4c9c67ab09f8bbbc22baaebcb1,2025-11-10 19:15:51,2024-10-09 19:15:52,1617,V3,RSA,b8704f619ddc8e4e8d8628ba3bf8c1d52e75b4adb0381eab1e9ee04e129222f88506d279bde5f1ab38d4b7e57bc1f77350f910ce6cd956fda017a4cd3c2348466bdc90479da2dd3f3e2df422b316aaea0c0facbef08d010acce04b978f0e396469f950b7a3456dc28ee52b8e0cbec15c495be6402a8fb3ae068458724972f00237003ae26230769dd8b6cd04f236c5b99a3e10f57738a30d3a9557f99b0957b390fc1b5296171be991894799460bc12635dfdca2088a524f61e93d46a59081f139865dd58115c8096b7af848dfb4b19415f237c1a689294c6f33b41b8a8cb7040014b90f286e69125dc6441dbe3525e76642d94bc9754266b691bc5b4acc03d9,10001,2048.0,7dbfc2c5e908772d504dadc7e73e8a3e441a9117f7a6eaeae6be00ff0863d5b5,adcef6746c34285a95c3883bc076fe4c5ae60005,4811b5439c985e728d04822d,BE,GlobalSign nv-sa,GlobalSign GCC R6 AlphaSSL CA 2023,*.aap.org,0,0,32,63,0,1758626099,1758626103,"GoDaddy.com, LLC",0,1769835600.0,org,1749412260,2ad2ad0000000000000000000000003e8a5b6c69e5472c4f8897a7e36396bf,269390.0,1758551897.0,http://ocsp.globalsign.com/gsgccr6alphasslca2023,,
