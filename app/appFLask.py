@@ -6,6 +6,7 @@ import random
 from flask_cors import CORS
 from datetime import datetime
 from limpieza_datos import *
+from graficos import graf_ddos
 
 
 app = Flask(__name__)
@@ -107,6 +108,10 @@ def download_pdf():
         download_name=f"cuento_{theme.replace(' ', '_')}.pdf",
         mimetype="application/pdf"
     )
+
+@app.route("/grafico_ddos", methods= ["POST"])
+def grafico_ddos():
+    return jsonify(graf_ddos())
 
 
 if __name__ == "__main__":

@@ -1,18 +1,11 @@
-from flask import Flask, jsonify
 import plotly.express as px
 import plotly.io as pio
-from flask_cors import CORS
 import psycopg2
 import pandas as pd
 import seaborn as sns
 import json
 
-app = Flask(__name__)
-app.config["DEBUG"] = True
-CORS(app)
-
-@app.route("/grafica")
-def grafica():
+def graf_ddos():
     # Conexión a la base de datos
     conn = psycopg2.connect(
         dbname="desafiogrupo1",
@@ -50,7 +43,7 @@ def grafica():
 
     # Convertir a JSON (dict)
     fig_dict = json.loads(pio.to_json(fig))
-    return jsonify(fig_dict)
+    return fig_dict
 
 if __name__ == "__main__":
     app.run(debug=True)
