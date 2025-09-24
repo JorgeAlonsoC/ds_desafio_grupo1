@@ -7,7 +7,12 @@ def clean_data_ddos(archive_dic):
     df = pd.DataFrame([archive_dic])
     df.columns = df.columns.str.strip()
 
-    df = df[['Destination Port', 'Flow Duration', 'Total Fwd Packets','Total Backward Packets','Flow Bytes/s','Flow Packets/s','Fwd Packet Length Mean','Fwd Packet Length Std','Min Packet Length','Max Packet Length','Flow IAT Mean','Flow IAT Std','SYN Flag Count','ACK Flag Count','Down/Up Ratio','Active Mean','Idle Mean','Label']]
+    df = df[['Destination Port', 'Flow Duration', 'Total Fwd Packets','Total Backward Packets',
+             'Flow Bytes/s','Flow Packets/s','Fwd Packet Length Mean','Fwd Packet Length Std',
+             'Min Packet Length','Max Packet Length','Flow IAT Mean','Flow IAT Std','SYN Flag Count',
+             'ACK Flag Count','Down/Up Ratio','Active Mean','Idle Mean','Label']]
+
+    # Mapear a score y severidad
     mapping = {
         "Web Attack ´?¢ Sql Injection": "Critical",
         "Web Attack ´?¢ XSS": "High",
@@ -22,35 +27,37 @@ def clean_data_ddos(archive_dic):
         "Web Attack ´?¢ Brute Force": 1,
         "BENIGN": 0
     }
-    df["Severity"] = df["Label"].map(mapping2)
+    df["Severity"] = df["Label"].map(mapping2).fillna(1).astype(int)
 
+    # Corregido: Tipo en base a Score coherente
     mapping3 = {
-        "Web Attack ´?¢ Sql Injection": "Incidencia",
-        "Moderate": "Alerta",
+        "Critical": "Incidencia",
         "High": "Alerta",
+        "Moderate": "Alerta",
         "Benign": "Info"
     }
+    df["Tipo"] = df["Score"].map(mapping3).fillna("Info")
 
-    df["Tipo"] = df["Score"].map(mapping3)
-    
+    # Renombrar label → indicadores y limpiar texto
     df = df.rename(columns={"Label": "Indicadores"})
-
     df["Indicadores"] = df["Indicadores"].str.replace("Web Attack ´?¢ ", "", regex=False)
-    
+
+    # Fecha y hora actuales
     now = datetime.now()
     df["Date"] = now.date()
     df["Time"] = now.strftime("%H:%M:%S")
-        
-    conn = psycopg2.connect(
-    dbname="desafiogrupo1",
-    user="desafiogrupo1_user",
-    password="g7jS0htW8QqiGPRymmJw0IJgb04QO3Jy",
-    host="dpg-d36i177fte5s73bgaisg-a.oregon-postgres.render.com",
-    port="5432"
-    )
 
-    
+    # Conexión a PostgreSQL
+    conn = psycopg2.connect(
+        dbname="desafiogrupo1",
+        user="desafiogrupo1_user",
+        password="g7jS0htW8QqiGPRymmJw0IJgb04QO3Jy",
+        host="dpg-d36i177fte5s73bgaisg-a.oregon-postgres.render.com",
+        port="5432"
+    )
     cur = conn.cursor()
+
+    # Insertar registros
     records = [
         {
             "company_id": 1,
@@ -63,7 +70,6 @@ def clean_data_ddos(archive_dic):
         }
         for _, row in df.iterrows()
     ]
-    
 
     cur.executemany("""
         INSERT INTO logs (company_id, type, indicators, severity, date, time, actions_taken)
@@ -73,6 +79,7 @@ def clean_data_ddos(archive_dic):
     conn.commit()
     cur.close()
     conn.close()
+
 
 
 
@@ -208,9 +215,5 @@ def clean_data_login(archive_dic):
     conn.commit()
     cur.close()
     conn.close()
-    
-
-
-
 
 

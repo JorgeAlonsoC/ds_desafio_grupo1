@@ -22,7 +22,7 @@ def malware_type_detection(dict):
 
 def procesamiento_datos():
     login_list =[]
-    df_int_login = pd.read_csv("https://desafiogrupo1.s3.us-east-1.amazonaws.com/df1_alimentacion_login.csv")
+    df_int_login = pd.read_csv("https://desafiogrupo1.s3.us-east-1.amazonaws.com/df1_alimentacion.csv")
     df_ddos = pd.read_csv("https://desafiogrupo1.s3.us-east-1.amazonaws.com/df_alimentacion_DDOS.csv")
     df_phishing = pd.read_csv("https://desafiogrupo1.s3.us-east-1.amazonaws.com/df_alimentacion_phising.csv")
 
@@ -45,6 +45,68 @@ def procesamiento_datos():
 @app.route("/", methods= ["GET"])
 def main():
     return jsonify(procesamiento_datos())
+
+@app.route("/download_pdf", methods= ["POST"])
+def download_pdf():
+    import requests
+    from flask import send_file, request
+    import io
+
+
+    from flask import Flask, request, jsonify, send_file, send_from_directory
+    from flask_cors import CORS
+    from datetime import datetime
+    import os
+    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+    from reportlab.lib.pagesizes import A4
+    from reportlab.lib.enums import TA_JUSTIFY
+    data = request.get_json()
+    theme = data.get("theme", "Sin tema")
+    character = data.get("character", "Sin personaje")
+    tone = data.get("tone", "Normal")
+    story = data.get("story", "")
+
+    buffer = io.BytesIO()
+    
+    # Documento A4 con márgenes
+    doc = SimpleDocTemplate(
+        buffer,
+        pagesize=A4,
+        rightMargin=40,
+        leftMargin=40,
+        topMargin=40,
+        bottomMargin=40
+    )
+
+    styles = getSampleStyleSheet()
+    justify_style = ParagraphStyle(
+        'Justify',
+        parent=styles['Normal'],
+        alignment=TA_JUSTIFY,
+        leading=15 
+    )
+
+    story_elements = []
+    story_elements.append(Paragraph(f"<b>Tema:</b> {theme}", styles["Heading3"]))
+    story_elements.append(Paragraph(f"<b>Personaje:</b> {character}", styles["Normal"]))
+    story_elements.append(Paragraph(f"<b>Tono:</b> {tone}", styles["Normal"]))
+    story_elements.append(Spacer(1, 12))
+
+    # Convertir saltos de línea en <br/> para que respeten el formato
+    story_html = story.replace("\n", "<br/>")
+    story_elements.append(Paragraph("<b>Cuento:</b>", styles["Heading3"]))
+    story_elements.append(Paragraph(story_html, justify_style))
+
+    doc.build(story_elements)
+    buffer.seek(0)
+
+    return send_file(
+        buffer,
+        as_attachment=True,
+        download_name=f"cuento_{theme.replace(' ', '_')}.pdf",
+        mimetype="application/pdf"
+    )
 
 
 if __name__ == "__main__":

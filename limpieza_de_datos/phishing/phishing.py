@@ -19,7 +19,7 @@ def limpieza_phishing(dict):
     df["severity"] = df["IsPhishing"]
     now = datetime.now()
     df['date'] = now.date()
-    df['time'] = now.strftime("H%:%M:%S")
+    df['time'] = now.strftime("%H:%M:%S")
     df_r = df[['HasPopup',
                'Nivel3_Alta',
                'Nivel2_Media',
