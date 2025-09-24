@@ -194,8 +194,8 @@ def clean_data_login(archive_dic):
     )
 
     # --- ASIGNAR log_id ---
-    df_front["log_id"] = ["Log" + str(uuid.uuid4().int) ]
-    df["log_id"] = df_front["log_id"]
+    df_front["id"] = [(uuid.uuid4().int) %1_000_000]
+    df["id"] = [(uuid.uuid4().int) %1_000_000]
 
         # --- Preparar tabla enriquecida ---
     df_id = df.copy()
