@@ -165,3 +165,4 @@ def clean_data(archive_dic):
     conn.commit()
     cur.close()
     conn.close()
+
