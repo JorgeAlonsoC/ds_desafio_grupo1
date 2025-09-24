@@ -1,3 +1,16 @@
+import pandas as pd
+import requests
+import time
+import os
+import psycopg2
+from dotenv import load_dotenv
+
+load_dotenv()
+API_KEY = os.getenv("ABUSEIPDB_API_KEY")
+CHECK_URL = "https://api.abuseipdb.com/api/v2/check"
+HEADERS = {"Accept": "application/json", "Key": API_KEY}
+
+
 def check_ip_info(ip, pause=1.0):
     try:
         params = {"ipAddress": ip, "maxAgeInDays": "90", "verbose": "true"}
