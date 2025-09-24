@@ -185,7 +185,7 @@ def clean_data(archive_dic):
 
     cur.executemany("""
         INSERT INTO ddos (
-            log_id, "Destination Port", "Flow Duration", "Total Fwd Packets", "Total Backward Packets",
+            "log_id", "Destination Port", "Flow Duration", "Total Fwd Packets", "Total Backward Packets",
             "Flow Bytes/s", "Flow Packets/s", "Fwd Packet Length Mean", "Fwd Packet Length Std",
             "Min Packet Length", "Max Packet Length", "Flow IAT Mean", "Flow IAT Std",
             "SYN Flag Count", "ACK Flag Count", "Down/Up Ratio", "Active Mean", "Idle Mean",
