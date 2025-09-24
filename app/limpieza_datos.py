@@ -321,7 +321,7 @@ def clean_data_login(archive_dic):
         row = df_id.iloc[0]
         record = {
             "log_id": row["log_id"],
-            "login_timestamp": row.get("Login Timestamp").isoformat() if pd.notna(row.get("Login Timestamp")) else None,
+            "login_timestamp": row.get("Login Timestamp")if pd.notna(row.get("Login Timestamp")) else None,
             "user_id": None if pd.isna(row.get("User ID")) else row.get("User ID"),
             "round_trip_time": None if pd.isna(row.get("Round-Trip Time [ms]")) else row.get("Round-Trip Time [ms]"),
             "ip_address": None if pd.isna(row.get("IP Address")) else row.get("IP Address"),
@@ -330,7 +330,7 @@ def clean_data_login(archive_dic):
             "user_agent": None if pd.isna(row.get("User Agent String")) else row.get("User Agent String"),
             "country_code": None if pd.isna(row.get("countryCode")) else row.get("countryCode"),
             "abuse_confidence_score": None if pd.isna(row.get("abuseConfidenceScore")) else row.get("abuseConfidenceScore"),
-            "last_reported_at": row.get("lastReportedAt").isoformat() if pd.notna(row.get("lastReportedAt")) else None,
+            "last_reported_at": row.get("lastReportedAt")if pd.notna(row.get("lastReportedAt")) else None,
             "usage_type": None if pd.isna(row.get("usageType")) else row.get("usageType"),
             "domain": None if pd.isna(row.get("domain")) else row.get("domain"),
             "total_reports": None if pd.isna(row.get("totalReports")) else row.get("totalReports"),
