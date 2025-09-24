@@ -118,7 +118,11 @@ def clean_data_ddos(archive_dic):
     now = datetime.now()
     df["Date"] = now.date()
     df["Time"] = now.strftime("%H:%M:%S")
-        
+
+
+    df["ddos_id"] = ["DDos" + str(uuid.uuid4().int) ]
+
+    
     conn = psycopg2.connect(
     dbname="desafiogrupo1",
     user="desafiogrupo1_user",
@@ -131,6 +135,7 @@ def clean_data_ddos(archive_dic):
     cur = conn.cursor()
     records = [
         {
+            "id" = row['ddos_id'],
             "company_id": 1,
             "type": row['Tipo'],
             "indicators": row['Indicadores'],
