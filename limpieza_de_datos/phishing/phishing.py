@@ -59,7 +59,6 @@ def limpieza_phishing(dict):
     cur.close()
     conn.close()
 
-
 def dibujar_grafica():
     conn = psycopg2.connect(
             dbname="desafiogrupo1",
