@@ -26,6 +26,8 @@ def limpieza_phishing(dict):
     now = datetime.now()
     df['date'] = now.date()
     df['time'] = now.strftime("%H:%M:%S")
+
+    insertar_phishing_enriquecido(df['URL'].iloc[0])
  
     # Lo de merche -----------------------------------------------------
     # df_front["log_id"] = ["Log" + uuid.uuid4().hex for _ in range(len(df_front))]
