@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import psycopg2
+import psycopg2.extras
 from datetime import datetime
 import matplotlib.pyplot as plt
 import requests
@@ -10,6 +11,32 @@ from collections import OrderedDict
 from dotenv import load_dotenv
 import os
 import uuid
+
+load_dotenv()
+VT_BASE = "https://www.virustotal.com/api/v3"
+API_KEY = os.environ.get("VT_API_KEY")
+if not API_KEY:
+    raise RuntimeError("VT_API_KEY no definida. Exporta tu API key en la variable de entorno VT_API_KEY.")
+
+HEADERS = {"accept": "application/json", "x-apikey": API_KEY}
+
+URL_KEYS_ORDER = ["url", "last_analysis_stats", "status", "network_location"]
+NETWORK_LOCATION_KEYS_ORDER = [
+    "whois", "tags", "last_dns_records", "popularity_ranks", "last_analysis_date",
+    "last_https_certificate", "last_analysis_stats", "last_dns_records_date",
+    "last_modification_date", "registrar", "reputation", "expiration_date",
+    "tld", "last_https_certificate_date", "jarm", "categories"
+]
+
+NETLOC_FIELDS_DEFAULTS = {
+    "whois": "",
+    "tags": [],
+    "last_dns_records": [],
+    "popularity_ranks": {},
+    "last_https_certificate": {},
+    "last_analysis_stats": {},
+    "categories": {}
+}
 
 def limpieza_phishing(dict):
     df = pd.DataFrame([dict])
@@ -62,7 +89,7 @@ def limpieza_phishing(dict):
     cur.close()
     conn.close()
 
-    insertar_phishing_enriquecido(df['URL'].iloc[0])
+    insertar_phishing_enriquecido(df['URL'].iloc[0], logs_id)
 
 def dibujar_grafica():
     conn = psycopg2.connect(
@@ -101,32 +128,6 @@ def dibujar_grafica():
 
     cur.close()
     conn.close()
-
-load_dotenv()
-VT_BASE = "https://www.virustotal.com/api/v3"
-API_KEY = os.environ.get("VT_API_KEY")
-if not API_KEY:
-    raise RuntimeError("VT_API_KEY no definida. Exporta tu API key en la variable de entorno VT_API_KEY.")
-
-HEADERS = {"accept": "application/json", "x-apikey": API_KEY}
-
-URL_KEYS_ORDER = ["url", "last_analysis_stats", "status", "network_location"]
-NETWORK_LOCATION_KEYS_ORDER = [
-    "whois", "tags", "last_dns_records", "popularity_ranks", "last_analysis_date",
-    "last_https_certificate", "last_analysis_stats", "last_dns_records_date",
-    "last_modification_date", "registrar", "reputation", "expiration_date",
-    "tld", "last_https_certificate_date", "jarm", "categories"
-]
-
-NETLOC_FIELDS_DEFAULTS = {
-    "whois": "",
-    "tags": [],
-    "last_dns_records": [],
-    "popularity_ranks": {},
-    "last_https_certificate": {},
-    "last_analysis_stats": {},
-    "categories": {}
-}
 # -----------------------------
 # Funciones auxiliares
 def _remove_key_recursive(obj, key_to_remove="last_analysis_results"):
@@ -138,14 +139,12 @@ def _remove_key_recursive(obj, key_to_remove="last_analysis_results"):
     elif isinstance(obj, list):
         for item in obj:
             _remove_key_recursive(item, key_to_remove)
-
 def _ordered_network_location(netloc_attrs):
     netloc_out = OrderedDict()
     for k in NETWORK_LOCATION_KEYS_ORDER:
         netloc_out[k] = netloc_attrs.get(k, NETLOC_FIELDS_DEFAULTS.get(k))
     _remove_key_recursive(netloc_out, "last_analysis_results")
     return netloc_out
-
 def _ordered_url_object(url_result):
     od = OrderedDict()
     for k in URL_KEYS_ORDER:
@@ -154,7 +153,6 @@ def _ordered_url_object(url_result):
         else:
             od[k] = url_result.get(k)
     return od
-
 def safe_get(d, path, default=None):
     keys = path.split(".")
     for key in keys:
@@ -212,7 +210,6 @@ def get_url_info(url, retries=2, timeout=10, pause_between_calls=1.0):
         result["_error_network_location"] = str(e)
 
     return _ordered_url_object(result)
-
 def enriquecimiento_phishing(url):
     resultados = []
 
@@ -254,10 +251,9 @@ def tablas_enriquecimiento_phishing(url):
         filas.append(fila)
     return pd.DataFrame(filas)
 # df_enriquecimiento = tablas_enriquecimiento_phishing(df['URL'].iloc[0]) *******    df['URL'].iloc[0]         O        la url           ********
-
-def insertar_phishing_enriquecido(url):
+def insertar_phishing_enriquecido(url, logs_id):
     df = tablas_enriquecimiento_phishing(url)
-    df['logs_id'] = (uuid.uuid4().int) %1_000_000
+    df['logs_id'] = logs_id
 
     conn = psycopg2.connect(
         dbname="desafiogrupo1",
@@ -298,6 +294,18 @@ def insertar_phishing_enriquecido(url):
         }
         for _, row in df.iterrows()
     ]
+
+    for rec in records:
+        for k, v in list(rec.items()):
+            if isinstance(v, (dict, list)):
+                rec[k] = psycopg2.extras.Json(v)
+            # opcional mínimo y seguro: convertir pd.Timestamp a datetime
+            # (si no usas pandas.Timestamp en esos campos, no cambia nada)
+            elif hasattr(v, "to_pydatetime"):
+                try:
+                    rec[k] = v.to_pydatetime()
+                except Exception:
+                    pass
 
     cur.executemany("""
         INSERT INTO phishing (logs_id, url, status, malicious, suspicious, undetected, harmless, timeout, whois, tags, dns_records,
