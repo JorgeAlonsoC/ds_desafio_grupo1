@@ -150,7 +150,7 @@ def clean_data(archive_dic):
     
     records_2 = [
             {
-            'log_id': 1,
+            'log_id':  row['ddos_id'],
             'Destination Port': row['Destination Port'],
             'Flow Duration': row['Flow Duration'], 
             'Total Fwd Packets': row['Total Fwd Packets'],
@@ -206,3 +206,4 @@ def clean_data(archive_dic):
     conn.commit()
     cur.close()
     conn.close()
+
