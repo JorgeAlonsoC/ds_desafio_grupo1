@@ -2,6 +2,16 @@ import pandas as pd
 from datetime import datetime
 import psycopg2
 import numpy as np
+import requests
+import time
+import os
+from dotenv import load_dotenv
+import uuid
+
+load_dotenv()
+API_KEY = os.getenv("ABUSEIPDB_API_KEY")
+CHECK_URL = "https://api.abuseipdb.com/api/v2/check"
+HEADERS = {"Accept": "application/json", "Key": API_KEY}
 
 def clean_data_ddos(archive_dic):
     df = pd.DataFrame([archive_dic])
@@ -41,8 +51,7 @@ def clean_data_ddos(archive_dic):
     # Renombrar label → indicadores y limpiar texto
     df = df.rename(columns={"Label": "Indicadores"})
     df["Indicadores"] = df["Indicadores"].str.replace("Web Attack ´?¢ ", "", regex=False)
-
-    # Fecha y hora actuales
+    
     now = datetime.now()
     df["Date"] = now.date()
     df["Time"] = now.strftime("%H:%M:%S")
@@ -151,7 +160,7 @@ def clean_data_login(archive_dic):
         "Login Timestamp", "Login Successful",
         "Is Attack IP", "Is Account Takeover"
     ]
-    df = df[[c for c in keep_cols if c in df.columns]]
+    df_front = df[[c for c in keep_cols if c in df.columns]]
 
     # --- Normalizar timestamp y fijar año 2025 ---
     ts = pd.to_datetime(df["Login Timestamp"], errors="coerce", utc=True)
@@ -183,6 +192,17 @@ def clean_data_login(archive_dic):
         ["Robo de credenciales","Cuenta comprometida","Ataque fallido","Login válido"], default=""
     )
 
+    # --- ASIGNAR log_id ---
+    df_front["log_id"] = ["Log" + str(uuid.uuid4().int) ]
+    df["log_id"] = df_front["log_id"]
+
+        # --- Preparar tabla enriquecida ---
+    df_id = df.copy()
+
+
+    from enriquecimiento import check_ip_info, enrich_login_record
+
+
     # --- Conexión a PostgreSQL ---
     conn = psycopg2.connect(
         dbname="desafiogrupo1",
@@ -196,6 +216,7 @@ def clean_data_login(archive_dic):
 
     records = [
         {
+            "log_id": row["log_id"],
             "company_id": 1,
             "type": row["Tipo"],
             "indicators": row["Indicadores"],
@@ -208,12 +229,16 @@ def clean_data_login(archive_dic):
     ]
 
     cur.executemany("""
-        INSERT INTO logs (company_id, type, indicators, severity, date, time, actions_taken)
-        VALUES (%(company_id)s, %(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s, %(actions_taken)s)
+        INSERT INTO logs (log_id, company_id, type, indicators, severity, date, time, actions_taken)
+        VALUES (%(log_id)s, %(company_id)s, %(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s, %(actions_taken)s)
     """, records)
 
     conn.commit()
     cur.close()
     conn.close()
+    
+
+
+
 
 
