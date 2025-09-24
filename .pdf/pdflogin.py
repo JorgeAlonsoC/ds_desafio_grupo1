@@ -4,6 +4,7 @@ import io
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import A4
+from reportlab.platypus.flowables import HRFlowable
 
 # Crear la app
 app = Flask(__name__)
@@ -44,6 +45,7 @@ def download_pdf():
 
     story_elements = []
     story_elements.append(Paragraph("INFORME DE LOGIN", styles["Heading2"]))
+    story_elements.append(HRFlowable(width="100%", thickness=1))
     story_elements.append(Spacer(1, 24))
 
     story_elements.append(Paragraph(f"<b>Log_id:</b> {log_id}", styles["Normal"]))
