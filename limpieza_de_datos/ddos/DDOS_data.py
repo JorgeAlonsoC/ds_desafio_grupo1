@@ -106,7 +106,7 @@ def clean_data(archive_dic):
     df = pd.merge(df, df2, on="Destination Port", how="left")
 
 
-    df["ddos_id"] = ["DDos" + str(uuid.uuid4().int) ]
+    df["ddos_id"] = [(uuid.uuid4().int) %1_000_000]
     
 
     now = datetime.now()
