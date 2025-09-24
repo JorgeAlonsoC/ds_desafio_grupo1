@@ -28,10 +28,8 @@ def limpieza_phishing(dict):
     df['date'] = now.date()
     df['time'] = now.strftime("%H:%M:%S")
 
-    insertar_phishing_enriquecido(df['URL'].iloc[0])
- 
-    df["phi_id"] = ["Phi" + str(uuid.uuid4().int)]
-
+    logs_id = (uuid.uuid4().int) %1_000_000
+    df["id"] = logs_id
 
     conn = psycopg2.connect(
         dbname="desafiogrupo1",
@@ -44,22 +42,27 @@ def limpieza_phishing(dict):
     cur = conn.cursor()
     records = [
         {
+            "id": row['id'],
+            "company_id": 1,
             "type": row['type'],
             "indicators": row['indicators'],
             "severity": row['severity'],
             "date": row['date'],
-            "time": row['time']
+            "time": row['time'],
+            "actions_taken": 1
         }
         for _, row in df.iterrows()
     ]
 
     cur.executemany("""
-        INSERT INTO logs (type, indicators, severity, date, time)
-        VALUES (%(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s)
+        INSERT INTO logs (id, company_id, type, indicators, severity, date, time, actions_taken)
+        VALUES (%(id)s, %(company_id)s, %(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s, %(actions_taken)s)
     """, records)
     conn.commit()
     cur.close()
     conn.close()
+
+    insertar_phishing_enriquecido(df['URL'].iloc[0])
 
 def dibujar_grafica():
     conn = psycopg2.connect(
@@ -254,6 +257,7 @@ def tablas_enriquecimiento_phishing(url):
 
 def insertar_phishing_enriquecido(url):
     df = tablas_enriquecimiento_phishing(url)
+    df['logs_id'] = (uuid.uuid4().int) %1_000_000
 
     conn = psycopg2.connect(
         dbname="desafiogrupo1",
@@ -266,7 +270,8 @@ def insertar_phishing_enriquecido(url):
     cur = conn.cursor()
     records = [
         {
-            "URL": row['URL'],
+            "logs_id": row['logs_id'],
+            "url": row['URL'],
             "status": row['status'],
             "malicious": row['malicious'],
             "suspicious": row['suspicious'],
@@ -286,6 +291,7 @@ def insertar_phishing_enriquecido(url):
             "cert_not_after": row['cert_not_after'],
             "cert_key_size": row['cert_key_size'],
             "thumbprint_sha256": row['thumbprint_sha256'],
+            "reputation": row['reputation'],
             "popularity_ranks": row['popularity_ranks'],
             "jarm": row['jarm'],
             "categories": row['categories']
@@ -294,10 +300,10 @@ def insertar_phishing_enriquecido(url):
     ]
 
     cur.executemany("""
-        INSERT INTO ***** (URL, status, malicious, suspicious, undetected, harmless, timeout, whois, tags, dns_records,
+        INSERT INTO phishing (logs_id, url, status, malicious, suspicious, undetected, harmless, timeout, whois, tags, dns_records,
                     last_dns_records_date, registrar, expiration_date, tld, issuer, subject_CN, cert_not_before, cert_not_after,
                     cert_key_size, thumbprint_sha256, reputation, popularity_ranks, jarm, categories)
-        VALUES (%(URL)s, %(status)s, %(malicious)s, %(suspicious)s, %(undetected)s, %(harmless)s, %(timeout)s, %(whois)s, %(tags)s, %(dns_records)s,
+        VALUES (%(logs_id)s, %(url)s, %(status)s, %(malicious)s, %(suspicious)s, %(undetected)s, %(harmless)s, %(timeout)s, %(whois)s, %(tags)s, %(dns_records)s,
                     %(last_dns_records_date)s, %(registrar)s, %(expiration_date)s, %(tld)s, %(issuer)s, %(subject_CN)s, %(cert_not_before)s, %(cert_not_after)s,
                     %(cert_key_size)s, %(thumbprint_sha256)s, %(reputation)s, %(popularity_ranks)s, %(jarm)s, %(categories)s)
     """, records)
