@@ -9,6 +9,7 @@ import time
 from collections import OrderedDict
 from dotenv import load_dotenv
 import os
+import uuid
 
 def limpieza_phishing(dict):
     df = pd.DataFrame([dict])
@@ -26,22 +27,16 @@ def limpieza_phishing(dict):
     now = datetime.now()
     df['date'] = now.date()
     df['time'] = now.strftime("%H:%M:%S")
-<<<<<<< HEAD
-    df_r = df[['HasPopup',
-               'Nivel3_Alta',
-               'Nivel2_Media',
-               'Nivel1_Baja',
-               'type',
-               'indicators',
-               'severity',
-               'date',
-               'time']]
-=======
+
  
     # Lo de merche -----------------------------------------------------
     # df_front["log_id"] = ["Log" + uuid.uuid4().hex for _ in range(len(df_front))]
     # df["log_id"] = df_front["log_id"]
->>>>>>> 04b91b5e2163aef53d587a2c9617289ed5b69687
+
+    insertar_phishing_enriquecido(df['URL'].iloc[0])
+ 
+    df["phi_id"] = ["Phi" + str(uuid.uuid4().int)]
+
 
     conn = psycopg2.connect(
         dbname="desafiogrupo1",

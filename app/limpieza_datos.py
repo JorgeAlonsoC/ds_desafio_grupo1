@@ -69,6 +69,7 @@ def clean_data_ddos(archive_dic):
     # Insertar registros
     records = [
         {
+            "id" = row['ddos_id'],
             "company_id": 1,
             "type": row['Tipo'],
             "indicators": row['Indicadores'],
@@ -236,6 +237,53 @@ def clean_data_login(archive_dic):
     conn.commit()
     cur.close()
     conn.close()
+
+    df_id = enrich_login_record(df_id.iloc[0].to_dict())
+
+    # --- Conexión a PostgreSQL para insertar en tabla enriquecida ---
+    try:
+        conn = psycopg2.connect(
+            dbname="desafiogrupo1",
+            user="desafiogrupo1_user",
+            password="g7jS0htW8QqiGPRymmJw0IJgb04QO3Jy",
+            host="dpg-d36i177fte5s73bgaisg-a.oregon-postgres.render.com",
+            port="5432"
+        )
+        cur = conn.cursor()
+        
+        # Preparar diccionario de la fila para insert
+        row = df_id.iloc[0]
+        record = {
+            "log_id": row["log_id"],
+            "login_timestamp": row.get("Login Timestamp")if pd.notna(row.get("Login Timestamp")) else None,
+            "user_id": None if pd.isna(row.get("User ID")) else row.get("User ID"),
+            "round_trip_time": None if pd.isna(row.get("Round-Trip Time [ms]")) else row.get("Round-Trip Time [ms]"),
+            "ip_address": None if pd.isna(row.get("IP Address")) else row.get("IP Address"),
+            "country": None if pd.isna(row.get("Country")) else row.get("Country"),
+            "asn": None if pd.isna(row.get("ASN")) else row.get("ASN"),
+            "user_agent": None if pd.isna(row.get("User Agent String")) else row.get("User Agent String"),
+            "country_code": None if pd.isna(row.get("countryCode")) else row.get("countryCode"),
+            "abuse_confidence_score": None if pd.isna(row.get("abuseConfidenceScore")) else row.get("abuseConfidenceScore"),
+            "last_reported_at": row.get("lastReportedAt")if pd.notna(row.get("lastReportedAt")) else None,
+            "usage_type": None if pd.isna(row.get("usageType")) else row.get("usageType"),
+            "domain": None if pd.isna(row.get("domain")) else row.get("domain"),
+            "total_reports": None if pd.isna(row.get("totalReports")) else row.get("totalReports"),
+        }
+        
+        cur.execute("""
+            INSERT INTO enriched_logs 
+            (log_id, login_timestamp, user_id, round_trip_time, ip_address, country, asn, user_agent,
+            country_code, abuse_confidence_score, last_reported_at, usage_type, domain, total_reports)
+            VALUES (%(log_id)s, %(login_timestamp)s, %(user_id)s, %(round_trip_time)s, %(ip_address)s, %(country)s, %(asn)s, %(user_agent)s,
+            %(country_code)s, %(abuse_confidence_score)s, %(last_reported_at)s, %(usage_type)s, %(domain)s, %(total_reports)s)
+            ON CONFLICT (log_id) DO NOTHING
+        """, record)
+        
+        conn.commit()
+        cur.close()
+        conn.close()
+    except Exception as e:
+        print(f"Error insertando en DB: {e}")
     
 
 
