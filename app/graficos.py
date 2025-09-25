@@ -45,7 +45,8 @@ def graf_ddos():
         title="Distribución de Incidentes",
         color="indicators",
         color_discrete_sequence=colors,
-        hole=0.7
+        hole=0.7,
+        hover_data={"total": True, "Tipo": True, "total": ':.0f' #etiquetas al pasar el ratón por encima
     )
 
     # Convertir a JSON (dict)
