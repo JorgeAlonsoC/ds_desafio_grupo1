@@ -3,6 +3,12 @@ from datetime import datetime
 import psycopg2
 import numpy as np
 
+import pandas as pd
+from datetime import datetime
+import psycopg2
+import uuid
+
+
 def clean_data_ddos(archive_dic):
     df = pd.DataFrame([archive_dic])
     df.columns = df.columns.str.strip()
@@ -36,8 +42,7 @@ def clean_data_ddos(archive_dic):
     df = df.rename(columns={"Label": "Indicadores"})
 
     df["Indicadores"] = df["Indicadores"].str.replace("Web Attack ´?¢ ", "", regex=False)
-
-
+    
     columns = [
     'Destination Port',
     'Estandar',
@@ -104,10 +109,16 @@ def clean_data_ddos(archive_dic):
     df2["Destination Port"] = df2["Destination Port"].astype(int)
 
     df = pd.merge(df, df2, on="Destination Port", how="left")
+
+
+    df["ddos_id"] = [(uuid.uuid4().int) %1_000_000]
     
+
     now = datetime.now()
     df["Date"] = now.date()
     df["Time"] = now.strftime("%H:%M:%S")
+
+    
         
     conn = psycopg2.connect(
     dbname="desafiogrupo1",
@@ -118,29 +129,93 @@ def clean_data_ddos(archive_dic):
     )
 
     
+
+
     cur = conn.cursor()
     records = [
         {
+            "id": row['ddos_id'],
             "company_id": 1,
-            "type": row['Tipo'],
-            "indicators": row['Indicadores'],
-            "severity": row['Severity'],
-            "date": row['Date'],
-            "time": row['Time'],
+            "type": row["Tipo"],
+            "indicators": row["Indicadores"],
+            "severity": row["Severity"],
+            "date": row["Date"],
+            "time": row["Time"],
             "actions_taken": 1
-        }
+        }   
         for _, row in df.iterrows()
     ]
     
 
     cur.executemany("""
-        INSERT INTO logs (company_id, type, indicators, severity, date, time, actions_taken)
-        VALUES (%(company_id)s, %(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s, %(actions_taken)s)
-    """, records)
+        INSERT INTO logs (id, company_id, type, indicators, severity, date, time,actions_taken)
+        VALUES (%(id)s, %(company_id)s, %(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s, %(actions_taken)s)
+        """, records)
+
+
+
+    
+    records_2 = [
+            {
+            'log_id':  row['ddos_id'],
+            'Destination Port': row['Destination Port'],
+            'Flow Duration': row['Flow Duration'], 
+            'Total Fwd Packets': row['Total Fwd Packets'],
+            'Total Backward Packets': row['Total Backward Packets'],
+            'Flow Bytes/s':row['Flow Bytes/s'] ,
+            'Flow Packets/s': row['Flow Packets/s'],
+            'Fwd Packet Length Mean': row['Fwd Packet Length Mean'],
+            'Fwd Packet Length Std': row['Fwd Packet Length Std'],
+            'Min Packet Length':row['Min Packet Length'],
+            'Max Packet Length': row['Max Packet Length'],
+            'Flow IAT Mean':row['Flow IAT Mean'] ,
+            'Flow IAT Std': row['Flow IAT Std'],
+            'SYN Flag Count': row['SYN Flag Count'],
+            'ACK Flag Count':row['ACK Flag Count'] ,
+            'Down/Up Ratio': row['Down/Up Ratio'],
+            'Active Mean':row['Active Mean'] ,
+            'Idle Mean': row['Idle Mean'],
+            'Score':row['Score'],
+            'Severity': row['Severity'],
+            'Tipo': row['Tipo'],
+            'Indicadores': row['Indicadores'],
+            'Estandar':row['Estandar'] ,
+            'Description': row['Description'],
+            'Ataques/CVEs tipicos': row['Ataques/CVEs tipicos'],
+            'Como proteger': row['Como proteger'],
+            'date': row['Date'],
+            'time': row['Time']
+
+        }
+            for _, row in df.iterrows()
+        ]
+
+    cur.executemany("""
+        INSERT INTO ddos (
+            "log_id", "Destination Port", "Flow Duration", "Total Fwd Packets", "Total Backward Packets",
+            "Flow Bytes/s", "Flow Packets/s", "Fwd Packet Length Mean", "Fwd Packet Length Std",
+            "Min Packet Length", "Max Packet Length", "Flow IAT Mean", "Flow IAT Std",
+            "SYN Flag Count", "ACK Flag Count", "Down/Up Ratio", "Active Mean", "Idle Mean",
+            "Indicadores", "Score", "Severity", "Tipo", "Estandar", "Description",
+            "Ataques/CVEs tipicos", "Como proteger", "date", "time"
+        )
+        VALUES (
+            %(log_id)s, %(Destination Port)s, %(Flow Duration)s, %(Total Fwd Packets)s, %(Total Backward Packets)s,
+            %(Flow Bytes/s)s, %(Flow Packets/s)s, %(Fwd Packet Length Mean)s, %(Fwd Packet Length Std)s,
+            %(Min Packet Length)s, %(Max Packet Length)s, %(Flow IAT Mean)s, %(Flow IAT Std)s,
+            %(SYN Flag Count)s, %(ACK Flag Count)s, %(Down/Up Ratio)s, %(Active Mean)s, %(Idle Mean)s,
+            %(Indicadores)s, %(Score)s, %(Severity)s, %(Tipo)s, %(Estandar)s, %(Description)s,
+            %(Ataques/CVEs tipicos)s, %(Como proteger)s, %(date)s, %(time)s
+        )
+    """, records_2)
+
 
     conn.commit()
     cur.close()
     conn.close()
+
+
+
 
 # ================  PHISHING  ====================
 import pandas as pd
@@ -352,7 +427,7 @@ def insertar_phishing_enriquecido(url):
 
     print(records)
 
-    '''cur.executemany("""
+    cur.executemany("""
         INSERT INTO ***** (URL, status, malicious, suspicious, undetected, harmless, timeout, whois, tags, dns_records,
                     last_dns_records_date, registrar, expiration_date, tld, issuer, subject_CN, cert_not_before, cert_not_after,
                     cert_key_size, thumbprint_sha256, reputation, popularity_ranks, jarm, categories)
@@ -362,9 +437,9 @@ def insertar_phishing_enriquecido(url):
     """, records)
     conn.commit()
     cur.close()
-    conn.close()'''
+    conn.close()
 
-def limpieza_phishing(dict):
+def clean_data_phishing2(dict):
     df = pd.DataFrame([dict])
     df['HasPopup'] = (df['NoOfPopup'] >= 1).astype(int)
     df["Nivel3_Alta"] = ((df["IsDomainIP"] == 1) |((df["HasPasswordField"] == 1) & (df["IsHTTPS"] == 0)) |(df["HasExternalFormSubmit"] == 1)).astype(int)
@@ -407,15 +482,16 @@ def limpieza_phishing(dict):
     ]
 
     print(records)
-    '''cur.executemany("""
+    cur.executemany("""
         INSERT INTO logs (type, indicators, severity, date, time)
         VALUES (%(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s)
     """, records)
     conn.commit()
     cur.close()
-    conn.close()'''
+    conn.close()
 
 #============= Login ==============
+from enriquecimiento import *
 def clean_data_login2(archive_dic):
     # Convertir a DataFrame
     df = pd.DataFrame([archive_dic])
@@ -431,43 +507,39 @@ def clean_data_login2(archive_dic):
     # --- Normalizar timestamp y fijar año 2025 ---
     ts = pd.to_datetime(df["Login Timestamp"], errors="coerce", utc=True)
     ts = ts.apply(lambda x: x.replace(year=2025) if pd.notna(x) else x)
-    df["Date"] = ts.dt.date
-    df["Time"] = ts.dt.strftime("%H:%M:%S")
+    df_front.loc[:, "Date"] = ts.dt.date
+    df_front.loc[:, "Time"] = ts.dt.strftime("%H:%M:%S")
 
     # --- Severidad ---
-    ls  = df.get("Login Successful", pd.Series([False])).fillna(False).astype(bool)
-    ia  = df.get("Is Attack IP", pd.Series([False])).fillna(False).astype(bool)
-    iat = df.get("Is Account Takeover", pd.Series([False])).fillna(False).astype(bool)
+    ls  = df_front.get("Login Successful", pd.Series([False])).fillna(False).astype(bool)
+    ia  = df_front.get("Is Attack IP", pd.Series([False])).fillna(False).astype(bool)
+    iat = df_front.get("Is Account Takeover", pd.Series([False])).fillna(False).astype(bool)
 
     rojo     = (ls) & (ia) & (iat)
     naranja  = (ls) & (ia) & (~iat)
     amarillo = (~ls) & (ia) & (~iat)
     blanco   = (ls) & (~ia) & (~iat)
 
-    df["Severity"] = np.select([rojo,naranja,amarillo,blanco],[3,2,1,0], default=1).astype(int)
+    df_front["Severity"] = np.select([rojo,naranja,amarillo,blanco],[3,2,1,0], default=1).astype(int)
 
     # --- Tipo ---
-    df["Tipo"] = np.select(
-        [df["Severity"].eq(3), df["Severity"].isin([1,2]), df["Severity"].eq(0)],
+    df_front["Tipo"] = np.select(
+        [df_front["Severity"].eq(3), df_front["Severity"].isin([1,2]), df_front["Severity"].eq(0)],
         ["Incidencia","Alerta","Info"], default="Info"
     )
 
     # --- Indicadores ---
-    df["Indicadores"] = np.select(
-        [df["Severity"].eq(3), df["Severity"].eq(2), df["Severity"].eq(1), df["Severity"].eq(0)],
+    df_front["Indicadores"] = np.select(
+        [df_front["Severity"].eq(3), df_front["Severity"].eq(2), df_front["Severity"].eq(1), df_front["Severity"].eq(0)],
         ["Robo de credenciales","Cuenta comprometida","Ataque fallido","Login válido"], default=""
     )
 
     # --- ASIGNAR log_id ---
     df_front["id"] = [(uuid.uuid4().int) %1_000_000]
-    df["id"] = [(uuid.uuid4().int) %1_000_000]
+    df["id"] = df_front["id"]
 
         # --- Preparar tabla enriquecida ---
     df_id = df.copy()
-
-
-    from enriquecimiento import check_ip_info, enrich_login_record
-
 
     # --- Conexión a PostgreSQL ---
     conn = psycopg2.connect(
@@ -478,11 +550,11 @@ def clean_data_login2(archive_dic):
         port="5432"
     )
 
-    #cur = conn.cursor()
+    cur = conn.cursor()
 
     records = [
         {
-            "log_id": row["log_id"],
+            "id": row["id"],
             "company_id": 1,
             "type": row["Tipo"],
             "indicators": row["Indicadores"],
@@ -491,33 +563,54 @@ def clean_data_login2(archive_dic):
             "time": row["Time"],
             "actions_taken": 1
         }
-        for _, row in df.iterrows()
+        for _, row in df_front.iterrows()
     ]
 
+    cur.executemany("""
+        INSERT INTO logs (id, company_id, type, indicators, severity, date, time, actions_taken)
+        VALUES (%(id)s, %(company_id)s, %(type)s, %(indicators)s, %(severity)s, %(date)s, %(time)s, %(actions_taken)s)
+    """, records)
+
+    conn.commit()
 
     df_id = enrich_login_record(df_id.iloc[0].to_dict())
-    
+
+    try:
+        cur = conn.cursor()
         
-    # Preparar diccionario de la fila para insert
-    row = df_id.iloc[0]
-    record = {
-        "log_id": row["log_id"],
-        "login_timestamp": row.get("Login Timestamp") if pd.notna(row.get("Login Timestamp")) else None,
-        "user_id": None if pd.isna(row.get("User ID")) else row.get("User ID"),
-        "round_trip_time": None if pd.isna(row.get("Round-Trip Time [ms]")) else row.get("Round-Trip Time [ms]"),
-        "ip_address": None if pd.isna(row.get("IP Address")) else row.get("IP Address"),
-        "country": None if pd.isna(row.get("Country")) else row.get("Country"),
-        "asn": None if pd.isna(row.get("ASN")) else row.get("ASN"),
-        "user_agent": None if pd.isna(row.get("User Agent String")) else row.get("User Agent String"),
-        "country_code": None if pd.isna(row.get("countryCode")) else row.get("countryCode"),
-        "abuse_confidence_score": None if pd.isna(row.get("abuseConfidenceScore")) else row.get("abuseConfidenceScore"),
-        "last_reported_at": row.get("lastReportedAt") if pd.notna(row.get("lastReportedAt")) else None,
-        "usage_type": None if pd.isna(row.get("usageType")) else row.get("usageType"),
-        "domain": None if pd.isna(row.get("domain")) else row.get("domain"),
-        "total_reports": None if pd.isna(row.get("totalReports")) else row.get("totalReports"),
-    }
-    print('='*50)
-    print(record)
-    print('='*50)
-    print(records)
-    
+        # Preparar diccionario de la fila para insert
+        row = df_id.iloc[0]
+        record = {
+            "log_id": row["id"],
+            "login_timestamp": row.get("Login Timestamp")if pd.notna(row.get("Login Timestamp")) else None,
+            "user_id": None if pd.isna(row.get("User ID")) else row.get("User ID"),
+            "round_trip_time": None if pd.isna(row.get("Round-Trip Time [ms]")) else row.get("Round-Trip Time [ms]"),
+            "ip_address": None if pd.isna(row.get("IP Address")) else row.get("IP Address"),
+            "country": None if pd.isna(row.get("Country")) else row.get("Country"),
+            "asn": None if pd.isna(row.get("ASN")) else row.get("ASN"),
+            "user_agent": None if pd.isna(row.get("User Agent String")) else row.get("User Agent String"),
+            "country_code": None if pd.isna(row.get("countryCode")) else row.get("countryCode"),
+            "abuse_confidence_score": None if pd.isna(row.get("abuseConfidenceScore")) else row.get("abuseConfidenceScore"),
+            "last_reported_at": row.get("lastReportedAt")if pd.notna(row.get("lastReportedAt")) else None,
+            "usage_type": None if pd.isna(row.get("usageType")) else row.get("usageType"),
+            "domain": None if pd.isna(row.get("domain")) else row.get("domain"),
+            "total_reports": None if pd.isna(row.get("totalReports")) else row.get("totalReports"),
+        }
+        
+        cur.execute("""
+            INSERT INTO enriched_logs 
+            (log_id, login_timestamp, user_id, round_trip_time, ip_address, country, asn, user_agent,
+            country_code, abuse_confidence_score, last_reported_at, usage_type, domain, total_reports)
+            VALUES (%(log_id)s, %(login_timestamp)s, %(user_id)s, %(round_trip_time)s, %(ip_address)s, %(country)s, %(asn)s, %(user_agent)s,
+            %(country_code)s, %(abuse_confidence_score)s, %(last_reported_at)s, %(usage_type)s, %(domain)s, %(total_reports)s)
+            ON CONFLICT (log_id) DO NOTHING
+        """, record)
+        
+        conn.commit()
+        cur.close()
+        conn.close()
+    except Exception as e:
+        print(f"Error insertando en DB: {e}")
+
+
+
