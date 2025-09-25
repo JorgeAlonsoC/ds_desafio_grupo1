@@ -9,7 +9,7 @@ from reportlab.lib.pagesizes import A4
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/download-pdf", methods=["POST"])
+@app.route("/download_pdf_ddos", methods=["POST"])
 def download_pdf():
     data = request.get_json()
 

@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Endpoint 
-@app.route("/download-pdf", methods=["POST"])
+@app.route("/download_pdf_login", methods=["POST"])
 def download_pdf():
     data = request.get_json()
 

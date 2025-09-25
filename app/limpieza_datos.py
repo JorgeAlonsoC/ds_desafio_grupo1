@@ -69,7 +69,7 @@ def clean_data_ddos(archive_dic):
     # Insertar registros
     records = [
         {
-            "id" = row['ddos_id'],
+            "id" : row['ddos_id'],
             "company_id": 1,
             "type": row['Tipo'],
             "indicators": row['Indicadores'],
