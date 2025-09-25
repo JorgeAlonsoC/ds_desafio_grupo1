@@ -26,7 +26,7 @@ def clean_data(archive_dic):
     df["Severity"] = df["Label"].map(mapping2)
 
     mapping3 = {
-        "Web Attack ´?¢ Sql Injection": "Incidencia",
+        "Critical": "Incidencia",
         "Moderate": "Alerta",
         "High": "Alerta",
         "Benign": "Info"
@@ -210,4 +210,5 @@ def clean_data(archive_dic):
     conn.commit()
     cur.close()
     conn.close()
+
 
